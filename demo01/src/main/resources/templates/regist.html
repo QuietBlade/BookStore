@@ -6,14 +6,57 @@
 </head>
 <body>
 
-<form action="/api/user/registration" method="get">
-    <div th:utext="${csrf}"></div>
-    <div> 用户名：<input type="text" name="username" /></div>
-    <div> 邮箱：<input type="text" name="email" /></div>
-    <div> 密码：<input type="password" name="password" /></div>
-    <div> 确认密码：<input type="password" name="surepassword" /></div>
-    <div> <input type="submit" name="submit" /></div>
-</form>
+    <form action="/api/user/registration" method="get">
+        <div th:utext="${csrf}"></div>
+        <div> 用户名：<input type="text" name="username" /></div>
+        <div> 邮箱：<input type="text" name="email" /></div>
+        <div> 密码：<input type="password" name="password" /></div>
+        <div> 确认密码：<input type="password" name="surepassword" /></div>
+        <div> <input type="button" id="b01" name="submit" value="submit" /></div>
+    </form>
 
+    <div id="MyDiv">
+
+    </div>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#b01").click(function(){
+            str = $("#MyDiv");
+            //str[0].innerText;
+            htmlobj = $.ajax({
+                url:"/api/user/registration",
+                contentType: "application/json",
+                data:{
+                    "username":$("[name=username]")[0].value,
+                    "_token": $("[name=_token]")[0].value,
+                    "password":$("[name=password]")[0].value,
+                    "surepassword" : $("[name=surepassword]")[0].value,
+                    "email" : $("[name=email]")[0].value,
+                },
+                    success:function(data,status){
+                        // 202
+                        var a = data;
+                        console.log(typeof(a));
+                        console.log(a);
+                        console.log("code:" + a.code);
+                        console.log("msg:" + a.msg)
+                        if( a.code == "-1" ){
+                            str[0].innerText += a.msg + "<br>";
+                            console.log(str[0]);
+                        }
+                        if( a.code == "1"){
+                            str[0].innerText += a.msg + "<br>";
+                            alert(a.msg);
+                        }
+
+                },
+                async:false,
+            });
+        });
+    });
+
+</script>
 </body>
 </html>

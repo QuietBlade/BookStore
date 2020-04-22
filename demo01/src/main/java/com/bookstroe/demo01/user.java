@@ -23,12 +23,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @RestController
-//@Controller
 @RequestMapping("/api")
 public class user {
     Author author = new Author();
 
-    @RequestMapping("/user/loginverification")
+    @ResponseBody
+    @RequestMapping(value= "/user/loginverification",produces = "application/json;charset=utf-8")
     public String loginVerification(HttpServletRequest req, HttpServletResponse res) throws IOException {
         HttpSession session = req.getSession();
         Map<String,String> json = new HashMap<String,String>();
@@ -84,15 +84,17 @@ public class user {
         return JSON.toJSONString(json);
     }
 
-    @RequestMapping("/user/login")
+    @RequestMapping(value="/user/login",produces = "application/json;charset=utf-8")
     public String login(HttpServletRequest req, HttpServletResponse res){
         return JSON.toJSONString(req.getParameterMap());
     }
 
-    @RequestMapping("/user/registration")
+    @RequestMapping( value ="/user/registration",produces = "application/json;charset=utf-8")
+
     public String registration(HttpServletRequest req, HttpServletResponse res) throws IOException, SQLException {
         Author author = new Author();
         Map<String,String> json = new HashMap<String,String>();
+        //res.setHeader("Content-Type","application/json,charset=utf-8");
         json.put("code","-1");
         json.put("status","error");
         json.put("msg","用户名或密码不能为空");
