@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/api/user/loginverification" method="get">
+        <div th:utext="${csrf}"></div>
+        <div> 用户名：<input type="text" name="username" /></div>
+        <div> 密码：<input type="password" name="password" /></div>
+        <input type="text" name="captcha" placeholder="图形验证码" autocomplete="off" value="">
+        <div> <img src="/api/verificationcode" title="点击切换验证码"  onclick="this.src='/api/verificationcode?'+Math.random()"/> </div>
+        <div> <input type="submit" name="submit" /></div>
+    </form>
+</body>
+</html>

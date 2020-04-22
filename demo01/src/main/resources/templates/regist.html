@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/api/user/registration" method="get">
+    <div th:utext="${csrf}"></div>
+    <div> 用户名：<input type="text" name="username" /></div>
+    <div> 邮箱：<input type="text" name="email" /></div>
+    <div> 密码：<input type="password" name="password" /></div>
+    <div> 确认密码：<input type="password" name="surepassword" /></div>
+    <div> <input type="submit" name="submit" /></div>
+</form>
+
+</body>
+</html>
