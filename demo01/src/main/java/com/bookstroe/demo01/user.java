@@ -1,26 +1,20 @@
 package com.bookstroe.demo01;
 
 
-import ch.qos.logback.core.db.dialect.DBUtil;
 import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.beans.Author;
-import com.bookstroe.demo01.dao.AuthorDao;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/api")
@@ -29,48 +23,72 @@ public class user {
 
     @ResponseBody
     @RequestMapping(value= "/user/loginverification",produces = "application/json;charset=utf-8")
-    public String loginVerification(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    public String loginVerification(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         HttpSession session = req.getSession();
         Map<String,String> json = new HashMap<String,String>();
         json.put("code","-1");
         json.put("status","error");
-        json.put("msg","登录失败");
+        json.put("msg","_token 异常，请刷新页面再试");
         json.put("link","login.html");
         String _token1 = (String)session.getAttribute("_token");
         String _token2 = req.getParameter("_token");
         String code = req.getParameter("captcha").toLowerCase();
-        String codever = (String)session.getAttribute("captcha");
+        String captcha = (String)session.getAttribute("captcha");
         String remember = req.getParameter("remember");
-        if(_token1 == null || _token2 == null){
-        //if( _token2 == null ){
-            json.put("msg","_token不能为空");
-            return JSON.toJSONString(json);
-        }
-        if(!_token1.equals(_token2)){
-            json.put("msg","_token错误");
+
+        if(!_token1.equals(_token2) || _token1 == null || _token2 == null ){
+            json.put("code","-1");
+            json.put("msg","_token 异常，请刷新页面再试");
             return JSON.toJSONString(json);
         }
 
-        if( !code.equals(codever) ){
+        if( !code.equals(captcha) || captcha == null){
+            json.put("code","-2");
             json.put("msg","验证码错误");
             return JSON.toJSONString(json);
         }
 
-        String username = req.getParameter("username"); //字符串过滤
-        String password = req.getParameter("password"); //字符串过滤
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String email = null;
 
-        if(otherUtil.isConSpeCharacters(username)){
-            json.put("msg","用户名或密码不能包含特殊字符");
+        if (username == null || password == null) {
+            json.put("code","-3");
+            json.put("msg", "用户名或密码不能为空");
             return JSON.toJSONString(json);
         }
 
-        if( username == null || password == null){
-            json.put("msg","用户名或密码不能为空");
+        if (otherUtil.isConSpeCharacters(username) || otherUtil.isConSpeCharacters(password)) {
+            json.put("code","-4");
+            json.put("msg", "用户名或密码出现特殊字符");
             return JSON.toJSONString(json);
         }
 
-        if( username.length() < 6 || username.length() > 20 || password.length() < 8 || password.length() > 20){
-            json.put("msg","用户名或密码长度不够");
+        if (username.length() < 6 || username.length() > 20 || password.length() < 8 || password.length() > 20) {
+            json.put("code","-5");
+            json.put("msg", "用户名或密码长度不足");
+            return JSON.toJSONString(json);
+        }
+
+        author = DButil.findUser(username);
+
+        if (author == null) {
+            json.put("code","-6");
+            json.put("msg", "用户名或密码错误");
+            return JSON.toJSONString(json);
+        }
+
+        if (!author.getLoginpass().equals(otherUtil.stringToMD5(password))) {
+            json.put("code","-7");
+            json.put("msg", "用户名或密码错误");
+            return JSON.toJSONString(json);
+        }
+
+        if( "0".equals(author.getStatus()) ){
+            json.put("code","-8");
+            json.put("msg", "用户名未激活");
+            json.put("link","index.html");
+            //这里需要更改link跳转页面
             return JSON.toJSONString(json);
         }
 
@@ -79,22 +97,15 @@ public class user {
         json.put("code","1");
         json.put("status","success");
         String status = otherUtil.StringUUID();
+        session.setAttribute("author",author);
         session.setAttribute("status",status);
-
         return JSON.toJSONString(json);
     }
 
-    @RequestMapping(value="/user/login",produces = "application/json;charset=utf-8")
-    public String login(HttpServletRequest req, HttpServletResponse res){
-        return JSON.toJSONString(req.getParameterMap());
-    }
-
     @RequestMapping( value ="/user/registration",produces = "application/json;charset=utf-8")
-
-    public String registration(HttpServletRequest req, HttpServletResponse res) throws IOException, SQLException {
+    public String registration(HttpServletRequest req, HttpServletResponse res) throws Exception {
         Author author = new Author();
         Map<String,String> json = new HashMap<String,String>();
-        //res.setHeader("Content-Type","application/json,charset=utf-8");
         json.put("code","-1");
         json.put("status","error");
         json.put("msg","用户名或密码不能为空");
@@ -107,13 +118,9 @@ public class user {
         String _token1 = req.getParameter("_token");
         String _token2 = (String)session.getAttribute("_token");
 
-        if(_token1 == null || _token2 == null){
-            json.put("msg","_token不能为空");
-            return JSON.toJSONString(json);
-        }
 
-        if(!_token1.equals(_token2)){
-            json.put("msg","_token错误");
+        if(!_token1.equals(_token2) || _token1 == null || _token2 == null ){
+            json.put("msg","_token 异常");
             return JSON.toJSONString(json);
         }
 
@@ -148,16 +155,46 @@ public class user {
         author.setEmail(email);
         author.setLoginGroup("users");
         if(DButil.addUser(author) == -1){
-            json.put("msg","用户不唯一");
+            json.put("msg","用户名冲突");
             return JSON.toJSONString(json);
         }
 
         json.put("code","1");
         json.put("status","success");
-        json.put("msg","注册成功");
+        json.put("msg","注册成功,等待验证邮箱");
         json.put("activeCode",author.getActivarionCode());
         json.put("link","login.html");
+        otherUtil.sendMail(author.getEmail(), author.getActivarionCode() );
+        //发送邮箱
         return JSON.toJSONString(json);
+    }
+
+    @RequestMapping( value = "/user/UpdatePassword",produces = "application/json;charset=utf-8")
+    public String updatePassword(HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession();
+        Author author = (Author) session.getAttribute("author");
+        if( author != null){
+            return "当前身份:"+author.getLoginGroup();
+        }else
+            return "登陆后再试";
+    }
+
+    @RequestMapping( value = "/user/activeCode",produces = "text/html;charset=utf-8")
+    public String activeCode(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        String code = req.getParameter("code");
+        if( code == null || otherUtil.isConSpeCharacters(code) || code.length() != 32){
+            res.sendRedirect("http://localhost:8080/index");
+        }else{
+            String sql = "UPDATE book_user SET status=1 WHERE activationCode='"+ code +"'";
+            try {
+                if(DButil.ExecQuery(sql) <= 0)
+                    return "激活失败,请检查";
+            }catch (Exception e){
+                e.printStackTrace();
+                return "激活失败,请检查";
+            }
+        }
+        return "激活完成，<a href=\"http://localhost:8080/login\">点击返回登陆界面</a>";
     }
 
     @RequestMapping("/verificationcode")
@@ -180,7 +217,7 @@ public class user {
 
     @RequestMapping("/user/find")
     public String find(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-        return DButil.findUser("123456");
+        return JSON.toJSONString(DButil.findUser("123456"));
     }
 
 //    添加用户的测试案例
@@ -199,11 +236,6 @@ public class user {
 //        return author.toString();
 //    }
 
-//    原生sql，查看是否有连接问题
-//    @RequestMapping("/db/add")
-//    public String testdb() throws SQLException {
-//        return DButil.query("test");
-//    }
 
 //    测试验证码是否生效
 //    @RequestMapping("/api/code")
@@ -212,6 +244,18 @@ public class user {
 //        String code = (String)session.getAttribute("captcha");
 //        return code;
 //    }
+//  测试邮件是否有效
+    @RequestMapping("seed")
+    public String seedMail() throws Exception {
+        try{
+            otherUtil.sendMail("yuanzhangzcc@163.com", otherUtil.stringToMD5(otherUtil.StringUUID()));
+            return "发送成功";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "发送失败";
+        }
+
+    }
 
 //  测试md5是否生效
     @RequestMapping("/md5")
@@ -230,19 +274,15 @@ public class user {
     public String db(){
         Connection sql = DButil.GetConnection();
         if(sql != null){
-            return "连接成功";
+            return "连接数据库成功";
         }
         return "连接数据库失败";
     }
 
-    @RequestMapping("/hello")
-    public String index(){
-        return "1803010121 张源";
-    }
 
-    @RequestMapping("/re")
+    @RequestMapping("/hello")
     public String test(){
-        return "login";
+        return "this /api/hello";
     }
 
 

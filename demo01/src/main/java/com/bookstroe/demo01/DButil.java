@@ -1,12 +1,8 @@
 package com.bookstroe.demo01;
 
-import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.dao.AuthorDao;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.rmi.server.ExportException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -32,6 +28,7 @@ public class DButil {
         return connection;
     }
 
+    //废弃，不用
     public static String query(String str) throws SQLException {
         Connection conn = GetConnection();
         String sql = "INSERT INTO book_user VALUES('2','222','222','222',0,'222','222')";
@@ -46,7 +43,6 @@ public class DButil {
         return "执行成功";
     }
 
-
     public static int addUser(Author author) throws SQLException {
         author.setUid(otherUtil.StringUUID());
         author.setActivarionCode(otherUtil.stringToMD5(otherUtil.StringUUID()));
@@ -55,25 +51,25 @@ public class DButil {
         return dao.add(author);
     }
 
-    public static String findUser(String username) throws SQLException{
-        Author author =  dao.findAuthor(username);
-        if( author.getLoginuser() == null){
-            return "null";
-        }
-        return author.toString();
+    public static Author findUser(String username) throws SQLException{
+        Author author =  new Author();
+        if( otherUtil.isEmail(username))
+            author =  dao.findAuthor(null,username);
+        else
+            author =  dao.findAuthor(username,null);
+        return author;
     }
 
-    public String ExecQuery(Connection connection, String SQLQuery) {
+    public static int ExecQuery(String SQLQuery) {
         try {
-            //String SQLQuery = "create table abc2(name varchar(20));";
-            Statement sql_statement = connection.createStatement();
-            sql_statement.executeUpdate(SQLQuery);
-            connection.commit();
+            Connection conn = GetConnection();
+            Statement statement = conn.createStatement();
+            int len = statement.executeUpdate(SQLQuery);
+            return len;
         } catch (Exception e) {
-            return e.getMessage();
+            e.printStackTrace();
+            return -1;
         }
-        return "Success";
     }
-
 
 }

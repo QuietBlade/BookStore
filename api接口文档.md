@@ -13,38 +13,34 @@
     "_token": str(32)
     "username": str(6,20)
     "password": str(8,20)
-    "save": boolean | true | false
-    "code": str(4)
+    "captcha": str(4)
+    "remember": boolean | true | false
 }
 
 返回数据
 json{
 	"code": "-1", 
     "status : "error",
-	"msg" : "用户名和密码不能为空",
+	"msg" : "_token 异常，请刷新页面再试",
     "link" : "index.html",
 }//默认返回
     
-    code{
-        -1 ： 登陆失败
-        0 : 登录异常
-        1 : 登录成功
+    code : msg {
+        1 : 登陆成功
+        0 : 数据库异常，请联系管理员
+        -1 ：_token 异常
+        -2 : 验证码错误
+        -3 : 用户名或密码不能为空
+        -4 : 用户名或密码出现特殊字符
+        -5 : 用户名或密码长度不足
+        -6 : 用户名或密码错误 //实际上是用户名错误
+        -7 : 用户名或密码错误 //实际上是密码错误
+        -8 : 用户未激活 
     }
     
-    status : "error" / "success"
     
-    msg消息{
-        0 : 登陆成功
-        -1 : 用户名或者密码出错
-        -2 : 用户名或者密码不能为空
-        -3 : 用户未激活
-        -4 : 验证码错误
-        -5 : token出错
-        -6 : 用户名长度
-        -7 : 用户名或密码不能包含特殊字符
-    }
-    
-    link 默认返回主页的url，如果身份是管理员，默认返回后台管理页面url
+    link ： 默认返回主页的url，code -8 返回的激活页面
+    如果身份是管理员，默认返回后台管理页面url
 ```
 
 
@@ -65,11 +61,11 @@ json{
 json{
 	"code": "-1", 
     "status : "error",
-	"msg" : "用户名和密码不能为空",
+	"msg" : "_token 异常，请刷新页面再试",
     "link" : "index.html",
     "active" : str(32) //激活码,验证通过才会发送
 }//默认返回
-    其余参考用户登录返回
+  
     
   
 ```

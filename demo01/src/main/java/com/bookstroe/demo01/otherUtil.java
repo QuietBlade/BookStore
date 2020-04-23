@@ -1,7 +1,10 @@
 package com.bookstroe.demo01;
 
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.DigestUtils;
 
+import javax.mail.internet.MimeMessage;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.OutputStream;
@@ -59,6 +62,31 @@ public class otherUtil {
         p = Pattern.compile(regEx1);
         m = p.matcher(str);
         return m.matches();
+    }
+
+    public static void sendMail(String email,String activeCode) throws Exception {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();//直接生产一个实例
+        //String users[] = {"xxxxx@qq.com","xxxxx@126.com"};
+        mailSender.setHost("smtp.163.com");//动态添加配置
+        mailSender.setUsername("yuanzhangzcc@163.com");
+        mailSender.setPassword("wy1185752791");
+        mailSender.setProtocol("smtp");
+        mailSender.setPort(25);
+        MimeMessage msg = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(msg, true,"UTF-8");
+        helper.setFrom(mailSender.getUsername());
+        helper.setTo(email);
+        helper.setSubject("在线书城 用户激活邮件");
+        helper.setText(
+                "<html><body>"+
+                "<h1>欢迎注册在线书城系统</h1>"+
+                "<h2>点击下面链接进行激活</h2> <p><a href=\"http://localhost:8080/api/user/activeCode?code="+ activeCode +"\">http://localhost:8080/api/user/activeCode?code="+ activeCode +"</a></p>" +
+                        "</body></html>",true);
+        try{
+            mailSender.send(msg);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static Map<String, Object> getImageCode(int width, int height, int len, OutputStream os) {

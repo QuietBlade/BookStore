@@ -69,18 +69,19 @@ public class AuthorDao implements userDao{
     }
 
     @Override
-    public Author findAuthor(String username) throws SQLException {
+    public Author findAuthor(String username,String email) throws SQLException {
         Author author = new Author();
         Connection conn = null;
         PreparedStatement pst = null;
         ResultSet res = null;
-        String sql = "select * from book_user where loginname = ? and loginpass = '123'";
+        String sql = "select * from book_user where loginname = ? or email = ?";
         conn = DButil.GetConnection();
         try{
             pst = conn.prepareStatement(sql);
             pst.setString(1,username);
+            pst.setString(2,email);
             res = pst.executeQuery();
-            while(res.next()){
+            if(res.next()){
                 author.setUid(res.getString("uid"));
                 author.setLoginuser(res.getString("loginname"));
                 author.setLoginpass(res.getString("loginpass"));
@@ -88,7 +89,8 @@ public class AuthorDao implements userDao{
                 author.setStatus(res.getInt("status"));
                 author.setActivarionCode(res.getString("activationCode"));
                 author.setLoginGroup(res.getString("loginGroup"));
-            }
+            }else
+                return null;
         }catch (SQLException e){
             e.printStackTrace();
         }finally {

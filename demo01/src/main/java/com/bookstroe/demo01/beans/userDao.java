@@ -16,5 +16,5 @@ public interface userDao {
 
     int execute(String str);
 
-    Author findAuthor(String uid) throws SQLException;
+    Author findAuthor(String username,String email) throws SQLException;
 }
