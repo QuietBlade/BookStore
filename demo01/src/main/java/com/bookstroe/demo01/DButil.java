@@ -48,6 +48,7 @@ public class DButil {
         author.setActivarionCode(otherUtil.stringToMD5(otherUtil.StringUUID()));
         author.setStatus(0);
         author.setLoginpass(otherUtil.stringToMD5(author.getLoginpass()));
+        author.setRegistLogin(otherUtil.timestamp());
         return dao.add(author);
     }
 

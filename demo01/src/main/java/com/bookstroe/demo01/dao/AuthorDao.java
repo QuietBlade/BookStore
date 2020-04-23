@@ -23,7 +23,7 @@ public class AuthorDao implements userDao{
         Connection conn = null;
 
         conn = DButil.GetConnection();
-        String sql = "INSERT INTO book_user VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO book_user VALUES(?,?,?,?,?,?,?,?)";
         try {
             statement = conn.prepareStatement(sql);
             statement.setString(1,author.getUid());
@@ -33,6 +33,7 @@ public class AuthorDao implements userDao{
             statement.setInt(5,author.getStatus());
             statement.setString(6,author.getActivarionCode());
             statement.setString(7,author.getLoginGroup());
+            statement.setString(8,author.getRegistLogin());
         }catch (SQLException e){
             e.printStackTrace();
             return -1;
@@ -89,6 +90,7 @@ public class AuthorDao implements userDao{
                 author.setStatus(res.getInt("status"));
                 author.setActivarionCode(res.getString("activationCode"));
                 author.setLoginGroup(res.getString("loginGroup"));
+                author.setRegistLogin(res.getString("registLogin"));
             }else
                 return null;
         }catch (SQLException e){

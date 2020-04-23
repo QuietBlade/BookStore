@@ -19,16 +19,16 @@
 
 返回数据
 json{
-	"code": "-1", 
+    "code": "-1", 
     "status : "error",
-	"msg" : "_token 异常，请刷新页面再试",
+    "msg" : "_token 异常，请刷新页面再试",
     "link" : "index.html",
 }//默认返回
     
     code : msg {
         1 : 登陆成功
         0 : 数据库异常，请联系管理员
-        -1 ：_token 异常
+        -1 ： _token 异常，请刷新页面再试
         -2 : 验证码错误
         -3 : 用户名或密码不能为空
         -4 : 用户名或密码出现特殊字符
@@ -59,15 +59,14 @@ json{
 
 返回参数
 json{
-	"code": "-1", 
+    "code": "-1", 
     "status : "error",
-	"msg" : "_token 异常，请刷新页面再试",
+    "msg" : "_token 异常，请刷新页面再试",
     "link" : "index.html",
     "active" : str(32) //激活码,验证通过才会发送
 }//默认返回
   
-    
-  
+
 ```
 
 
@@ -83,6 +82,6 @@ json{
 } //或者考虑接受 width height参数
 
 返回参数
-	返回一个 image/jpeg 的图片 高度 100px 宽度 20px
+    返回一个 image/jpeg 的图片 高度 100px 宽度 20px
 ```
 

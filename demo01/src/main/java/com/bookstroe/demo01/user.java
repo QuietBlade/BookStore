@@ -254,7 +254,6 @@ public class user {
             e.printStackTrace();
             return "发送失败";
         }
-
     }
 
 //  测试md5是否生效
@@ -279,7 +278,7 @@ public class user {
         return "连接数据库失败";
     }
 
-
+// 测试项目是否正常
     @RequestMapping("/hello")
     public String test(){
         return "this /api/hello";

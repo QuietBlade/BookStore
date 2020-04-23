@@ -8,6 +8,11 @@ public class Author {
     private int status;
     private String activarionCode;
     private String loginGroup;
+    private String registLogin;
+
+    public String getRegistLogin() {
+        return registLogin;
+    }
 
     public String getActivarionCode() {
         return activarionCode;
@@ -63,6 +68,10 @@ public class Author {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public void setRegistLogin(String registLogin) {
+        this.registLogin = registLogin;
     }
 
     @Override

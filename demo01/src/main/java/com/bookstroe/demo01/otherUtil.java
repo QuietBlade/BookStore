@@ -8,14 +8,16 @@ import javax.mail.internet.MimeMessage;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class otherUtil {
+
+    public static String timestamp(){
+        Long time = new Date().getTime();
+        return time.toString();
+    }
 
     public static String parString(String str){
         if(str == null)
