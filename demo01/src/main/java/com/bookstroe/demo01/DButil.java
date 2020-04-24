@@ -1,12 +1,12 @@
 package com.bookstroe.demo01;
 
+import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.dao.AuthorDao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DButil {
 
@@ -28,19 +28,19 @@ public class DButil {
         return connection;
     }
 
-    //废弃，不用
-    public static String query(String str) throws SQLException {
+    public static ResultSet execQuery(String sql) throws SQLException {
         Connection conn = GetConnection();
-        String sql = "INSERT INTO book_user VALUES('2','222','222','222',0,'222','222')";
-        Statement sql_statement = conn.createStatement();
+        Statement stat = conn.createStatement();
+        ResultSet res = null;
         try {
-            sql_statement.executeUpdate(sql);
+            res = stat.executeQuery(sql);
         }catch(SQLException e){
             e.printStackTrace();
-            return "执行失败";
+            return null;
         }
-        conn.commit();
-        return "执行成功";
+//        stat.close();
+//        conn.close();
+        return res;
     }
 
     public static int addUser(Author author) throws SQLException {
@@ -61,11 +61,13 @@ public class DButil {
         return author;
     }
 
-    public static int ExecQuery(String SQLQuery) {
+    public static int execUpdate(String SQLQuery) {
         try {
             Connection conn = GetConnection();
             Statement statement = conn.createStatement();
             int len = statement.executeUpdate(SQLQuery);
+            statement.close();
+            conn.close();
             return len;
         } catch (Exception e) {
             e.printStackTrace();

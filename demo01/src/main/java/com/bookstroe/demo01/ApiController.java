@@ -3,6 +3,7 @@ package com.bookstroe.demo01;
 
 import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.beans.Author;
+import com.bookstroe.demo01.dao.NoticeDao;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
@@ -18,8 +19,9 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api")
-public class user {
-    Author author = new Author();
+public class ApiController {
+
+    Author author = null;
 
     @ResponseBody
     @RequestMapping(value= "/user/loginverification",produces = "application/json;charset=utf-8")
@@ -173,12 +175,13 @@ public class user {
     public String updatePassword(HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession();
         Author author = (Author) session.getAttribute("author");
-        if( author != null){
-            return "当前身份:"+author.getLoginGroup();
+        if( author == null){
+            return "请登录后再试";
         }else
-            return "登陆后再试";
+            return "当前身份:"+author.getLoginGroup();
     }
 
+    //激活用户
     @RequestMapping( value = "/user/activeCode",produces = "text/html;charset=utf-8")
     public String activeCode(HttpServletRequest req, HttpServletResponse res) throws Exception {
         String code = req.getParameter("code");
@@ -187,7 +190,7 @@ public class user {
         }else{
             String sql = "UPDATE book_user SET status=1 WHERE activationCode='"+ code +"'";
             try {
-                if(DButil.ExecQuery(sql) <= 0)
+                if(DButil.execUpdate(sql) <= 0)
                     return "激活失败,请检查";
             }catch (Exception e){
                 e.printStackTrace();
@@ -197,6 +200,7 @@ public class user {
         return "激活完成，<a href=\"http://localhost:8080/login\">点击返回登陆界面</a>";
     }
 
+    //图片验证码
     @RequestMapping("/verificationcode")
     public String imagecode(HttpServletRequest req, HttpServletResponse res) throws IOException {
         res.setHeader("Pragma", "no-cache");
@@ -215,9 +219,20 @@ public class user {
         return null;
     }
 
+    //测试用户查找
     @RequestMapping("/user/find")
     public String find(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         return JSON.toJSONString(DButil.findUser("123456"));
+    }
+
+    @RequestMapping("/user/logoff")
+    public String logoff(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        HttpSession session = req.getSession();
+        if( session.getAttribute("author") != null)
+            session.removeAttribute("author");
+        author = null;
+        res.sendRedirect(req.getContextPath()+"/index");
+        return null;
     }
 
 //    添加用户的测试案例
@@ -245,21 +260,60 @@ public class user {
 //        return code;
 //    }
 //  测试邮件是否有效
-    @RequestMapping("seed")
-    public String seedMail() throws Exception {
-        try{
-            otherUtil.sendMail("yuanzhangzcc@163.com", otherUtil.stringToMD5(otherUtil.StringUUID()));
-            return "发送成功";
-        }catch (Exception e){
-            e.printStackTrace();
-            return "发送失败";
+//    @RequestMapping("seed")
+//    public String seedMail() throws Exception {
+//        try{
+//            otherUtil.sendMail("yuanzhangzcc@163.com", otherUtil.stringToMD5(otherUtil.StringUUID()));
+//            return "发送成功";
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            return "发送失败";
+//        }
+//    }
+
+    //测试查询公告是否生效
+    @RequestMapping("/notice")
+    public String notice(HttpServletRequest req, HttpServletResponse res) throws SQLException {
+        String length  = req.getParameter("length");
+        String page = req.getParameter("page"); //String
+        if( length == null || page == null){
+            return NoticeDao.SelectNotice(10,1);
+        }else{
+            return NoticeDao.SelectNotice(Integer.valueOf(length),Integer.valueOf(page));
         }
+    }
+
+    @RequestMapping("/notice_add")
+    public String notice_add(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        String title = req.getParameter("title");
+        String text = req.getParameter("text");
+        String time = req.getParameter("time");
+        Map<String,String> map = new HashMap<>();
+
+        if( author == null){
+            map.put("code","-1");
+            map.put("msg","请先登录");
+        }else if( !author.getLoginGroup().equals("admin") ) {
+            map.put("code","-1");
+            map.put("msg","权限不够");
+        }
+        else{
+            map = NoticeDao.InsertNotice(title, text, time);
+        }
+        return JSON.toJSONString(map);
     }
 
 //  测试md5是否生效
     @RequestMapping("/md5")
     public String md5(){
         return otherUtil.stringToMD5("123456")+"长度:"+otherUtil.stringToMD5("123456").length();
+    }
+
+//  测试Unix时间戳是否生效
+
+    @RequestMapping("/time")
+    public String time(){
+        return otherUtil.timestamp();
     }
 
 //  测试uuid是否生效

@@ -16,7 +16,8 @@ public class otherUtil {
 
     public static String timestamp(){
         Long time = new Date().getTime();
-        return time.toString();
+        String stamp = time.toString();
+        return stamp.substring(0,10);
     }
 
     public static String parString(String str){
@@ -24,20 +25,8 @@ public class otherUtil {
             return null;
         String Str;
         Str = str.replace("/","");
-        Str = Str.replace(" ","");
-        Str = Str.replace("[","");
-        Str = Str.replace("]","");
         Str = Str.replace("%20","");
-        Str = Str.replace("-","");
-        Str = Str.replace("=","");
-        Str = Str.replace("+","");
-        Str = Str.replace(")","");
-        Str = Str.replace("(","");
-        Str = Str.replace("^","");
         Str = Str.replace("'","");
-        Str = Str.replace("%","");
-        Str = Str.replace("$","");
-        Str = Str.replace("#","");
         return Str;
     }
 
