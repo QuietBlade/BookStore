@@ -33,7 +33,7 @@ public class AuthorDao implements userDao{
             statement.setInt(5,author.getStatus());
             statement.setString(6,author.getActivarionCode());
             statement.setString(7,author.getLoginGroup());
-            statement.setString(8,author.getRegistLogin());
+            statement.setString(8,author.getRegistTime());
         }catch (SQLException e){
             e.printStackTrace();
             return -1;
@@ -90,7 +90,7 @@ public class AuthorDao implements userDao{
                 author.setStatus(res.getInt("status"));
                 author.setActivarionCode(res.getString("activationCode"));
                 author.setLoginGroup(res.getString("loginGroup"));
-                author.setRegistLogin(res.getString("registLogin"));
+                author.setRegistTime(res.getString("registTime"));
             }else
                 return null;
         }catch (SQLException e){

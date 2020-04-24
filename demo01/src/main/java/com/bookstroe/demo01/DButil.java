@@ -48,7 +48,7 @@ public class DButil {
         author.setActivarionCode(otherUtil.stringToMD5(otherUtil.StringUUID()));
         author.setStatus(0);
         author.setLoginpass(otherUtil.stringToMD5(author.getLoginpass()));
-        author.setRegistLogin(otherUtil.timestamp());
+        author.setRegistTime(otherUtil.timestamp());
         return dao.add(author);
     }
 
@@ -73,6 +73,18 @@ public class DButil {
             e.printStackTrace();
             return -1;
         }
+    }
+
+    public static Author Guest(){
+        Author author = new Author();
+        author.setUid(otherUtil.StringUUID());
+        author.setLoginuser("guest");
+        author.setLoginpass("guest");
+        author.setStatus(0);
+        author.setActivarionCode(null);
+        author.setRegistTime(otherUtil.timestamp());
+        author.setLoginGroup("guest");
+        return author;
     }
 
 }

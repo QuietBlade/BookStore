@@ -8,10 +8,10 @@ public class Author {
     private int status;
     private String activarionCode;
     private String loginGroup;
-    private String registLogin;
+    private String registTime;
 
-    public String getRegistLogin() {
-        return registLogin;
+    public String getRegistTime() {
+        return registTime;
     }
 
     public String getActivarionCode() {
@@ -70,8 +70,8 @@ public class Author {
         this.uid = uid;
     }
 
-    public void setRegistLogin(String registLogin) {
-        this.registLogin = registLogin;
+    public void setRegistTime(String registTime) {
+        this.registTime = registTime;
     }
 
     @Override

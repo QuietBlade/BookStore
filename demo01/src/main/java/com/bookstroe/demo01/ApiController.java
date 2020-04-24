@@ -2,6 +2,7 @@ package com.bookstroe.demo01;
 
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.dao.NoticeDao;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ import java.util.*;
 @RequestMapping("/api")
 public class ApiController {
 
-    Author author = null;
+    Author author = DButil.Guest();
 
     @ResponseBody
     @RequestMapping(value= "/user/loginverification",produces = "application/json;charset=utf-8")
@@ -177,8 +178,10 @@ public class ApiController {
         Author author = (Author) session.getAttribute("author");
         if( author == null){
             return "请登录后再试";
-        }else
+        }else{
             return "当前身份:"+author.getLoginGroup();
+        }
+
     }
 
     //激活用户
@@ -230,8 +233,8 @@ public class ApiController {
         HttpSession session = req.getSession();
         if( session.getAttribute("author") != null)
             session.removeAttribute("author");
-        author = null;
-        res.sendRedirect(req.getContextPath()+"/index");
+        author = DButil.Guest();
+        res.sendRedirect(req.getContextPath()+"/");
         return null;
     }
 
@@ -271,18 +274,20 @@ public class ApiController {
 //        }
 //    }
 
-    //测试查询公告是否生效
+    //查询公告
     @RequestMapping("/notice")
-    public String notice(HttpServletRequest req, HttpServletResponse res) throws SQLException {
+    public String notice_sel(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         String length  = req.getParameter("length");
         String page = req.getParameter("page"); //String
         if( length == null || page == null){
-            return NoticeDao.SelectNotice(10,1);
+            return JSON.toJSONString(NoticeDao.SelectNotice(10,1));
         }else{
-            return NoticeDao.SelectNotice(Integer.valueOf(length),Integer.valueOf(page));
+            return JSON.toJSONString(NoticeDao.SelectNotice(Integer.valueOf(length),Integer.valueOf(page)));
         }
+        //按下 Ctrl+B  然后 鼠标指向 SelectNotice函数  查看返回值
     }
 
+    //添加公告
     @RequestMapping("/notice_add")
     public String notice_add(HttpServletRequest req, HttpServletResponse res) throws Exception {
         String title = req.getParameter("title");
@@ -290,18 +295,62 @@ public class ApiController {
         String time = req.getParameter("time");
         Map<String,String> map = new HashMap<>();
 
-        if( author == null){
-            map.put("code","-1");
-            map.put("msg","请先登录");
+        if( author.getLoginGroup().equals("guest") ) {
+            map.put("code", "-1");
+            map.put("msg", "请先登录");
         }else if( !author.getLoginGroup().equals("admin") ) {
             map.put("code","-1");
             map.put("msg","权限不够");
-        }
-        else{
+        }else{
             map = NoticeDao.InsertNotice(title, text, time);
         }
         return JSON.toJSONString(map);
     }
+
+    //删除公告
+    @RequestMapping("/notice_del")
+    public String notice_del(HttpServletRequest req, HttpServletResponse res){
+//        String[] id = req.getParameterValues("id");
+//        for( int i = 0 ; i < id.length ; i ++){
+//            System.out.println(id[i]);
+//        }
+//      //如果是数组
+        String id = req.getParameter("id");
+            Map<String,String> map = new HashMap<>();
+
+            if( author.getLoginGroup().equals("guest") ){
+                map.put("code","-1");
+                map.put("msg","请先登录");
+            }else if( !author.getLoginGroup().equals("admin") ) {
+                map.put("code","-1");
+                map.put("msg","权限不够");
+            }else{
+            map = map = NoticeDao.DeleteNotice(id);
+        }
+        return JSON.toJSONString(map);
+    }
+
+    //修改公告
+    @RequestMapping("/notice_upd")
+    public String notice_upd(HttpServletRequest req, HttpServletResponse res) {
+        String id = req.getParameter("id");
+        String title = req.getParameter("title");
+        String text = req.getParameter("text");
+        String time = req.getParameter("time");
+        Map<String, String> map = new HashMap<>();
+
+        if ( author.getLoginGroup().equals("guest") ) {
+            map.put("code", "-1");
+            map.put("msg", "请先登录");
+        } else if (!author.getLoginGroup().equals("admin")) {
+            map.put("code", "-1");
+            map.put("msg", "权限不够");
+        } else {
+            map = NoticeDao.UpdateNotice(id , title, text, time);
+        }
+        return JSON.toJSONString(map);
+    }
+
 
 //  测试md5是否生效
     @RequestMapping("/md5")

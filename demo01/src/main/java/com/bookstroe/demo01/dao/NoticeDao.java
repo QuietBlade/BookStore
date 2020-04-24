@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class NoticeDao {
 
-    public static String SelectNotice(int length, int page) throws SQLException {
+    public static Map<String,Object> SelectNotice(int length, int page) throws SQLException {
             String sql = "select * from book_notice order by noti_id desc" + " limit "+ String.valueOf( (page-1) *length)  +","+ String.valueOf(length)+"";
             //System.out.println(sql);
             ResultSet res = DButil.execQuery(sql);
@@ -22,7 +22,7 @@ public class NoticeDao {
             }
             Map<String,Object> map = new HashMap<>();
             try {
-                int i = 0; //10 表示只查询10条，还要弄一个东西存放返回的数据
+                int i = 0;
                 while(res.next() && i < length){
                     Map<String,String> temp = new HashMap<>();
                     temp.put("noti_id",res.getString("noti_id"));
@@ -37,7 +37,7 @@ public class NoticeDao {
                 return null;
             }
             //conn.commit();
-            return JSON.toJSONString(map);
+            return map;
         }
 
     public static Map<String,String> InsertNotice(String noti_title,String noti_text,String noti_time ){
@@ -64,14 +64,63 @@ public class NoticeDao {
         int res =  DButil.execUpdate(sql);
         if( res <= 0 ){
             map.put("msg","插入公告错误");
-            return map;
         }
         else{
             map.put("code","1");
-            map.put("msg","插入成功");
+            map.put("msg","添加成功");
+        }
+        return map;
+    }
+
+    public static Map<String,String> DeleteNotice(String noti_id){
+        Map<String,String> map = new HashMap<>();
+        map.put("code","-1");
+        map.put("msg","noti_id错误");
+        if( noti_id == null ){
             return map;
         }
 
+        if( otherUtil.isConSpeCharacters(noti_id) ){
+            map.put("msg","id不能有特殊字符");
+            return map;
+        }
+
+        String sql = "delete from book_notice where noti_id="+ noti_id +"";
+        int res = DButil.execUpdate(sql);
+        if( res < 1){
+            map.put("msg","删除失败，没有这个ID");
+        }else{
+            map.put("code","1");
+            map.put("msg","删除成功");
+        }
+        return map;
+    }
+
+    public static Map<String,String> UpdateNotice(String id ,String noti_title,String noti_text,String noti_time){
+        Map<String,String> map = new HashMap<>();
+        map.put("code","-1");
+        map.put("msg","信息不能为空");
+        if( id == null || noti_title == null || noti_text == null || noti_time == null){
+            return map;
+        }
+        if( otherUtil.isConSpeCharacters(id) || otherUtil.isConSpeCharacters(noti_time)){
+            map.put("code","-1");
+            map.put("msg","不能出现特殊字符");
+            return map;
+        }
+
+        String sql = "update book_notice set noti_title='" +
+                noti_title + "',noti_text='"+
+                noti_text +"',noti_time='"+
+                noti_time +"' where noti_id="+id;
+        int res = DButil.execUpdate(sql);
+        if( res < 1){
+            map.put("msg","删除失败，没有这个ID");
+        }else{
+            map.put("code","1");
+            map.put("msg","删除成功");
+        }
+        return map;
     }
 
 }
