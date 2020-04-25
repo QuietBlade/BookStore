@@ -52,6 +52,7 @@ public class AuthorDao implements userDao{
 
     @Override
     public int update(Author author) {
+        String sql = "update book_";
         return 0;
     }
 

@@ -2,27 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb5c9701-ea6c-4703-acac-963c9e3874e7" name="默认更改列表" comment="userbean">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/notice_del.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/../README.MD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/NoticeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/db/login.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/login.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/ApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/RouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/RouteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/beans/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/beans/Author.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/NoticeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/NoticeDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/regist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/ApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/ApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/ApiController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/DButil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/DButil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/RouteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/RouteController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/beans/Author.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/beans/Author.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/regist.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -130,6 +128,7 @@
       <workItem from="1587695082752" duration="16526000" />
       <workItem from="1587720663612" duration="8375000" />
       <workItem from="1587733446338" duration="1123000" />
+      <workItem from="1587793439101" duration="9128000" />
     </task>
     <task id="LOCAL-00001" summary="userbean">
       <created>1587459757772</created>
@@ -173,38 +172,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="472" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587533430661" />
-    <state width="1099" height="222" key="GridCell.Tab.0.bottom" timestamp="1587733372199">
+    <state width="1323" height="297" key="GridCell.Tab.0.bottom" timestamp="1587813760606">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1099" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587733372199" />
-    <state width="1099" height="222" key="GridCell.Tab.0.center" timestamp="1587733372199">
+    <state width="1323" height="297" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587813760606" />
+    <state width="1323" height="297" key="GridCell.Tab.0.center" timestamp="1587813760606">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1099" height="222" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587733372199" />
-    <state width="1099" height="222" key="GridCell.Tab.0.left" timestamp="1587733372199">
+    <state width="1323" height="297" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587813760606" />
+    <state width="1323" height="297" key="GridCell.Tab.0.left" timestamp="1587813760606">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1099" height="222" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587733372199" />
-    <state width="1099" height="222" key="GridCell.Tab.0.right" timestamp="1587733372199">
+    <state width="1323" height="297" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587813760606" />
+    <state width="1323" height="297" key="GridCell.Tab.0.right" timestamp="1587813760606">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1099" height="222" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587733372199" />
-    <state width="1099" height="222" key="GridCell.Tab.1.bottom" timestamp="1587733372199">
+    <state width="1323" height="297" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587813760606" />
+    <state width="1323" height="297" key="GridCell.Tab.1.bottom" timestamp="1587813760606">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1099" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587733372199" />
-    <state width="1099" height="222" key="GridCell.Tab.1.center" timestamp="1587733372199">
+    <state width="1323" height="297" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587813760606" />
+    <state width="1323" height="297" key="GridCell.Tab.1.center" timestamp="1587813760606">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1099" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1587733372199" />
-    <state width="1099" height="222" key="GridCell.Tab.1.left" timestamp="1587733372199">
+    <state width="1323" height="297" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1587813760606" />
+    <state width="1323" height="297" key="GridCell.Tab.1.left" timestamp="1587813760606">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1099" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1587733372199" />
-    <state width="1099" height="222" key="GridCell.Tab.1.right" timestamp="1587733372199">
+    <state width="1323" height="297" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1587813760606" />
+    <state width="1323" height="297" key="GridCell.Tab.1.right" timestamp="1587813760606">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1099" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1587733372199" />
+    <state width="1323" height="297" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1587813760606" />
     <state width="1323" height="222" key="GridCell.Tab.2.bottom" timestamp="1587541251435">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -233,6 +232,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="475" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587459765524" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1587809651863">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1366.728@0.0.1366.728" timestamp="1587809651863" />
     <state x="115" y="40" width="802" height="597" key="new project wizard" timestamp="1587533431839">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

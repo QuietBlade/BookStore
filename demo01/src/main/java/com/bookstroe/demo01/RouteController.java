@@ -1,6 +1,5 @@
 package com.bookstroe.demo01;
 
-
 import com.bookstroe.demo01.beans.Author;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
@@ -26,13 +25,12 @@ public class RouteController {
         if( author == null){
             author = DButil.Guest();
             session.setAttribute("author",author);
-            map.addAttribute("author",author);
-        }else{
-            map.addAttribute("author",author);
         }
+        map.addAttribute("author",author);
         return "index";
     }
 
+    //这里设置Cookie
     public Cookie getCookie( Cookie[] cookie){
         return null;
     }

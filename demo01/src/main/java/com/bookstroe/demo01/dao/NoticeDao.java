@@ -13,6 +13,9 @@ import java.util.Map;
 
 public class NoticeDao {
 
+    //这里的noti_title 和 noti_text 没有过滤
+
+    //查询公告
     public static Map<String,Object> SelectNotice(int length, int page) throws SQLException {
             String sql = "select * from book_notice order by noti_id desc" + " limit "+ String.valueOf( (page-1) *length)  +","+ String.valueOf(length)+"";
             //System.out.println(sql);
@@ -40,6 +43,7 @@ public class NoticeDao {
             return map;
         }
 
+    //插入公告
     public static Map<String,String> InsertNotice(String noti_title,String noti_text,String noti_time ){
         Map<String,String> map = new HashMap<>();
         map.put("code","-1");
@@ -72,6 +76,7 @@ public class NoticeDao {
         return map;
     }
 
+    //删除公告
     public static Map<String,String> DeleteNotice(String noti_id){
         Map<String,String> map = new HashMap<>();
         map.put("code","-1");
@@ -96,6 +101,7 @@ public class NoticeDao {
         return map;
     }
 
+    //更新公告
     public static Map<String,String> UpdateNotice(String id ,String noti_title,String noti_text,String noti_time){
         Map<String,String> map = new HashMap<>();
         map.put("code","-1");

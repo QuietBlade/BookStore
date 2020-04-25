@@ -57,7 +57,7 @@ public class otherUtil {
 
     public static void sendMail(String email,String activeCode) throws Exception {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();//直接生产一个实例
-        //String users[] = {"xxxxx@qq.com","xxxxx@126.com"};
+        //String email[] = {"xxxxx@qq.com","xxxxx@126.com"}; //可以同时发送多个邮箱
         mailSender.setHost("smtp.163.com");//动态添加配置
         mailSender.setUsername("yuanzhangzcc@163.com");
         mailSender.setPassword("wy1185752791");
@@ -138,6 +138,7 @@ public class otherUtil {
         return new Color(r, g, b);
     }
 
+    //md5函数加盐
     public static String stringToMD5(String str) {
         str = "Book"+str;
         return DigestUtils.md5DigestAsHex(str.getBytes());

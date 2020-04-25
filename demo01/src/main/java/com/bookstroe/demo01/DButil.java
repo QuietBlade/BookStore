@@ -52,6 +52,10 @@ public class DButil {
         return dao.add(author);
     }
 
+    public static int passwordUser(Author author,String newpass){
+        return 0;
+    }
+
     public static Author findUser(String username) throws SQLException{
         Author author =  new Author();
         if( otherUtil.isEmail(username))
@@ -75,6 +79,7 @@ public class DButil {
         }
     }
 
+    //游客账户
     public static Author Guest(){
         Author author = new Author();
         author.setUid(otherUtil.StringUUID());

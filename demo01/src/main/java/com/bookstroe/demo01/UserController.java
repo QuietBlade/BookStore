@@ -2,7 +2,6 @@ package com.bookstroe.demo01;
 
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.dao.NoticeDao;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +13,17 @@ import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
 @RestController
 @RequestMapping("/api")
-public class ApiController {
+public class UserController {
 
     Author author = DButil.Guest();
 
     @ResponseBody
+    //用户登录验证
     @RequestMapping(value= "/user/loginverification",produces = "application/json;charset=utf-8")
     public String loginVerification(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         HttpSession session = req.getSession();
@@ -87,14 +86,13 @@ public class ApiController {
             return JSON.toJSONString(json);
         }
 
-        if( "0".equals(author.getStatus()) ){
+        if( author.getStatus() == 0 ){
             json.put("code","-8");
             json.put("msg", "用户名未激活");
             json.put("link","index.html");
             //这里需要更改link跳转页面
             return JSON.toJSONString(json);
         }
-
 
         json.put("msg","登录成功");
         json.put("code","1");
@@ -105,6 +103,7 @@ public class ApiController {
         return JSON.toJSONString(json);
     }
 
+    //用户注册
     @RequestMapping( value ="/user/registration",produces = "application/json;charset=utf-8")
     public String registration(HttpServletRequest req, HttpServletResponse res) throws Exception {
         Author author = new Author();
@@ -164,7 +163,7 @@ public class ApiController {
 
         json.put("code","1");
         json.put("status","success");
-        json.put("msg","注册成功,等待验证邮箱");
+        json.put("msg","注册成功,等待邮箱验证");
         json.put("activeCode",author.getActivarionCode());
         json.put("link","login.html");
         otherUtil.sendMail(author.getEmail(), author.getActivarionCode() );
@@ -172,15 +171,42 @@ public class ApiController {
         return JSON.toJSONString(json);
     }
 
+    //用户更改密码
     @RequestMapping( value = "/user/UpdatePassword",produces = "application/json;charset=utf-8")
     public String updatePassword(HttpServletRequest req, HttpServletResponse res){
+        Map<String,String> json = new HashMap<String,String>();
+        json.put("code","-1");
+        json.put("msg","修改失败,请重新登录");
+        json.put("link","login.html");
         HttpSession session = req.getSession();
-        Author author = (Author) session.getAttribute("author");
+        Author author = (Author)session.getAttribute("author");
+        //必须单独比较 null ，不然 500 报错
         if( author == null){
-            return "请登录后再试";
-        }else{
-            return "当前身份:"+author.getLoginGroup();
+            return JSON.toJSONString(json);
+        }else if( author.getLoginGroup().equals("guest")){
+            return JSON.toJSONString(json);
         }
+        String oldpass = req.getParameter("oldpassword");
+        String newpass = req.getParameter("newpassword");
+
+        if (otherUtil.isConSpeCharacters(newpass) || otherUtil.isConSpeCharacters(oldpass)) {
+            json.put("msg", "密码不能有特殊字符");
+            return JSON.toJSONString(json);
+        }
+
+        if (oldpass.length() < 6 || newpass.length() < 6) {
+            json.put("msg", "密码长度不够");
+            return JSON.toJSONString(json);
+        }
+
+        String oldpassmd5 = otherUtil.stringToMD5(oldpass);
+        if (!oldpassmd5.equals(author.getLoginpass())) {
+            json.put("msg", "旧密码错误");
+            return JSON.toJSONString(json);
+        }
+
+        DButil.passwordUser(author, newpass);
+        return JSON.toJSONString(json);
 
     }
 
@@ -222,13 +248,8 @@ public class ApiController {
         return null;
     }
 
-    //测试用户查找
-    @RequestMapping("/user/find")
-    public String find(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-        return JSON.toJSONString(DButil.findUser("123456"));
-    }
-
-    @RequestMapping("/user/logoff")
+    //用户注销
+    @RequestMapping("/logoff")
     public String logoff(HttpServletRequest req, HttpServletResponse res) throws IOException {
         HttpSession session = req.getSession();
         if( session.getAttribute("author") != null)
@@ -238,6 +259,12 @@ public class ApiController {
         return null;
     }
 
+//    测试用户查找
+//    @RequestMapping("/user/find")
+//    public String find(HttpServletRequest req, HttpServletResponse res) throws SQLException {
+//        return JSON.toJSONString(DButil.findUser("123456"));
+//    }
+//
 //    添加用户的测试案例
 //    @RequestMapping("/user/add")
 //    public String addUser(HttpServletRequest req, HttpServletResponse res) throws SQLException {
@@ -253,8 +280,7 @@ public class ApiController {
 //        dao.add(author);
 //        return author.toString();
 //    }
-
-
+//
 //    测试验证码是否生效
 //    @RequestMapping("/api/code")
 //    public String image(HttpServletRequest req, HttpServletResponse res){
@@ -262,7 +288,7 @@ public class ApiController {
 //        String code = (String)session.getAttribute("captcha");
 //        return code;
 //    }
-//  测试邮件是否有效
+//    测试邮件是否有效
 //    @RequestMapping("seed")
 //    public String seedMail() throws Exception {
 //        try{
@@ -273,120 +299,42 @@ public class ApiController {
 //            return "发送失败";
 //        }
 //    }
-
-    //查询公告
-    @RequestMapping("/notice")
-    public String notice_sel(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-        String length  = req.getParameter("length");
-        String page = req.getParameter("page"); //String
-        if( length == null || page == null){
-            return JSON.toJSONString(NoticeDao.SelectNotice(10,1));
-        }else{
-            return JSON.toJSONString(NoticeDao.SelectNotice(Integer.valueOf(length),Integer.valueOf(page)));
-        }
-        //按下 Ctrl+B  然后 鼠标指向 SelectNotice函数  查看返回值
-    }
-
-    //添加公告
-    @RequestMapping("/notice_add")
-    public String notice_add(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        String title = req.getParameter("title");
-        String text = req.getParameter("text");
-        String time = req.getParameter("time");
-        Map<String,String> map = new HashMap<>();
-
-        if( author.getLoginGroup().equals("guest") ) {
-            map.put("code", "-1");
-            map.put("msg", "请先登录");
-        }else if( !author.getLoginGroup().equals("admin") ) {
-            map.put("code","-1");
-            map.put("msg","权限不够");
-        }else{
-            map = NoticeDao.InsertNotice(title, text, time);
-        }
-        return JSON.toJSONString(map);
-    }
-
-    //删除公告
-    @RequestMapping("/notice_del")
-    public String notice_del(HttpServletRequest req, HttpServletResponse res){
-//        String[] id = req.getParameterValues("id");
-//        for( int i = 0 ; i < id.length ; i ++){
-//            System.out.println(id[i]);
+//
+//
+//
+//    测试md5是否生效
+//    @RequestMapping("/md5")
+//    public String md5(){
+//        return otherUtil.stringToMD5(otherUtil.StringUUID());
+//    }
+//
+//    测试Unix时间戳是否生效
+//
+//    @RequestMapping("/time")
+//    public String time(){
+//        return otherUtil.timestamp();
+//    }
+//
+//    测试uuid是否生效
+//    @RequestMapping("/uuid")
+//    public String uuid(){
+//        return otherUtil.StringUUID() + "长度:" + otherUtil.StringUUID().length();
+//    }
+//
+//    测试数据库连接是否正常
+//    @RequestMapping("/db")
+//    public String db(){
+//        Connection sql = DButil.GetConnection();
+//        if(sql != null){
+//            return "连接数据库成功";
 //        }
-//      //如果是数组
-        String id = req.getParameter("id");
-            Map<String,String> map = new HashMap<>();
-
-            if( author.getLoginGroup().equals("guest") ){
-                map.put("code","-1");
-                map.put("msg","请先登录");
-            }else if( !author.getLoginGroup().equals("admin") ) {
-                map.put("code","-1");
-                map.put("msg","权限不够");
-            }else{
-            map = map = NoticeDao.DeleteNotice(id);
-        }
-        return JSON.toJSONString(map);
-    }
-
-    //修改公告
-    @RequestMapping("/notice_upd")
-    public String notice_upd(HttpServletRequest req, HttpServletResponse res) {
-        String id = req.getParameter("id");
-        String title = req.getParameter("title");
-        String text = req.getParameter("text");
-        String time = req.getParameter("time");
-        Map<String, String> map = new HashMap<>();
-
-        if ( author.getLoginGroup().equals("guest") ) {
-            map.put("code", "-1");
-            map.put("msg", "请先登录");
-        } else if (!author.getLoginGroup().equals("admin")) {
-            map.put("code", "-1");
-            map.put("msg", "权限不够");
-        } else {
-            map = NoticeDao.UpdateNotice(id , title, text, time);
-        }
-        return JSON.toJSONString(map);
-    }
-
-
-//  测试md5是否生效
-    @RequestMapping("/md5")
-    public String md5(){
-        return otherUtil.stringToMD5("123456")+"长度:"+otherUtil.stringToMD5("123456").length();
-    }
-
-//  测试Unix时间戳是否生效
-
-    @RequestMapping("/time")
-    public String time(){
-        return otherUtil.timestamp();
-    }
-
-//  测试uuid是否生效
-    @RequestMapping("/uuid")
-    public String uuid(){
-        return otherUtil.StringUUID() + "长度:" + otherUtil.StringUUID().length();
-    }
-
-//  测试数据库连接是否正常
-    @RequestMapping("/db")
-    public String db(){
-        Connection sql = DButil.GetConnection();
-        if(sql != null){
-            return "连接数据库成功";
-        }
-        return "连接数据库失败";
-    }
-
-// 测试项目是否正常
+//        return "连接数据库失败";
+//    }
+//
+//   测试项目是否正常
     @RequestMapping("/hello")
     public String test(){
         return "this /api/hello";
     }
-
-
 
 }
