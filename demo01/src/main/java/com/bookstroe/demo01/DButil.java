@@ -3,15 +3,14 @@ package com.bookstroe.demo01;
 import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.dao.AuthorDao;
-
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class DButil {
 
     private static AuthorDao dao = new AuthorDao();
-    Connection connection = null;
 
     public static Connection GetConnection() {
         //String DBPath = "jdbc:sqlite://C:/Users/world/Desktop/java web/实训/login/src/db/login.db";
@@ -53,7 +52,9 @@ public class DButil {
     }
 
     public static int passwordUser(Author author,String newpass){
-        return 0;
+        newpass = otherUtil.stringToMD5(newpass);
+        String sql = "UPDATE book_user SET loginpass='"+ newpass +"' WHERE uid='"+author.getUid()+"'";
+        return dao.update(sql);
     }
 
     public static Author findUser(String username) throws SQLException{
@@ -65,6 +66,7 @@ public class DButil {
         return author;
     }
 
+    //notice的方法 有点乱
     public static int execUpdate(String SQLQuery) {
         try {
             Connection conn = GetConnection();
@@ -80,7 +82,7 @@ public class DButil {
     }
 
     //游客账户
-    public static Author Guest(){
+    public static Author setGuest(){
         Author author = new Author();
         author.setUid(otherUtil.StringUUID());
         author.setLoginuser("guest");
@@ -90,6 +92,16 @@ public class DButil {
         author.setRegistTime(otherUtil.timestamp());
         author.setLoginGroup("guest");
         return author;
+    }
+
+    //获取账号
+    public static Author getAuthor(HttpServletRequest req){
+        HttpSession session =  req.getSession();
+        Author author = (Author)session.getAttribute("author");
+        if( author == null ){
+            return setGuest();
+        }else
+            return author;
     }
 
 }

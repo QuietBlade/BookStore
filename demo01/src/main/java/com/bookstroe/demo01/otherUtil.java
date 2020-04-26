@@ -55,7 +55,7 @@ public class otherUtil {
         return m.matches();
     }
 
-    public static void sendMail(String email,String activeCode) throws Exception {
+    public static int sendMail(String email,String title,String text) throws Exception {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();//直接生产一个实例
         //String email[] = {"xxxxx@qq.com","xxxxx@126.com"}; //可以同时发送多个邮箱
         mailSender.setHost("smtp.163.com");//动态添加配置
@@ -67,17 +67,15 @@ public class otherUtil {
         MimeMessageHelper helper = new MimeMessageHelper(msg, true,"UTF-8");
         helper.setFrom(mailSender.getUsername());
         helper.setTo(email);
-        helper.setSubject("在线书城 用户激活邮件");
-        helper.setText(
-                "<html><body>"+
-                "<h1>欢迎注册在线书城系统</h1>"+
-                "<h2>点击下面链接进行激活</h2> <p><a href=\"http://localhost:8080/api/user/activeCode?code="+ activeCode +"\">http://localhost:8080/api/user/activeCode?code="+ activeCode +"</a></p>" +
-                        "</body></html>",true);
+        helper.setSubject(title);
+        helper.setText(text,true);
         try{
             mailSender.send(msg);
         }catch (Exception e){
             e.printStackTrace();
+            return -1;
         }
+        return 1;
     }
 
     public static Map<String, Object> getImageCode(int width, int height, int len, OutputStream os) {

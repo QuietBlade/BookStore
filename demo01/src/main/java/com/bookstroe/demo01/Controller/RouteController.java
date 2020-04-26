@@ -25,36 +25,36 @@ public class RouteController {
 //        }
         Author author = (Author) session.getAttribute("author");
         if( author == null){
-            author = DButil.Guest();
+            author = DButil.setGuest();
             session.setAttribute("author",author);
         }
         map.addAttribute("author",author);
         return "index";
-    }
+        }
 
-    //这里设置Cookie
-    public Cookie getCookie( Cookie[] cookie){
+//这里设置Cookie
+public Cookie getCookie( Cookie[] cookie){
         return null;
-    }
+        }
 
-    @RequestMapping("/login")
-    public static String login(HttpServletRequest req, HttpServletResponse res,ModelMap map){
+@RequestMapping("/login")
+public static String login(HttpServletRequest req, HttpServletResponse res,ModelMap map){
         String token = otherUtil.StringUUID();
         HttpSession session = req.getSession(true);
         session.setAttribute("_token", token);
         String html = "<input type=\"hidden\" name=\"_token\" value=\"" + token + "\"/>";
         map.addAttribute("csrf",html);
         return "login";
-    }
+        }
 
-    @RequestMapping("/regist")
-    public static String regist(HttpServletRequest req, HttpServletResponse res,ModelMap map){
+@RequestMapping("/regist")
+public static String regist(HttpServletRequest req, HttpServletResponse res,ModelMap map){
         String token = otherUtil.StringUUID();
         HttpSession session = req.getSession(true);
         session.setAttribute("_token", token);
         String html = "<input type=\"hidden\" name=\"_token\" value=\"" + token + "\"/>";
         map.addAttribute("csrf",html);
         return "regist";
-    }
+        }
 
-}
+        }

@@ -7,10 +7,7 @@ import com.bookstroe.demo01.beans.userDao;
 import org.springframework.stereotype.Repository;
 
 import javax.management.remote.JMXConnectionNotification;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,22 +48,23 @@ public class AuthorDao implements userDao{
     }
 
     @Override
-    public int update(Author author) {
-        String sql = "update book_";
-        return 0;
+    public int update(String sql){
+        try {
+            Connection conn = DButil.GetConnection();
+            Statement statement = conn.createStatement();
+            int len = statement.executeUpdate(sql);
+            statement.close();
+            conn.close();
+            return len;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     @Override
-    public int delete(String str) {
+    public int delete(Author author) {
 
-        return 0;
-    }
-
-    @Override
-    public int execute(String str) {
-        PreparedStatement statement = null;
-        Connection conn = null;
-        conn = DButil.GetConnection();
         return 0;
     }
 

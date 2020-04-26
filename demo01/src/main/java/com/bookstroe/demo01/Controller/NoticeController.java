@@ -15,7 +15,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/notice")
 public class NoticeController {
-    Author author = DButil.Guest();
+
 
     @RequestMapping(value = "/",produces = "text/html;charset=utf-8")
     public String noti(HttpServletRequest req, HttpServletResponse res) throws SQLException {
@@ -41,9 +41,9 @@ public class NoticeController {
         String title = req.getParameter("title");
         String text = req.getParameter("text");
         String time = req.getParameter("time");
-        HttpSession session = req.getSession();
-        author = (Author)session.getAttribute("author");
         Map<String,String> map = new HashMap<>();
+
+        Author author = DButil.getAuthor(req);
 
         if( author.getLoginGroup().equals("guest") ) {
             map.put("code", "-1");
@@ -68,8 +68,7 @@ public class NoticeController {
         //不考虑多个id值
         String id = req.getParameter("id");
         Map<String,String> map = new HashMap<>();
-        HttpSession session = req.getSession();
-        author = (Author)session.getAttribute("author");
+        Author author = DButil.getAuthor(req);
 
         if( author.getLoginGroup().equals("guest") ){
             map.put("code","-1");
@@ -92,8 +91,7 @@ public class NoticeController {
         String time = req.getParameter("time");
         Map<String, String> map = new HashMap<>();
 
-        HttpSession session = req.getSession();
-        author = (Author)session.getAttribute("author");
+        Author author = DButil.getAuthor(req);
 
         if ( author.getLoginGroup().equals("guest") ) {
             map.put("code", "-1");
