@@ -3,6 +3,8 @@ package com.bookstroe.demo01;
 import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.dao.AuthorDao;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
@@ -67,11 +69,11 @@ public class DButil {
     }
 
     //notice的方法 有点乱
-    public static int execUpdate(String SQLQuery) {
+    public static int execUpdate(String sql) {
         try {
             Connection conn = GetConnection();
             Statement statement = conn.createStatement();
-            int len = statement.executeUpdate(SQLQuery);
+            int len = statement.executeUpdate(sql);
             statement.close();
             conn.close();
             return len;
@@ -95,13 +97,24 @@ public class DButil {
     }
 
     //获取账号
-    public static Author getAuthor(HttpServletRequest req){
+    public static Author getAuthor(HttpServletRequest req) throws SQLException {
+        Cookie[] cookies = req.getCookies();
+        String uuid = null;
+        for(Cookie cookie : cookies){
+            if( cookie.getName().equals("uuid") )
+                uuid = cookie.getValue();
+            //System.out.println(cookie.getName() + cookie.getValue());
+        }
+
         HttpSession session =  req.getSession();
         Author author = (Author)session.getAttribute("author");
-        if( author == null ){
-            return setGuest();
-        }else
+        if( author != null ){
             return author;
+        }else if( uuid != null){
+            return dao.findAuthor(uuid);
+        }else
+            return setGuest();
+
     }
 
 }

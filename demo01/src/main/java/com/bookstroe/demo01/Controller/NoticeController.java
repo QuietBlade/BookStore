@@ -58,7 +58,7 @@ public class NoticeController {
 
     //删除公告
     @RequestMapping(value = "/notice_del",produces = "application/json;charset=utf-8")
-    public String notice_del(HttpServletRequest req, HttpServletResponse res){
+    public String notice_del(HttpServletRequest req, HttpServletResponse res) throws SQLException{
 //        String[] id = req.getParameterValues("id");
 //        for( int i = 0 ; i < id.length ; i ++){
 //            System.out.println(id[i]);
@@ -67,7 +67,12 @@ public class NoticeController {
         //不考虑多个id值
         String id = req.getParameter("id");
         Map<String,String> map = new HashMap<>();
-        Author author = DButil.getAuthor(req);
+        Author author = DButil.setGuest();
+        try{
+            author = DButil.getAuthor(req);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
 
         if( author.getLoginGroup().equals("guest") ){
             map.put("code","-1");
@@ -83,7 +88,7 @@ public class NoticeController {
 
     //修改公告
     @RequestMapping(value = "/notice_upd",produces = "application/json;charset=utf-8")
-    public String notice_upd(HttpServletRequest req, HttpServletResponse res) {
+    public String notice_upd(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         String id = req.getParameter("id");
         String title = req.getParameter("title");
         String text = req.getParameter("text");

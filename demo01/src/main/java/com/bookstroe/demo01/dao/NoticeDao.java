@@ -43,7 +43,7 @@ public class NoticeDao {
             return map;
         }
 
-    //插入公告
+    //添加公告
     public static Map<String,String> InsertNotice(String noti_title,String noti_text,String noti_time ){
         Map<String,String> map = new HashMap<>();
         map.put("code","-1");

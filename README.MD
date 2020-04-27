@@ -1,10 +1,12 @@
 ### Java web程序设计
 
+[TOC]
+
+
+
 BookStore在线书城系统，采用 Spring boot + Sqlite设计
 
 目前进度如下：
-
-
 
 - [ ] 用户管理系统
 
@@ -20,9 +22,9 @@ BookStore在线书城系统，采用 Spring boot + Sqlite设计
 
 - [ ] <del>用户修改用户信息</del>
 
-- [ ] 用户忘记密码
+- [x] 用户忘记密码
 
-- [ ] 登录记住密码
+- [x] 登录记住密码
 
 - [ ] 公告管理系统
 
@@ -59,8 +61,6 @@ BookStore在线书城系统，采用 Spring boot + Sqlite设计
 - [ ] 订单完结
 
   
-
-
 
 ##### 如何使用
 

@@ -12,18 +12,15 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 
 @Controller
 public class RouteController {
 
     @RequestMapping("/")
-    public String index(HttpServletRequest req, HttpServletResponse res,ModelMap map){
+    public String index(HttpServletRequest req, HttpServletResponse res,ModelMap map) throws SQLException {
         HttpSession session = req.getSession();
-        Cookie cookie = getCookie(req.getCookies());
-//        if(  == null){
-//            ;
-//        }
-        Author author = (Author) session.getAttribute("author");
+        Author author = DButil.getAuthor(req);
         if( author == null){
             author = DButil.setGuest();
             session.setAttribute("author",author);
@@ -32,10 +29,6 @@ public class RouteController {
         return "index";
         }
 
-//这里设置Cookie
-public Cookie getCookie( Cookie[] cookie){
-        return null;
-        }
 
 @RequestMapping("/login")
 public static String login(HttpServletRequest req, HttpServletResponse res,ModelMap map){
@@ -57,4 +50,4 @@ public static String regist(HttpServletRequest req, HttpServletResponse res,Mode
         return "regist";
         }
 
-        }
+}

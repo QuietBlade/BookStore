@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class AdminController {
 
     //删除用户
     @RequestMapping(value = "/deluser",produces = "application/json;charset=utf-8")
-    public String deleteuser(HttpServletRequest req, HttpServletResponse res){
+    public String deleteuser(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         Map<String,String> json = new HashMap<String,String>();
         json.put("code","-1");
         json.put("msg","权限不够,请登录后再试");

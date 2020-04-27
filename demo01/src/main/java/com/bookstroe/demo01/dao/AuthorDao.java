@@ -91,7 +91,7 @@ public class AuthorDao implements userDao{
                 author.setLoginGroup(res.getString("loginGroup"));
                 author.setRegistTime(res.getString("registTime"));
             }else
-                return null;
+                return DButil.setGuest();
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
@@ -100,6 +100,28 @@ public class AuthorDao implements userDao{
             conn.close();
         }
 
+        return author;
+    }
+
+    public Author findAuthor(String uuid) throws SQLException{
+        Author author = new Author();
+        String sql = "select * from book_user where uid='"+uuid+"'";
+        ResultSet res = DButil.execQuery(sql);
+        if( res == null){
+            return DButil.setGuest();
+        }
+        if( res.next() ){
+            author.setUid(res.getString("uid"));
+            author.setLoginuser(res.getString("loginname"));
+            author.setLoginpass(res.getString("loginpass"));
+            author.setEmail(res.getString("email"));
+            author.setStatus(res.getInt("status"));
+            author.setActivarionCode(res.getString("activationCode"));
+            author.setLoginGroup(res.getString("loginGroup"));
+            author.setRegistTime(res.getString("registTime"));
+        }else{
+            author = DButil.setGuest();
+        }
         return author;
     }
 }

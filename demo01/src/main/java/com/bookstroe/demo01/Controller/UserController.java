@@ -8,6 +8,7 @@ import com.bookstroe.demo01.otherUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -39,7 +40,7 @@ public class UserController {
         String captcha = (String)session.getAttribute("captcha");
         String remember = req.getParameter("remember");
 
-        if(!_token1.equals(_token2) || _token1 == null || _token2 == null ){
+        if( !_token1.equals(_token2) || _token1 == null || _token2 == null ){
             json.put("code","-1");
             json.put("msg","_token 异常，请刷新页面再试");
             return JSON.toJSONString(json);
@@ -95,12 +96,25 @@ public class UserController {
             return JSON.toJSONString(json);
         }
 
+        Cookie cookie = new Cookie("uuid",author.getUid());
+        //记住密码
+
+        if( remember != null ){
+            cookie.setMaxAge(60*60*24*7); //7天
+            cookie.setPath("/");
+        }else{
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+        }
+        res.addCookie(cookie);
+
         json.put("msg","登录成功");
         json.put("code","1");
         json.put("status","success");
         String status = otherUtil.StringUUID();
         session.setAttribute("author",author);
         session.setAttribute("status",status);
+
         return JSON.toJSONString(json);
     }
 
@@ -186,7 +200,7 @@ public class UserController {
 
     //用户修改密码
     @RequestMapping(value = "/user/UpdatePassword",produces = "application/json;charset=utf-8")
-    public String updatePassword(HttpServletRequest req, HttpServletResponse res){
+    public String updatePassword(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         Map<String,String> json = new HashMap<String,String>();
         json.put("code","-1");
         json.put("msg","修改失败,请重新登录");
@@ -232,27 +246,28 @@ public class UserController {
     public String forget(HttpServletRequest req, HttpServletResponse res) throws Exception {
         Map<String,String> json = new HashMap<String,String>();
         json.put("code","-1");
-        json.put("msg","用户名或邮箱不能为空");
+        json.put("msg","用户或密码不能为空");
 
+        HttpSession session = req.getSession();
         String username = req.getParameter("username");
         String code = req.getParameter("code");
         String newpasword = req.getParameter("password");
-        String randomcode = otherUtil.Random();
-        String title = "忘记密码";
-        String email ;
-        String text = "<html><body><h2>" + "忘记密码" + "</h2>" +
-                "<p> 这是您的验证码 " + randomcode  +"</p>";
 
-        if( username == null){
+        if( username == null || newpasword == null){
             return JSON.toJSONString(json);
-        }else if( code == null){  //发送验证码
+        }else if( code == null || code.length() < 1){  //发送验证码
+            String randomcode = otherUtil.Random();
+            String title = "忘记密码";
+            String email ;
+            String text = "<html><body><h2>" + "忘记密码" + "</h2>" +
+                    "<p> 这是您的验证码 " + randomcode  +"</p>";
             if(otherUtil.isEmail(username)){
-                req.getSession().setAttribute("code",randomcode);
+                session.setAttribute("code",randomcode);
                 otherUtil.sendMail(username,title,text);
             }else{
                 //没有过滤特殊字符
                 Author author = DButil.findUser(username);
-                req.getSession().setAttribute("code",randomcode);
+                session.setAttribute("code",randomcode);
                 otherUtil.sendMail(author.getEmail(),title,text);
             }
             json.put("code","1");
@@ -260,12 +275,20 @@ public class UserController {
             return JSON.toJSONString(json);
         }
 
-        if( String.valueOf(randomcode).equals(req.getSession().getAttribute("code")) ){
-            //修改成功
-            return "修改成功";
-        }
+        System.out.println("session+code:"+session.getAttribute("code") + " random:"+code);
 
-        return null;
+        if( code.equals(session.getAttribute("code")) || !otherUtil.isConSpeCharacters(newpasword)){
+            //验证码正确
+            if( DButil.passwordUser(author,newpasword) < 1){
+                json.put("msg","修改失败");
+            }else {
+                json.put("code","1");
+                json.put("msg","修改成功");
+            }
+        }else{
+            json.put("msg","验证码错误或新密码错误");
+        }
+        return JSON.toJSONString(json);
     }
 
     //激活用户
@@ -314,6 +337,7 @@ public class UserController {
             //session.removeAttribute("author");
             session.setAttribute("author",DButil.setGuest());
         }
+
         author = DButil.setGuest();
         res.sendRedirect(req.getContextPath()+"/");
         return null;
