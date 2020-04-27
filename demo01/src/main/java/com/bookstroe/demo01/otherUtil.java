@@ -14,6 +14,12 @@ import java.util.regex.Pattern;
 
 public class otherUtil {
 
+    public static String Random(){
+        //4位的随机数
+        int num = (int)((Math.random()*9+1)*1000);
+        return String.valueOf(num);
+    }
+
     public static String timestamp(){
         Long time = new Date().getTime();
         String stamp = time.toString();

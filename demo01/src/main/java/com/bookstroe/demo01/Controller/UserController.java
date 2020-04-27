@@ -236,7 +236,8 @@ public class UserController {
 
         String username = req.getParameter("username");
         String code = req.getParameter("code");
-        int randomcode = (int)(Math.random() * 1000);
+        String newpasword = req.getParameter("password");
+        String randomcode = otherUtil.Random();
         String title = "忘记密码";
         String email ;
         String text = "<html><body><h2>" + "忘记密码" + "</h2>" +
@@ -246,29 +247,29 @@ public class UserController {
             return JSON.toJSONString(json);
         }else if( code == null){  //发送验证码
             if(otherUtil.isEmail(username)){
-                json.put("code","1");
-                json.put("msg","已向您的邮箱发送验证码,请注意查收");
                 req.getSession().setAttribute("code",randomcode);
                 otherUtil.sendMail(username,title,text);
             }else{
                 //没有过滤特殊字符
                 Author author = DButil.findUser(username);
-                otherUtil.sendMail(author.getEmail(),title,text);
                 req.getSession().setAttribute("code",randomcode);
+                otherUtil.sendMail(author.getEmail(),title,text);
             }
+            json.put("code","1");
+            json.put("msg","已向您的邮箱发送验证码,请注意查收");
+            return JSON.toJSONString(json);
         }
+
         if( String.valueOf(randomcode).equals(req.getSession().getAttribute("code")) ){
             //修改成功
-            
+            return "修改成功";
         }
-
-
 
         return null;
     }
 
     //激活用户
-    @RequestMapping(value = "/user/activeCode",produces = "text/html;charset=utf-8")
+    @RequestMapping(value = "/user/activeCode",produces = "application/json;charset=utf-8")
     public String activeCode(HttpServletRequest req, HttpServletResponse res) throws Exception {
         String code = req.getParameter("code");
         if( code == null || otherUtil.isConSpeCharacters(code) || code.length() != 32){

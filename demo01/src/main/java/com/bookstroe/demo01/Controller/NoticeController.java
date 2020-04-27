@@ -16,14 +16,13 @@ import java.util.*;
 @RequestMapping("/api/notice")
 public class NoticeController {
 
-
-    @RequestMapping(value = "/",produces = "text/html;charset=utf-8")
+    @RequestMapping(value = "/",produces = "application/json;charset=utf-8")
     public String noti(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         return notice_sel(req, res);
     };
 
     //查询公告
-    @RequestMapping(value = "/notice_sel",produces = "text/html;charset=utf-8")
+    @RequestMapping(value = "/notice_sel",produces = "application/json;charset=utf-8")
     public String notice_sel(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         String length  = req.getParameter("length");
         String page = req.getParameter("page"); //String
@@ -36,7 +35,7 @@ public class NoticeController {
     }
 
     //添加公告
-    @RequestMapping(value = "/notice_add",produces = "text/html;charset=utf-8")
+    @RequestMapping(value = "/notice_add",produces = "application/json;charset=utf-8")
     public String notice_add(HttpServletRequest req, HttpServletResponse res) throws Exception {
         String title = req.getParameter("title");
         String text = req.getParameter("text");
@@ -58,7 +57,7 @@ public class NoticeController {
     }
 
     //删除公告
-    @RequestMapping(value = "/notice_del",produces = "text/html;charset=utf-8")
+    @RequestMapping(value = "/notice_del",produces = "application/json;charset=utf-8")
     public String notice_del(HttpServletRequest req, HttpServletResponse res){
 //        String[] id = req.getParameterValues("id");
 //        for( int i = 0 ; i < id.length ; i ++){
@@ -77,13 +76,13 @@ public class NoticeController {
             map.put("code","-1");
             map.put("msg","权限不够");
         }else{
-            map = map = NoticeDao.DeleteNotice(id);
+            map = NoticeDao.DeleteNotice(id);
         }
         return JSON.toJSONString(map);
     }
 
     //修改公告
-    @RequestMapping(value = "/notice_upd",produces = "text/html;charset=utf-8")
+    @RequestMapping(value = "/notice_upd",produces = "application/json;charset=utf-8")
     public String notice_upd(HttpServletRequest req, HttpServletResponse res) {
         String id = req.getParameter("id");
         String title = req.getParameter("title");

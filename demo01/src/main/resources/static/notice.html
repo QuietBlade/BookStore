@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table id='notice'>
+        <thead>
+            <tr>
+                <th>标题</th>
+                <th>内容</th>
+                <th>时间</th>
+            </tr>
+        </thead>
+        <tbody >
+        </tbody>
+    </table>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url:"/api/notice/notice_sel",
+            success: function(data){
+                notice = data;
+                $.each( notice , function(index) {
+                    var unixTimestamp = new Date( Number(notice[index].noti_time) * 1000);
+                    commonTime = unixTimestamp.toLocaleString()
+                    $("#notice tbody").append('<tr>'+
+                        '<td>'+ notice[index].noti_title +'</td>' +
+                        '<td>'+ notice[index].noti_text +'</td>' +
+                        '<td>'+ commonTime +'</td>' +
+                        '</tr>');
+                });
+                //$("#notice")[0].append(text);
+                // console.log(data);
+                // console.log(typeof(data));
+            }
+        })
+
+    });
+</script>
+</body>
+</html>
