@@ -34,6 +34,8 @@ BookStore在线书城系统，采用 Spring boot + Sqlite设计
 
 - [x] 添加公告
 
+- [x] 富文本编辑器
+
 - [x] 删除公告
 
 - [x] 修改公告
@@ -45,6 +47,8 @@ BookStore在线书城系统，采用 Spring boot + Sqlite设计
 - [ ] 查询图书
 
 - [ ] 添加图书
+
+- [x] 图片上传(multipart 或 base64)
 
 - [ ] 删除图书
 

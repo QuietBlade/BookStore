@@ -40,11 +40,10 @@ public class UserController {
         String captcha = (String)session.getAttribute("captcha");
         String remember = req.getParameter("remember");
 
-        if( !_token1.equals(_token2) || _token1 == null || _token2 == null ){
-            json.put("code","-1");
-            json.put("msg","_token 异常，请刷新页面再试");
+        if( _token1 == null || _token2 == null)
             return JSON.toJSONString(json);
-        }
+        if( !_token1.equals(_token2) )
+            return JSON.toJSONString(json);
 
         if( !code.equals(captcha) || captcha == null){
             json.put("code","-2");
