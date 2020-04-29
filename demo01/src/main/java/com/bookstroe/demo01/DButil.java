@@ -29,9 +29,15 @@ public class DButil {
         return connection;
     }
 
-    public static ResultSet execQuery(String sql) throws SQLException {
+    public static ResultSet execQuery(String sql) {
         Connection conn = GetConnection();
-        Statement stat = conn.createStatement();
+        Statement stat = null;
+        try{
+            stat = conn.createStatement();
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
         ResultSet res = null;
         try {
             res = stat.executeQuery(sql);
@@ -44,7 +50,7 @@ public class DButil {
         return res;
     }
 
-    public static int addUser(Author author) throws SQLException {
+    public static int addUser(Author author) {
         author.setUid(otherUtil.StringUUID());
         author.setActivarionCode(otherUtil.stringToMD5(otherUtil.StringUUID()));
         author.setStatus(0);
@@ -59,12 +65,16 @@ public class DButil {
         return dao.update(sql);
     }
 
-    public static Author findUser(String username) throws SQLException{
+    public static Author findUser(String username){
         Author author =  new Author();
-        if( otherUtil.isEmail(username))
-            author =  dao.findAuthor(null,username);
-        else
-            author =  dao.findAuthor(username,null);
+        try{
+            if( otherUtil.isEmail(username))
+                author =  dao.findAuthor(null,username);
+            else
+                author =  dao.findAuthor(username,null);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return author;
     }
 
@@ -97,7 +107,7 @@ public class DButil {
     }
 
     //获取账号
-    public static Author getAuthor(HttpServletRequest req) throws SQLException {
+    public static Author getAuthor(HttpServletRequest req){
         Cookie[] cookies = req.getCookies();
         String uuid = null;
         for(Cookie cookie : cookies){
@@ -108,12 +118,14 @@ public class DButil {
 
         HttpSession session =  req.getSession();
         Author author = (Author)session.getAttribute("author");
-        if( author != null ){
-            return author;
-        }else if( uuid != null){
-            return dao.findAuthor(uuid);
-        }else
-            return setGuest();
+
+            if( author != null ){
+                return author;
+            }else if( uuid != null){
+                return dao.findAuthor(uuid);
+            }
+
+        return setGuest();
 
     }
 

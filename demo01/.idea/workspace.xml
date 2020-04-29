@@ -2,236 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb5c9701-ea6c-4703-acac-963c9e3874e7" name="默认更改列表" comment="userbean">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/beans/bookDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Configurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Configurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/beans/userDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/beans/userDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/img.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuimini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Configurer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Configurer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/beans/userDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/beans/userDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/NoticeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/RouteController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/DButil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/BookDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/img.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/img.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/api/clear.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/api/init.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/api/menus.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/api/table.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/api/tableSelect.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/api/upload.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/css/layuimini.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/css/public.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/css/themes/default.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/images/bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/images/captcha.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/images/donate_qrcode.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/images/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/images/home.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/echarts/echarts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/echarts/echartsTheme.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/iconPicker/iconPickerFa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/layarea/layarea.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/layuimini/miniAdmin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/layuimini/miniMenu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/layuimini/miniTab.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/layuimini/miniTheme.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/layuimini/miniTongji.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/step-lay/step.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/step-lay/step.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/tableSelect/tableSelect.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/treetable-lay/treetable.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/treetable-lay/treetable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/wangEditor/fonts/w-e-icon.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/wangEditor/wangEditor.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/wangEditor/wangEditor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/wangEditor/wangEditor.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/wangEditor/wangEditor.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/js/lay-module/wangEditor/wangEditor.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/HELP-US-OUT.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/css/font-awesome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/css/font-awesome.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/animated.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/bordered-pulled.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/core.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/fixed-width.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/font-awesome.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/icons.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/larger.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/list.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/mixins.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/path.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/rotated-flipped.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/screen-reader.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/stacked.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/less/variables.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_animated.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_bordered-pulled.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_core.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_fixed-width.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_icons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_larger.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_list.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_mixins.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_path.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_rotated-flipped.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_screen-reader.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_stacked.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/font-awesome-4.7.0/scss/font-awesome.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/jq-module/jquery.particleground.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/jq-module/paigusu.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/jq-module/zyupload/zyupload-1.0.0.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/jq-module/zyupload/zyupload-1.0.0.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/jquery-3.4.1/jquery-3.4.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/layui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/layui.mobile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/modules/code.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/modules/laydate/default/laydate.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/modules/layer/default/icon-ext.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/modules/layer/default/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/modules/layer/default/layer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/modules/layer/default/loading-0.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/modules/layer/default/loading-1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/css/modules/layer/default/loading-2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/font/iconfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/font/iconfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/font/iconfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/font/iconfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/font/iconfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/0.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/10.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/11.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/12.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/13.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/14.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/15.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/16.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/17.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/18.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/19.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/2.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/20.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/21.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/22.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/23.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/24.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/25.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/26.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/27.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/28.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/29.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/3.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/30.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/31.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/32.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/33.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/34.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/35.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/36.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/37.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/38.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/39.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/4.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/40.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/41.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/42.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/43.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/44.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/45.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/46.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/47.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/48.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/49.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/5.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/50.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/51.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/52.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/53.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/54.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/55.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/56.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/57.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/58.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/59.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/6.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/60.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/61.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/62.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/63.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/64.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/65.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/66.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/67.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/68.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/69.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/7.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/70.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/71.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/8.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/images/face/9.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/carousel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/code.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/colorpicker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/element.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/flow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/laydate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/layedit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/layer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/laypage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/laytpl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/mobile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/rate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/slider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/transfer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/tree.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/upload.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/lay/modules/util.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/layui.all.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/lib/layui-v2.5.5/layui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/area.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/button.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/color-select.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/editor.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/form-step.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/icon-picker.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/icon.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/layer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/login-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/login-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/menu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/setting.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/table-select.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/table.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/table/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/table/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/upload.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/user-password.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/user-setting.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/welcome-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/welcome-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/layuimini/page/welcome-3.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -485,7 +268,8 @@
       <workItem from="1587875270379" duration="11304000" />
       <workItem from="1587963790765" duration="17720000" />
       <workItem from="1588058067117" duration="10649000" />
-      <workItem from="1588133986860" duration="9522000" />
+      <workItem from="1588133986860" duration="9687000" />
+      <workItem from="1588146943221" duration="3364000" />
     </task>
     <task id="LOCAL-00001" summary="userbean">
       <created>1587459757772</created>
@@ -537,38 +321,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="289" y="128" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588064110255" />
-    <state width="1323" height="86" key="GridCell.Tab.0.bottom" timestamp="1588146405685">
+    <state width="1323" height="81" key="GridCell.Tab.0.bottom" timestamp="1588151200967">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="86" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588146405685" />
-    <state width="1323" height="86" key="GridCell.Tab.0.center" timestamp="1588146405684">
+    <state width="1323" height="81" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588151200967" />
+    <state width="1323" height="81" key="GridCell.Tab.0.center" timestamp="1588151200966">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="86" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588146405684" />
-    <state width="1323" height="86" key="GridCell.Tab.0.left" timestamp="1588146405684">
+    <state width="1323" height="81" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588151200966" />
+    <state width="1323" height="81" key="GridCell.Tab.0.left" timestamp="1588151200966">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="86" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588146405684" />
-    <state width="1323" height="86" key="GridCell.Tab.0.right" timestamp="1588146405685">
+    <state width="1323" height="81" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588151200966" />
+    <state width="1323" height="81" key="GridCell.Tab.0.right" timestamp="1588151200966">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="86" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588146405685" />
-    <state width="1323" height="86" key="GridCell.Tab.1.bottom" timestamp="1588146405685">
+    <state width="1323" height="81" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588151200966" />
+    <state width="1323" height="81" key="GridCell.Tab.1.bottom" timestamp="1588151200967">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="86" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588146405685" />
-    <state width="1323" height="86" key="GridCell.Tab.1.center" timestamp="1588146405685">
+    <state width="1323" height="81" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588151200967" />
+    <state width="1323" height="81" key="GridCell.Tab.1.center" timestamp="1588151200967">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="86" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1588146405685" />
-    <state width="1323" height="86" key="GridCell.Tab.1.left" timestamp="1588146405685">
+    <state width="1323" height="81" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1588151200967" />
+    <state width="1323" height="81" key="GridCell.Tab.1.left" timestamp="1588151200967">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="86" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1588146405685" />
-    <state width="1323" height="86" key="GridCell.Tab.1.right" timestamp="1588146405685">
+    <state width="1323" height="81" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1588151200967" />
+    <state width="1323" height="81" key="GridCell.Tab.1.right" timestamp="1588151200967">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="86" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1588146405685" />
+    <state width="1323" height="81" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1588151200967" />
     <state width="905" height="162" key="GridCell.Tab.2.bottom" timestamp="1588066801402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

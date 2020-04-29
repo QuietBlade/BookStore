@@ -15,7 +15,7 @@ import java.util.Map;
 public class AuthorDao implements userDao{
 
     @Override
-    public int add(Author author) throws SQLException {
+    public int add(Author author){
         PreparedStatement statement = null;
         Connection conn = null;
 
@@ -38,12 +38,13 @@ public class AuthorDao implements userDao{
 
         try{
             statement.executeUpdate();
+            statement.close();
+            conn.close();
         }catch(SQLException e) {
             e.printStackTrace();
             return -1;
         }
-        statement.close();
-        conn.close();
+
         return 1;
     }
 
@@ -69,7 +70,7 @@ public class AuthorDao implements userDao{
     }
 
     @Override
-    public Author findAuthor(String username,String email) throws SQLException {
+    public Author findAuthor(String username,String email) {
         Author author = new Author();
         Connection conn = null;
         PreparedStatement pst = null;
@@ -94,34 +95,41 @@ public class AuthorDao implements userDao{
                 return DButil.setGuest();
         }catch (SQLException e){
             e.printStackTrace();
-        }finally {
+        }
+        try{
             res.close();
             pst.close();
             conn.close();
+        }catch(SQLException e){
+            e.printStackTrace();
         }
 
         return author;
     }
 
-    public Author findAuthor(String uuid) throws SQLException{
+    public Author findAuthor(String uuid){
         Author author = new Author();
         String sql = "select * from book_user where uid='"+uuid+"'";
         ResultSet res = DButil.execQuery(sql);
         if( res == null){
             return DButil.setGuest();
         }
-        if( res.next() ){
-            author.setUid(res.getString("uid"));
-            author.setLoginuser(res.getString("loginname"));
-            author.setLoginpass(res.getString("loginpass"));
-            author.setEmail(res.getString("email"));
-            author.setStatus(res.getInt("status"));
-            author.setActivarionCode(res.getString("activationCode"));
-            author.setLoginGroup(res.getString("loginGroup"));
-            author.setRegistTime(res.getString("registTime"));
-        }else{
+        try{
+            if( res.next() ){
+                author.setUid(res.getString("uid"));
+                author.setLoginuser(res.getString("loginname"));
+                author.setLoginpass(res.getString("loginpass"));
+                author.setEmail(res.getString("email"));
+                author.setStatus(res.getInt("status"));
+                author.setActivarionCode(res.getString("activationCode"));
+                author.setLoginGroup(res.getString("loginGroup"));
+                author.setRegistTime(res.getString("registTime"));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
             author = DButil.setGuest();
         }
+
         return author;
     }
 }
