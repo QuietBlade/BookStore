@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -405,19 +406,33 @@ public class UserController {
 //    }
 //
 //    测试数据库连接是否正常
-//    @RequestMapping("/db")
-//    public String db(){
-//        Connection sql = DButil.GetConnection();
-//        if(sql != null){
-//            return "连接数据库成功";
-//        }
-//        return "连接数据库失败";
-//    }
+    @RequestMapping("/db")
+    public String db() throws SQLException {
+        Connection sql = DButil.GetConnection();
+        if(sql != null){
+            return "连接数据库成功";
+        }
+        sql.close();
+        return "连接数据库失败";
+    }
 //
 //   测试项目是否正常
     @RequestMapping("/hello")
     public String test(){
         return "this /api/hello";
     }
+
+//    测试
+//    @RequestMapping("/t")
+//    public String t(){
+//        try{
+//            Integer i = Integer.valueOf("cnnn");
+//            System.out.println("=>>" + i);
+//            return String.valueOf(i);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 
 }

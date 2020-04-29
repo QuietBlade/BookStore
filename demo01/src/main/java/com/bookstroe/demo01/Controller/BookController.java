@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.rmi.server.ExportException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -64,6 +65,7 @@ public class BookController {
     public static String classify(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         //获取一级分类
         String mainid = req.getParameter("classifyMain");
+        String classifyName = null;
         Map<String,Object> json = new HashMap<>();
         Map<String,String> classify = new HashMap<>();
 
@@ -79,21 +81,70 @@ public class BookController {
             while(rs.next()){
                 classify.put(rs.getString("classifyID"),rs.getString("classifyName"));
             }
+            rs = DButil.execQuery("SELECT * FROM book_classifyMain WHERE classifyID="+mainid);
+            if(rs.next()){
+                classifyName = rs.getString("classifyName");
+            }
+            rs.close();
         }catch (SQLException e){
             e.printStackTrace();
             json.put("code","-1");
+            json.put("classifyMain",mainid);
+            json.put("classifyName",classifyName);
             json.put("msg","连接数据库失败");
             return JSON.toJSONString(json);
         }
         json.put("code","1");
+        json.put("classifyMain",mainid);
+        json.put("classifyName",classifyName);
         json.put("data",classify);
+
         return JSON.toJSONString(json);
     }
 
     @RequestMapping(value = "/book_add",produces = "application/json;charset=utf-8")
     public static String addBook(HttpServletRequest req, HttpServletResponse res){
         Book book = new Book();
+//      {"bookname":"童书-少儿英语","bookmoney":"23.9","booknumber":"233","classifyMain":"1","classifyTwo":"23","booktext":"图片描述","bookimg":"","file":""}
+        Map<String,String> json = new HashMap<>();
+        json.put("code","-1");
+        json.put("msg","不能为空");
 
-        return null;
+        String bookname = req.getParameter("bookname");
+        String bookmoney = req.getParameter("bookmoney");
+        String booknumber = req.getParameter("booknumber");
+        String classifyMain = req.getParameter("classifyMain");
+        String classifyTwo = req.getParameter("classifyTwo");
+        String booktext = req.getParameter("booktext");
+        String bookimg = req.getParameter("bookimg");
+
+        if( bookname==null || bookmoney==null || bookname==null || booknumber==null || classifyMain==null || classifyTwo==null || booktext==null){
+            return JSON.toJSONString(json);
+        }
+
+        if( !otherUtil.isNumber(bookmoney) || !otherUtil.isNumber(booknumber) || !otherUtil.isNumber(classifyMain) || !otherUtil.isNumber(classifyTwo)){
+            json.put("msg","价格或数量必须是数字");
+            return JSON.toJSONString(json);
+        }
+
+        if( otherUtil.isConSpeCharacters(bookname) || otherUtil.isConSpeCharacters(booktext)){
+            json.put("msg","不能有特殊字符");
+            return JSON.toJSONString(json);
+        }
+
+        book.setName(bookname);
+        book.setNum(Integer.valueOf(booknumber));
+        book.setPrice(Double.valueOf(bookmoney));
+        book.setImgurl(bookimg);
+        book.setClassifyMain(Integer.valueOf(classifyMain));
+        book.setClassifyTwo(Integer.valueOf(classifyTwo));
+        book.setDesc(booktext);
+        if( DButil.addBook(book) < 1){
+            json.put("msg","数据库连接失败");
+        }else{
+            json.put("msg","添加成功");
+            json.put("code","1");
+        }
+        return JSON.toJSONString(json);
     }
 }

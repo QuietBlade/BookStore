@@ -12,7 +12,7 @@
 <div class="layui-main">
 
         <div class="site-text site-block">
-            <form class="layui-form " action="/api/book/book_add" method="post" enctype="multipart/form-data">
+            <form class="layui-form " action="" method="post" enctype="multipart/form-data">
                 <div class="layui-form-item">
                     <label class="layui-form-label">书名</label>
                     <div class="layui-input-block">
@@ -107,7 +107,7 @@
             }
         });
 
-        //监听一级分类
+        //监听一级分类,二级分类下拉框
         form.on('select(classify)',function(data){
             //console.log(data.value);
             $.ajax({
@@ -138,9 +138,17 @@
         });
 
         form.on('submit(submit)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+            $.ajax({
+                url: "/api/book/book_add",
+                async:false,
+                data: data.field,
+                type: 'post',
+                success:function(data){
+                    console.log(data);
+                    layer.msg(data.msg);
+                }
+            });
+
             return false;
         });
         //layer.msg('Hello World');

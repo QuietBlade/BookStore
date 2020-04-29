@@ -4,10 +4,19 @@ public class Book {
     private String id;
     private String name;
     private Double price;
-    private String classif;
+    private int classifyMain;
+    private int classifyTwo;
     private int num;
     private String imgurl;
     private String desc;
+
+    public void setClassifyTwo(int classifyTwo) {
+        this.classifyTwo = classifyTwo;
+    }
+
+    public int getClassifyTwo() {
+        return classifyTwo;
+    }
 
     public Double getPrice() {
         return price;
@@ -17,8 +26,8 @@ public class Book {
         return num;
     }
 
-    public String getClassif() {
-        return classif;
+    public int getClassifyMain() {
+        return classifyMain;
     }
 
     public String getDesc() {
@@ -37,8 +46,8 @@ public class Book {
         return name;
     }
 
-    public void setClassif(String classif) {
-        this.classif = classif;
+    public void setClassifyMain(int classifyMain) {
+        this.classifyMain = classifyMain;
     }
 
     public void setDesc(String desc) {

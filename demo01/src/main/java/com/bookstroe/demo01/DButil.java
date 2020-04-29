@@ -2,7 +2,9 @@ package com.bookstroe.demo01;
 
 import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.beans.Author;
+import com.bookstroe.demo01.beans.Book;
 import com.bookstroe.demo01.dao.AuthorDao;
+import com.bookstroe.demo01.dao.BookDao;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import java.sql.*;
 public class DButil {
 
     private static AuthorDao dao = new AuthorDao();
+    private static BookDao bookDao = new BookDao();
 
     public static Connection GetConnection() {
         //String DBPath = "jdbc:sqlite://C:/Users/world/Desktop/java web/实训/login/src/db/login.db";
@@ -57,6 +60,11 @@ public class DButil {
         author.setLoginpass(otherUtil.stringToMD5(author.getLoginpass()));
         author.setRegistTime(otherUtil.timestamp());
         return dao.add(author);
+    }
+
+    public static int addBook(Book book){
+        book.setId(otherUtil.StringUUID());
+        return bookDao.add(book);
     }
 
     public static int passwordUser(Author author,String newpass){

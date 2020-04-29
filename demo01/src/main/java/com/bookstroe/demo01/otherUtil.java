@@ -39,7 +39,7 @@ public class otherUtil {
     public static boolean isConSpeCharacters(String str) {
         if(str == null)
             return false;
-        String regEx = "[ _`~!#$%^&*()+=|{}':;',\\[\\]<>/?~！#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
+        String regEx = "[ _`~!#$%^*()+=|{}':;'\\[\\]<>/?~！#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);
         return m.find(); //有特殊字符返回true ，没有字符返回false
@@ -140,6 +140,17 @@ public class otherUtil {
         int g = fc + random.nextInt(bc - fc);
         int b = fc + random.nextInt(bc - fc);
         return new Color(r, g, b);
+    }
+
+    public static boolean isNumber(String number){
+        try {
+            Integer i = Integer.valueOf(number);
+            Double d = Double.valueOf(number);
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     //md5函数加盐

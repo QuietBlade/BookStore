@@ -31,13 +31,13 @@ public class AuthorDao implements userDao{
             statement.setString(6,author.getActivarionCode());
             statement.setString(7,author.getLoginGroup());
             statement.setString(8,author.getRegistTime());
+            statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
             return -1;
         }
 
         try{
-            statement.executeUpdate();
             statement.close();
             conn.close();
         }catch(SQLException e) {
