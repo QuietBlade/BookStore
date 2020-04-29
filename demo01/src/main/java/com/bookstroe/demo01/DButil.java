@@ -67,14 +67,10 @@ public class DButil {
 
     public static Author findUser(String username){
         Author author =  new Author();
-        try{
-            if( otherUtil.isEmail(username))
-                author =  dao.findAuthor(null,username);
-            else
-                author =  dao.findAuthor(username,null);
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+        if( otherUtil.isEmail(username))
+            author =  dao.findAuthor(null,username);
+        else
+            author =  dao.findAuthor(username,null);
         return author;
     }
 

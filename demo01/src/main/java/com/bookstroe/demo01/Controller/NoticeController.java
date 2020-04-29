@@ -68,11 +68,7 @@ public class NoticeController {
         String id = req.getParameter("id");
         Map<String,String> map = new HashMap<>();
         Author author = DButil.setGuest();
-        try{
-            author = DButil.getAuthor(req);
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+        author = DButil.getAuthor(req);
 
         if( author.getLoginGroup().equals("guest") ){
             map.put("code","-1");
