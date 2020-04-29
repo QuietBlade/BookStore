@@ -63,7 +63,7 @@ public class AuthorDao implements userDao{
     }
 
     @Override
-    public int delete(Author author) {
+    public int delete(String uuid) {
 
         return 0;
     }

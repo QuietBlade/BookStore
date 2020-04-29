@@ -9,7 +9,7 @@ public interface userDao {
 
     int update(String str);
 
-    int delete(Author author);
+    int delete(String uuid);
 
     Author findAuthor(String username,String email) throws SQLException;
 }
