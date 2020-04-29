@@ -14,7 +14,7 @@ public class BookDao implements bookDao {
     public int add(Book book){
         PreparedStatement statement = null;
         Connection conn = null;
-
+        int len = 0;
         conn = DButil.GetConnection();
         String sql = "INSERT INTO book_products VALUES(?,?,?,?,?,?,?,?)";
         try {
@@ -27,13 +27,12 @@ public class BookDao implements bookDao {
             statement.setInt(6,book.getClassifyTwo());
             statement.setString(7,book.getImgurl());
             statement.setString(8,book.getDesc());
-            statement.executeUpdate();
+            len = statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
             return -1;
         }
         try{
-
             statement.close();
             conn.close();
         }catch(SQLException e) {
@@ -41,7 +40,7 @@ public class BookDao implements bookDao {
             return -1;
         }
 
-        return 1;
+        return len;
     }
 
     public int update(Book book){

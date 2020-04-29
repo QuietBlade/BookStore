@@ -39,10 +39,14 @@ public class otherUtil {
     public static boolean isConSpeCharacters(String str) {
         if(str == null)
             return false;
-        String regEx = "[ _`~!#$%^*()+=|{}':;'\\[\\]<>/?~！#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
+        String regEx = "[ _`~!#$%^*()+=|{}':;'\\[\\]<>/?~！#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);
         return m.find(); //有特殊字符返回true ，没有字符返回false
+    }
+
+    public static boolean isDbSpeaceChar(String str){
+        return false;
     }
 
     public static String StringUUID(){

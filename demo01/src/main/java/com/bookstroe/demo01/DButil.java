@@ -5,7 +5,7 @@ import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.beans.Book;
 import com.bookstroe.demo01.dao.AuthorDao;
 import com.bookstroe.demo01.dao.BookDao;
-
+import com.sun.rowset.CachedRowSetImpl;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +32,13 @@ public class DButil {
         return connection;
     }
 
-    public static ResultSet execQuery(String sql) {
+    public static CachedRowSetImpl execQuery(String sql)  {
+        CachedRowSetImpl rowset = null;
+        try{
+            rowset =new CachedRowSetImpl();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         Connection conn = GetConnection();
         Statement stat = null;
         try{
@@ -44,13 +50,20 @@ public class DButil {
         ResultSet res = null;
         try {
             res = stat.executeQuery(sql);
+            rowset.populate(res);
         }catch(SQLException e){
             e.printStackTrace();
             return null;
         }
-//        stat.close();
-//        conn.close();
-        return res;
+
+        try{
+            res.close();
+            stat.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowset;
     }
 
     public static int addUser(Author author) {

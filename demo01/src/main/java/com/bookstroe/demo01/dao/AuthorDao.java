@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.DButil;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.beans.userDao;
+import com.sun.rowset.CachedRowSetImpl;
 import org.springframework.stereotype.Repository;
 
 import javax.management.remote.JMXConnectionNotification;
@@ -18,7 +19,7 @@ public class AuthorDao implements userDao{
     public int add(Author author){
         PreparedStatement statement = null;
         Connection conn = null;
-
+        int len = 0;
         conn = DButil.GetConnection();
         String sql = "INSERT INTO book_user VALUES(?,?,?,?,?,?,?,?)";
         try {
@@ -31,7 +32,7 @@ public class AuthorDao implements userDao{
             statement.setString(6,author.getActivarionCode());
             statement.setString(7,author.getLoginGroup());
             statement.setString(8,author.getRegistTime());
-            statement.executeUpdate();
+            len = statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
             return -1;
@@ -45,7 +46,7 @@ public class AuthorDao implements userDao{
             return -1;
         }
 
-        return 1;
+        return len;
     }
 
     @Override
@@ -110,7 +111,7 @@ public class AuthorDao implements userDao{
     public Author findAuthor(String uuid){
         Author author = new Author();
         String sql = "select * from book_user where uid='"+uuid+"'";
-        ResultSet res = DButil.execQuery(sql);
+        CachedRowSetImpl res = DButil.execQuery(sql);
         if( res == null){
             return DButil.setGuest();
         }

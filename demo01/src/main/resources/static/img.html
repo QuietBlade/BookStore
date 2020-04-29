@@ -144,7 +144,10 @@
                 data: data.field,
                 type: 'post',
                 success:function(data){
-                    console.log(data);
+                    if(data.code=="1"){
+                        //格式化
+                    }
+
                     layer.msg(data.msg);
                 }
             });

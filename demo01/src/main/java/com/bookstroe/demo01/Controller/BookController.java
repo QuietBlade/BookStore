@@ -5,6 +5,7 @@ import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.beans.Book;
 import com.bookstroe.demo01.dao.NoticeDao;
 import com.bookstroe.demo01.otherUtil;
+import com.sun.rowset.CachedRowSetImpl;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,7 +78,7 @@ public class BookController {
 
         String sql = "select * from book_classifyTwo where classifyMainID="+mainid;
         try {
-            ResultSet rs = DButil.execQuery(sql);
+            CachedRowSetImpl rs = DButil.execQuery(sql);
             while(rs.next()){
                 classify.put(rs.getString("classifyID"),rs.getString("classifyName"));
             }
