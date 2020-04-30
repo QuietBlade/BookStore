@@ -2,21 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb5c9701-ea6c-4703-acac-963c9e3874e7" name="默认更改列表" comment="userbean">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/db/login.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/login.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/NoticeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/NoticeDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/img.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/AdminController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/DButil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/DButil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/BookDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/BookDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/img.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/img.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +88,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -273,6 +271,7 @@
       <workItem from="1588058067117" duration="10649000" />
       <workItem from="1588133986860" duration="9687000" />
       <workItem from="1588146943221" duration="19111000" />
+      <workItem from="1588220524505" duration="8119000" />
     </task>
     <task id="LOCAL-00001" summary="userbean">
       <created>1587459757772</created>
@@ -324,38 +323,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="289" y="128" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588064110255" />
-    <state width="1323" height="170" key="GridCell.Tab.0.bottom" timestamp="1588176954347">
+    <state width="1323" height="78" key="GridCell.Tab.0.bottom" timestamp="1588229613620">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588176954347" />
-    <state width="1323" height="170" key="GridCell.Tab.0.center" timestamp="1588176954347">
+    <state width="1323" height="78" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588229613620" />
+    <state width="1323" height="78" key="GridCell.Tab.0.center" timestamp="1588229613620">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588176954347" />
-    <state width="1323" height="170" key="GridCell.Tab.0.left" timestamp="1588176954347">
+    <state width="1323" height="78" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588229613620" />
+    <state width="1323" height="78" key="GridCell.Tab.0.left" timestamp="1588229613620">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588176954347" />
-    <state width="1323" height="170" key="GridCell.Tab.0.right" timestamp="1588176954347">
+    <state width="1323" height="78" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588229613620" />
+    <state width="1323" height="78" key="GridCell.Tab.0.right" timestamp="1588229613620">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588176954347" />
-    <state width="1323" height="170" key="GridCell.Tab.1.bottom" timestamp="1588176954347">
+    <state width="1323" height="78" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588229613620" />
+    <state width="1323" height="78" key="GridCell.Tab.1.bottom" timestamp="1588229613621">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588176954347" />
-    <state width="1323" height="170" key="GridCell.Tab.1.center" timestamp="1588176954347">
+    <state width="1323" height="78" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588229613621" />
+    <state width="1323" height="78" key="GridCell.Tab.1.center" timestamp="1588229613620">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1588176954347" />
-    <state width="1323" height="170" key="GridCell.Tab.1.left" timestamp="1588176954347">
+    <state width="1323" height="78" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1588229613620" />
+    <state width="1323" height="78" key="GridCell.Tab.1.left" timestamp="1588229613620">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1588176954347" />
-    <state width="1323" height="170" key="GridCell.Tab.1.right" timestamp="1588176954347">
+    <state width="1323" height="78" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1588229613620" />
+    <state width="1323" height="78" key="GridCell.Tab.1.right" timestamp="1588229613621">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="170" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1588176954347" />
+    <state width="1323" height="78" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1588229613621" />
     <state width="905" height="162" key="GridCell.Tab.2.bottom" timestamp="1588066801402">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -380,10 +379,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="343" y="32" width="858" height="642" key="Registry/0.0.1366.728@0.0.1366.728" timestamp="1587995075094" />
-    <state x="310" y="0" key="SettingsEditor" timestamp="1587997932486">
+    <state x="310" y="0" key="SettingsEditor" timestamp="1588229127339">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="310" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1587997932486" />
+    <state x="310" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1588229127339" />
     <state x="398" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1587651284049">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -404,9 +403,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="384" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1588173397184" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1587882961018">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1588221191869">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1587882961018" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1588221191869" />
   </component>
 </project>

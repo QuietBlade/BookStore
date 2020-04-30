@@ -6,7 +6,8 @@ import com.bookstroe.demo01.beans.Author;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.servlet.theme.CookieThemeResolver;
+import com.bookstroe.demo01.otherUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
@@ -26,7 +27,7 @@ public class AdminController {
     public String deleteuser(HttpServletRequest req, HttpServletResponse res) throws SQLException {
         Map<String,String> json = new HashMap<String,String>();
         json.put("code","-1");
-        json.put("msg","权限不够,请登录后再试");
+        json.put("msg", "权限不足");
         json.put("link","login.html");
 
         author = DButil.getAuthor(req);

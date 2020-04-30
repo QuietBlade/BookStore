@@ -111,6 +111,15 @@ public class BookController {
         json.put("code","-1");
         json.put("msg","不能为空");
 
+        Author author = DButil.getAuthor(req);
+        if( author.getLoginGroup().equals("guest")){
+            json.put("msg","请登录后再添加");
+            return JSON.toJSONString(json);
+        }else if( !author.getLoginGroup().equals("admin")){
+            json.put("msg","当前不是管理员");
+            return JSON.toJSONString(json);
+        }
+
         String bookname = req.getParameter("bookname");
         String bookmoney = req.getParameter("bookmoney");
         String booknumber = req.getParameter("booknumber");
@@ -119,7 +128,7 @@ public class BookController {
         String booktext = req.getParameter("booktext");
         String bookimg = req.getParameter("bookimg");
 
-        if( bookname==null || bookmoney==null || bookname==null || booknumber==null || classifyMain==null || classifyTwo==null || booktext==null){
+        if( bookname==null || bookmoney==null || booknumber==null || classifyMain==null || classifyTwo==null || booktext==null){
             return JSON.toJSONString(json);
         }
 
@@ -148,4 +157,11 @@ public class BookController {
         }
         return JSON.toJSONString(json);
     }
+
+    @RequestMapping(value = "/book_sear",produces = "application/json;charset=utf-8")
+    public static String searchBook(HttpServletRequest req, HttpServletResponse res){
+
+        return null;
+    }
+
 }

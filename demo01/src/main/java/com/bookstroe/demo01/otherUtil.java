@@ -157,6 +157,82 @@ public class otherUtil {
         return true;
     }
 
+    public static Map<String,String> errorMessage(String code){
+        Map<String,String> map = new HashMap<>();
+        map.put("code",code);
+        map.put("msg","id不能为空");
+        if( code == null){ return map; }
+        switch( code ){
+            case "0":map.put("msg","数据库异常");break;
+            case "-1":map.put("msg","_token异常");break;
+            case "-2":map.put("msg","");break;
+            case "-3":map.put("msg","邮件发送失败");break;
+            case "-4":map.put("msg","添加书籍失败");break;
+            case "-5":map.put("msg","添加用户失败");break;
+            case "-6":map.put("msg","修改密码失败");break;
+            case "-7":map.put("msg","用户激活失败");break;
+            case "-8":map.put("msg","删除公告失败");break;
+            case "-9":map.put("msg","修改公告失败");break;
+            case "-10":map.put("msg","用户名错误");break;
+            case "-11":map.put("msg","用户名不能有特殊字符");break;
+            case "-12":map.put("msg","用户名长度不足");break;
+            case "-13":map.put("msg","用户名不能为空");break;
+            case "-14":map.put("msg","用户未激活");break;
+            case "-15":map.put("msg","用户名已存在");break;
+            case "-16":map.put("msg","当前未登录");break;
+            case "-17":map.put("msg","权限不足");break;
+            case "-18":map.put("msg","用户成功注册");break;
+            case "-19":map.put("msg","");break;
+            case "-20":map.put("msg","密码错误");break;
+            case "-21":map.put("msg","密码不能有特殊字符");break;
+            case "-22":map.put("msg","密码长度不足");break;
+            case "-23":map.put("msg","密码不能为空");break;
+            case "-24":map.put("msg","旧密码错误");break;
+            case "-25":map.put("msg","用户名或密码错误");break;
+            case "-26":map.put("msg","用户名或密码不能有特殊字符");break;
+            case "-27":map.put("msg","用户名或密码不能为空");break;
+            case "-28":map.put("msg","用户名或密码长度不足");break;
+            case "-29":map.put("msg","两次密码不正确");break;
+            case "-30":map.put("msg","邮箱错误");break;
+            case "-31":map.put("msg","邮箱格式不正确");break;
+            case "-32":map.put("msg","邮箱不能有特殊字符");break;
+            case "-33":map.put("msg","邮箱不能为空");break;
+            case "-34":map.put("msg","邮箱已存在");break;
+            case "-35":map.put("msg","");break;
+            case "-36":map.put("msg","");break;
+            case "-37":map.put("msg","");break;
+            case "-38":map.put("msg","");break;
+            case "-39":map.put("msg","");break;
+            case "-40":map.put("msg","验证码错误");break;
+            case "-41":map.put("msg","验证码不能为空");break;
+            case "-42":map.put("msg","验证码不能有特殊字符");break;
+            case "-43":map.put("msg","已向您的邮箱发送验证码,请注意查收");break;
+            case "-44":map.put("msg","邮箱验证码错误");break;
+            case "-45":map.put("msg","激活码错误");break;
+            case "-46":map.put("msg","");break;
+            case "-47":map.put("msg","");break;
+            case "-48":map.put("msg","");break;
+            case "-49":map.put("msg","");break;
+            case "-50":map.put("msg","公告标题不能为空");break;
+            case "-51":map.put("msg","公告内容不能为空");break;
+            case "-52":map.put("msg","公告时间戳错误");break;
+            case "-53":map.put("msg","公告标题不能有特殊字符");break;
+            case "-54":map.put("msg","");break;
+            case "-55":map.put("msg","");break;
+            case "-56":map.put("msg","");break;
+            case "-57":map.put("msg","");break;
+            case "-58":map.put("msg","");break;
+            case "-59":map.put("msg","");break;
+            case "-60":map.put("msg","书名不能为空");break;
+            case "-61":map.put("msg","价格不能为空");break;
+            case "-62":map.put("msg","数量不能为空");break;
+            case "-63":map.put("msg","描述不能为空");break;
+            case "-64":map.put("msg","价格或数量必须是数字");break;
+            case "-65":map.put("msg","书名不能有特殊字符");break;
+        }
+        return map;
+    }
+
     //md5函数加盐
     public static String stringToMD5(String str) {
         str = "Book"+str;

@@ -96,6 +96,7 @@ public class AuthorDao implements userDao{
                 return DButil.setGuest();
         }catch (SQLException e){
             e.printStackTrace();
+            return DButil.setGuest();
         }
         try{
             res.close();
@@ -103,6 +104,7 @@ public class AuthorDao implements userDao{
             conn.close();
         }catch(SQLException e){
             e.printStackTrace();
+            return DButil.setGuest();
         }
 
         return author;
