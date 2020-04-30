@@ -3,7 +3,6 @@ import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.DButil;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.beans.Book;
-import com.bookstroe.demo01.dao.NoticeDao;
 import com.bookstroe.demo01.otherUtil;
 import com.sun.rowset.CachedRowSetImpl;
 import org.springframework.ui.ModelMap;
@@ -12,11 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.rmi.server.ExportException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,14 +23,15 @@ public class BookController {
 
     //@RequestMapping(value = "/",produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/img")
-    public String imgupload(HttpServletRequest req, HttpServletResponse res){
+    public String imgupload(HttpServletRequest req){
         return req.getParameter("file");
     }
 
+    //图片上传接口
     @RequestMapping("/upload")
-    public static String fileupload(@RequestParam(value = "file") MultipartFile file, HttpServletRequest req, ModelMap map){
+    public static String fileupload(@RequestParam(value = "file") MultipartFile file, ModelMap map){
         Map<String,String> json = new HashMap<>();
-        if( file.isEmpty() || file == null ){
+        if(file.isEmpty()){
             map.addAttribute("filepath", " ");
             json.put("src","none");
             return JSON.toJSONString(json);
@@ -62,9 +59,9 @@ public class BookController {
         return JSON.toJSONString(json);
     }
 
+    //分类接口
     @RequestMapping(value = "/book_classify",produces = "application/json;charset=utf-8")
-    public static String classify(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-        //获取一级分类
+    public static String classify(HttpServletRequest req, HttpServletResponse res) {
         String mainid = req.getParameter("classifyMain");
         String classifyName = null;
         Map<String,Object> json = new HashMap<>();
@@ -79,10 +76,16 @@ public class BookController {
         String sql = "select * from book_classifyTwo where classifyMainID="+mainid;
         try {
             CachedRowSetImpl rs = DButil.execQuery(sql);
+            if( rs == null){
+                return JSON.toJSONString(otherUtil.errorMessage("-1"));
+            }
             while(rs.next()){
                 classify.put(rs.getString("classifyID"),rs.getString("classifyName"));
             }
             rs = DButil.execQuery("SELECT * FROM book_classifyMain WHERE classifyID="+mainid);
+            if( rs == null){
+                return JSON.toJSONString(otherUtil.errorMessage("-1"));
+            }
             if(rs.next()){
                 classifyName = rs.getString("classifyName");
             }
@@ -160,7 +163,13 @@ public class BookController {
 
     @RequestMapping(value = "/book_sear",produces = "application/json;charset=utf-8")
     public static String searchBook(HttpServletRequest req, HttpServletResponse res){
+        Map<String,Object> json = new HashMap<>();
+        Map<String,Object> data = new HashMap<>();
 
+
+        json.put("code","1");
+        json.put("data",data);
+        json.put("msg","查询成功");
         return null;
     }
 

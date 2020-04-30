@@ -2,11 +2,17 @@ package com.bookstroe.demo01.dao;
 import com.bookstroe.demo01.DButil;
 import com.bookstroe.demo01.beans.Book;
 import com.bookstroe.demo01.beans.bookDao;
+import com.bookstroe.demo01.otherUtil;
+import com.sun.rowset.CachedRowSetImpl;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.theme.CookieThemeResolver;
 
+import javax.sql.rowset.CachedRowSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class BookDao implements bookDao {
@@ -55,4 +61,20 @@ public class BookDao implements bookDao {
         return null;
     }
 
+    public Map<String,String> allBook(String number){
+        Map<String,String> map = new HashMap<>();
+        String sql = "select * from book_products order by book_num desc limit"+number;
+        CachedRowSet crst = DButil.execQuery(sql);
+        try{
+            while(crst.next()){
+
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return otherUtil.errorMessage("-1");
+        }
+
+
+        return null;
+    }
 }

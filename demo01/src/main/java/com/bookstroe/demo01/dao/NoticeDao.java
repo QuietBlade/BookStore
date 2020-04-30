@@ -47,11 +47,10 @@ public class NoticeDao {
     //添加公告
     public static Map<String,String> InsertNotice(String noti_title,String noti_text,String noti_time ){
         Map<String,String> map = new HashMap<>();
-        map.put("code","-1");
-        map.put("msg","信息不能为空");
-        if( noti_title == null || noti_text == null){
-            return map;
-        }else{
+
+        if( noti_title == null || noti_text == null)
+            return otherUtil.errorMessage("-50");
+        else{
             noti_title = otherUtil.parString(noti_title);
             noti_text = otherUtil.parString(noti_text);
         }
@@ -60,44 +59,38 @@ public class NoticeDao {
             noti_time = otherUtil.timestamp();
         }
 
-        if(  noti_time.length() != 10){
-            map.put("msg","时间戳错误");
-            return map;
-        }
+        if(  noti_time.length() != 10)
+            return otherUtil.errorMessage("-52");
 
         String sql = "insert into book_notice(noti_title,noti_text,noti_time) values('"+noti_title+"','"+noti_text+"','"+noti_time+"')";
         int res =  DButil.execUpdate(sql);
         if( res <= 0 ){
-            map.put("msg","插入公告错误");
+            return otherUtil.errorMessage("-2");
         }
-        else{
-            map.put("code","1");
-            map.put("msg","添加成功");
-        }
+        map.put("code", "1");
+        map.put("msg", "添加公告成功");
         return map;
     }
 
     //删除公告
     public static Map<String,String> DeleteNotice(String noti_id){
         Map<String,String> map = new HashMap<>();
-        map.put("code","-1");
-        map.put("msg","noti_id错误");
+
         if( noti_id == null ){
-            return map;
+            return otherUtil.errorMessage("-54");
         }
 
         if( otherUtil.isConSpeCharacters(noti_id) ){
-            map.put("msg","id不能有特殊字符");
-            return map;
+            return otherUtil.errorMessage("-54");
         }
 
         String sql = "delete from book_notice where noti_id="+ noti_id +"";
         int res = DButil.execUpdate(sql);
         if( res < 1){
-            map.put("msg","删除失败，没有这个ID");
+            return otherUtil.errorMessage("-8");
         }else{
             map.put("code","1");
-            map.put("msg","删除成功");
+            map.put("msg","公告已删除");
         }
         return map;
     }
@@ -105,15 +98,12 @@ public class NoticeDao {
     //更新公告
     public static Map<String,String> UpdateNotice(String id ,String noti_title,String noti_text,String noti_time){
         Map<String,String> map = new HashMap<>();
-        map.put("code","-1");
-        map.put("msg","信息不能为空");
+
         if( id == null || noti_title == null || noti_text == null || noti_time == null){
-            return map;
+            return otherUtil.errorMessage("-55");
         }
         if( otherUtil.isConSpeCharacters(id) || otherUtil.isConSpeCharacters(noti_time)){
-            map.put("code","-1");
-            map.put("msg","不能出现特殊字符");
-            return map;
+            return otherUtil.errorMessage("-54");
         }
 
         String sql = "update book_notice set noti_title='" +
@@ -122,10 +112,10 @@ public class NoticeDao {
                 noti_time +"' where noti_id="+id;
         int res = DButil.execUpdate(sql);
         if( res < 1){
-            map.put("msg","删除失败，没有这个ID");
+            return otherUtil.errorMessage("-9");
         }else{
             map.put("code","1");
-            map.put("msg","删除成功");
+            map.put("msg","公告已修改");
         }
         return map;
     }

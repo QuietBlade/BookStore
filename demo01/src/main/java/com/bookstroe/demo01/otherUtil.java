@@ -148,8 +148,8 @@ public class otherUtil {
 
     public static boolean isNumber(String number){
         try {
-            Integer i = Integer.valueOf(number);
-            Double d = Double.valueOf(number);
+            Integer.valueOf(number);
+            Double.valueOf(number);
         }catch(Exception e){
             e.printStackTrace();
             return false;
@@ -163,9 +163,20 @@ public class otherUtil {
         map.put("msg","id不能为空");
         if( code == null){ return map; }
         switch( code ){
+            case "1":map.put("msg","操作成功");break;
+//            case "1":map.put("msg","");break;
+//            case "1":map.put("msg","");break;
+//            case "1":map.put("msg","");break;
+//            case "1":map.put("msg","");break;
+//            case "1":map.put("msg","注册成功");break;
+//            case "1":map.put("msg","公告添加成功");break;
+//            case "1":map.put("msg","公告已修改");break;
+//            case "1":map.put("msg","用户已激活");break;
+//            case "1":map.put("msg","公告已删除");break;
+//            case "1":map.put("msg","密码已修改");break;
             case "0":map.put("msg","数据库异常");break;
             case "-1":map.put("msg","_token异常");break;
-            case "-2":map.put("msg","");break;
+            case "-2":map.put("msg","添加公告失败");break;
             case "-3":map.put("msg","邮件发送失败");break;
             case "-4":map.put("msg","添加书籍失败");break;
             case "-5":map.put("msg","添加用户失败");break;
@@ -217,8 +228,8 @@ public class otherUtil {
             case "-51":map.put("msg","公告内容不能为空");break;
             case "-52":map.put("msg","公告时间戳错误");break;
             case "-53":map.put("msg","公告标题不能有特殊字符");break;
-            case "-54":map.put("msg","");break;
-            case "-55":map.put("msg","");break;
+            case "-54":map.put("msg","公告ID异常");break;
+            case "-55":map.put("msg","公告信息不能为空");break;
             case "-56":map.put("msg","");break;
             case "-57":map.put("msg","");break;
             case "-58":map.put("msg","");break;

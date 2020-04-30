@@ -6,16 +6,14 @@
       <change beforePath="$PROJECT_DIR$/src/main/db/login.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/login.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/NoticeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/NoticeDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/AdminController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/BookDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/BookDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/img.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +269,7 @@
       <workItem from="1588058067117" duration="10649000" />
       <workItem from="1588133986860" duration="9687000" />
       <workItem from="1588146943221" duration="19111000" />
-      <workItem from="1588220524505" duration="8119000" />
+      <workItem from="1588220524505" duration="13546000" />
     </task>
     <task id="LOCAL-00001" summary="userbean">
       <created>1587459757772</created>

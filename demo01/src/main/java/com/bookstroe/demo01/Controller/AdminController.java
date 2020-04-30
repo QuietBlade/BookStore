@@ -24,7 +24,7 @@ public class AdminController {
 
     //删除用户
     @RequestMapping(value = "/deluser",produces = "application/json;charset=utf-8")
-    public String deleteuser(HttpServletRequest req, HttpServletResponse res) throws SQLException {
+    public String deleteuser(HttpServletRequest req, HttpServletResponse res){
         Map<String,String> json = new HashMap<String,String>();
         json.put("code","-1");
         json.put("msg", "权限不足");
