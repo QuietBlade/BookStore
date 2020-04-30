@@ -10,6 +10,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
+import java.util.List;
+import java.util.Map;
 
 
 public class DButil {
@@ -80,6 +82,10 @@ public class DButil {
         return bookDao.add(book);
     }
 
+    public static Map<String, Object> allBook(String len){
+        return bookDao.allBook(len);
+    }
+
     public static int passwordUser(Author author,String newpass){
         newpass = otherUtil.stringToMD5(newpass);
         String sql = "UPDATE book_user SET loginpass='"+ newpass +"' WHERE uid='"+author.getUid()+"'";
@@ -95,7 +101,7 @@ public class DButil {
         return author;
     }
 
-    //notice的方法 有点乱
+    //notice的方法 有点乱 通用
     public static int execUpdate(String sql) {
         try {
             Connection conn = GetConnection();

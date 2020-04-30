@@ -11,7 +11,9 @@ import javax.sql.rowset.CachedRowSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -61,20 +63,29 @@ public class BookDao implements bookDao {
         return null;
     }
 
-    public Map<String,String> allBook(String number){
-        Map<String,String> map = new HashMap<>();
-        String sql = "select * from book_products order by book_num desc limit"+number;
+    public Map<String,Object> allBook(String number){
+        Map<String,Object> map = new HashMap<>();
+        Map<String,String> list = new HashMap<>();
+        //List<String> list = new ArrayList<>();
+        int i = 0;
+        String sql = "select * from book_products order by book_num desc limit "+number;
         CachedRowSet crst = DButil.execQuery(sql);
         try{
             while(crst.next()){
-
+                list.put("book_id",crst.getString("book_id"));
+                list.put("book_name",crst.getString("book_name"));
+                list.put("book_price",crst.getString("book_price"));
+                list.put("book_num",crst.getString("book_num"));
+                list.put("book_imgurl",crst.getString("book_imgurl"));
+                map.put(String.valueOf(i),list);
+                list = new HashMap<>();
+                i = i + 1;
             }
         }catch (SQLException e){
             e.printStackTrace();
-            return otherUtil.errorMessage("-1");
+            return null;
         }
 
-
-        return null;
+        return map;
     }
 }

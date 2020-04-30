@@ -163,14 +163,15 @@ public class BookController {
 
     @RequestMapping(value = "/book_sear",produces = "application/json;charset=utf-8")
     public static String searchBook(HttpServletRequest req, HttpServletResponse res){
+        String len = req.getParameter("len");
+        if( len == null || !otherUtil.isNumber(len) ){
+            len = "10";
+        }
         Map<String,Object> json = new HashMap<>();
-        Map<String,Object> data = new HashMap<>();
-
-
         json.put("code","1");
-        json.put("data",data);
+        json.put("data",DButil.allBook(len));
         json.put("msg","查询成功");
-        return null;
+        return JSON.toJSONString(json);
     }
 
 }
