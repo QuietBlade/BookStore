@@ -32,9 +32,8 @@ public class AdminController {
 
         author = DButil.getAuthor(req);
 
-        if( !author.getLoginGroup().equals("admin")){
+        if( !author.getLoginGroup().equals("admin"))
             return JSON.toJSONString(json);
-        }
 
         json.put("code","1");
         json.put("msg","删除成功");
