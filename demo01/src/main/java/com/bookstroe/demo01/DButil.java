@@ -9,6 +9,8 @@ import com.sun.rowset.CachedRowSetImpl;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +23,16 @@ public class DButil {
 
     public static Connection GetConnection() {
         //String DBPath = "jdbc:sqlite://C:/Users/world/Desktop/java web/实训/login/src/db/login.db";
-        //String DBPath = "jdbc:sqlite:C:\\Users\\world\\Desktop\\java web\\实训\\login\\src\\db\\login.db";
-        String DBPath = "jdbc:sqlite:C:\\Users\\world\\Desktop\\javaweb\\demo01\\src\\main\\db\\login.db";
+        //String DBPath = "jdbc:sqlite:C:\\Users\\world\\Desktop\\javaweb\\demo01\\src\\main\\db\\login.db";
+        String DBPath = "jdbc:sqlite:";
+        File directory = new File("../../db/login.db");
+        try{
+            DBPath += directory.getCanonicalPath();
+            //System.out.println(DBPath);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
         Connection connection = null;
         try {
             Class.forName("org.sqlite.JDBC");
