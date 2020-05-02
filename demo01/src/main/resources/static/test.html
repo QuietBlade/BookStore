@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
 </head>
 <body>
     this.test.html
+    <script src="./layui/layui.js"></script>
+<script>
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        layer.open({
+            title: '添加图书'
+            ,type: 2
+            ,content: './img.html'
+        });
+    });
+</script>
 </body>
 </html>

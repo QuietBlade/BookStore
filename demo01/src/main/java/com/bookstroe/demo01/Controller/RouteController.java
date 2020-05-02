@@ -7,6 +7,7 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +24,7 @@ import java.sql.SQLException;
 public class RouteController {
 
     @RequestMapping("/")
-    public String index(HttpServletRequest req, HttpServletResponse res,ModelMap map) throws SQLException {
+    public String index(HttpServletRequest req, HttpServletResponse res,ModelMap map) throws IOException {
         HttpSession session = req.getSession();
         Author author = DButil.getAuthor(req);
         if( author == null){
@@ -52,6 +53,12 @@ public class RouteController {
         String html = "<input type=\"hidden\" name=\"_token\" value=\"" + token + "\"/>";
         map.addAttribute("csrf",html);
         return "regist";
+    }
+
+    @RequestMapping("/book/{id}")
+    public static String searchBook(@PathVariable("id") String book_id, HttpServletRequest req, HttpServletResponse res, ModelMap map){
+        System.out.println(book_id);
+        return "book_tmp";
     }
 
 }

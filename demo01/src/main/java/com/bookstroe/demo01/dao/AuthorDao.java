@@ -30,8 +30,8 @@ public class AuthorDao implements userDao{
             statement.setString(4,author.getEmail());
             statement.setInt(5,author.getStatus());
             statement.setString(6,author.getActivarionCode());
-            statement.setString(7,author.getLoginGroup());
-            statement.setString(8,author.getRegistTime());
+            statement.setString(7,author.getRegistTime());
+            statement.setString(8,author.getLoginGroup());
             len = statement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();

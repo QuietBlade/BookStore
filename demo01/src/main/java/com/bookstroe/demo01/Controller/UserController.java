@@ -204,7 +204,7 @@ public class UserController {
                 otherUtil.sendMail(username, title, text);
             } else {
                 //没有过滤特殊字符
-                Author author = DButil.findUser(username);
+                author = DButil.findUser(username);
                 session.setAttribute("code", randomcode);
                 otherUtil.sendMail(author.getEmail(), title, text);
             }
@@ -220,6 +220,7 @@ public class UserController {
             } else {
                 json.put("code", "1");
                 json.put("msg", "修改成功");
+                author = DButil.setGuest();
             }
         } else {
             return JSON.toJSONString(otherUtil.errorMessage("-44"));
