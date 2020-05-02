@@ -91,15 +91,5 @@ BookStore在线书城系统，采用 Spring boot + Sqlite设计
 
   如使用idea中的maven,配置文件在 `IntelliJ IDEA安装目录下\plugins\maven\lib\maven3\conf\settings.xml`
 
-+ 改动数据库路径
-
-  [demo01/src/main/java/com/bookstroe/demo01/DButil.java](http://cloud.yuanzhangzcc.com:3000/world/java-web/src/master/demo01/src/main/java/com/bookstroe/demo01/DButil.java)
-
-  10行，sqlite文件所在位置，更改为自己磁盘中 login.db 的路径
-
-
-
-
-
-
-
++ 运行项目
+enjoy !
