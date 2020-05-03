@@ -209,7 +209,7 @@ public class otherUtil {
             case "-32":map.put("msg","邮箱不能有特殊字符");break;
             case "-33":map.put("msg","邮箱不能为空");break;
             case "-34":map.put("msg","邮箱已存在");break;
-            case "-35":map.put("msg","");break;
+            case "-35":map.put("msg","用户名或邮箱不存在");break;
             case "-36":map.put("msg","");break;
             case "-37":map.put("msg","");break;
             case "-38":map.put("msg","");break;

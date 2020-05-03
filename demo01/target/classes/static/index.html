@@ -7,17 +7,45 @@
 </head>
 <body>
 
-    <button type="button" id="zhuche">点击注册</button>
+    <button type="button" id="register">点击注册</button>
+    <br/>
+    <button type="button" id="login">点击登录</button>
+    <br/>
+    <button type="button" id="forget">忘记密码</button>
+    <br/>
+    <button type="button" id="active">激活用户</button>
+
     <script src="./layui/layui.js"></script>
 <script>
 
     layui.use(['layer','jquery'],function(){
         var layer = layui.layer
         , $ = layui.jquery;
-        $("#zhuche").click(function(){
+        $("#register").click(function(){
             layer.open({
                 type:2,
                 content:'./regist'
+            })
+        });
+
+        $("#login").click(function(){
+            layer.open({
+                type:2,
+                content:'./login'
+            })
+        });
+
+        $("#forget").click(function(){
+            layer.open({
+                type:2,
+                content:'./forget.html'
+            })
+        });
+
+        $("#active").click(function(){
+            layer.open({
+                type:2,
+                content:'./active.html'
             })
         });
 

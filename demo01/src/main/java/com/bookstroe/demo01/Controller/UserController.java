@@ -192,7 +192,7 @@ public class UserController {
         String code = req.getParameter("code");
         String newpasword = req.getParameter("password");
 
-        if (username == null || newpasword == null) {
+        if (username == null) {
             return JSON.toJSONString(otherUtil.errorMessage("-27"));
         } else if (code == null || code.length() < 1) {  //发送验证码
             String randomcode = otherUtil.Random();
@@ -204,7 +204,12 @@ public class UserController {
                 otherUtil.sendMail(username, title, text);
             } else {
                 //没有过滤特殊字符
+                System.out.println(username);
                 author = DButil.findUser(username);
+                System.out.println(author.toString());
+                if( author.getLoginGroup().equals("guest")){
+                    return JSON.toJSONString(otherUtil.errorMessage("-35"));
+                }
                 session.setAttribute("code", randomcode);
                 otherUtil.sendMail(author.getEmail(), title, text);
             }
