@@ -70,7 +70,7 @@ public class otherUtil {
         //String email[] = {"xxxxx@qq.com","xxxxx@126.com"}; //可以同时发送多个邮箱
         mailSender.setHost("smtp.163.com");//动态添加配置
         mailSender.setUsername("yuanzhangzcc@163.com");
-        mailSender.setPassword("wy1185752791");
+        mailSender.setPassword("YJMEWHLTSIYRPDMK");
         mailSender.setProtocol("smtp");
         mailSender.setPort(25);
         MimeMessage msg = mailSender.createMimeMessage();
