@@ -78,8 +78,7 @@
             $("[name=tijiao]").removeClass("layui-hide");
             var startTime = new Date().getTime();
             var endTime = startTime + 1000 * 10; // 10s
-            //假设为当前服务器时间，这里采用的是本地时间，实际使用一般是取服务端的
-
+            //倒计时
             util.countdown(endTime, startTime, function(date, serverTime, timer){
                 qu = true;
                 if( date[3] == 0){

@@ -288,6 +288,15 @@ public class UserController {
         return null;
     }
 
+    //用户是否登录
+    @RequestMapping("/islogin")
+    public boolean islogin(HttpServletRequest req, HttpServletResponse res){
+        if(author.getLoginGroup().equals("guest"))
+            return false;
+        else
+            return true;
+    }
+
     //    测试用户查找
 //    @RequestMapping("/user/find")
 //    public String find(HttpServletRequest req, HttpServletResponse res) throws SQLException {

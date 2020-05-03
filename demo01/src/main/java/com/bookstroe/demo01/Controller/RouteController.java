@@ -57,7 +57,7 @@ public class RouteController {
 
     @RequestMapping("/book/{id}")
     public static String searchBook(@PathVariable("id") String book_id, HttpServletRequest req, HttpServletResponse res, ModelMap map){
-        System.out.println(book_id);
+        String sql = "select * from ";
         return "book_tmp";
     }
 
