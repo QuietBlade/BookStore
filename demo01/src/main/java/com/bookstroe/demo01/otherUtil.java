@@ -233,7 +233,7 @@ public class otherUtil {
             case "-56":map.put("msg","");break;
             case "-57":map.put("msg","");break;
             case "-58":map.put("msg","");break;
-            case "-59":map.put("msg","");break;
+            case "-59":map.put("msg","图书ID不能为空");break;
             case "-60":map.put("msg","书名不能为空");break;
             case "-61":map.put("msg","价格不能为空");break;
             case "-62":map.put("msg","数量不能为空");break;

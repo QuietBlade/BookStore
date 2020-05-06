@@ -288,6 +288,11 @@ public class UserController {
         return null;
     }
 
+    @RequestMapping("/user/address")
+    public String add_address(){
+        return "0";
+    }
+
     //用户是否登录
     @RequestMapping("/islogin")
     public boolean islogin(HttpServletRequest req, HttpServletResponse res){

@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -171,6 +172,70 @@ public class BookController {
         json.put("code","1");
         json.put("data",DButil.allBook(len));
         json.put("msg","查询成功");
+        return JSON.toJSONString(json);
+    }
+
+    @RequestMapping(value = "/search",produces = "application/json;charset=utf-8")
+    public static String search(HttpServletRequest req, HttpServletResponse res){
+        String main = req.getParameter("ClassifyMain");
+        String two = req.getParameter("ClassifyTwo");
+        String page = req.getParameter("page");
+        String length = req.getParameter("length");
+        String key = req.getParameter("book");
+        String sql = null;
+        //如果没有key, 检查是否有二级分类,是否有主类
+        //有key,按照key来搜索
+        //page第几页
+        if(!otherUtil.isNumber(main)){
+            main = "%";
+        }
+        if(!otherUtil.isNumber(two)){
+            two = "%";
+        }
+        if( page == null || !otherUtil.isNumber(page)){
+            page = "1";
+        }
+        if( length == null || !otherUtil.isNumber(length)){
+            length = "8";
+        }
+        if( key == null){
+            key = "%";
+        }
+
+        String limit = String.valueOf((Integer.valueOf(page) - 1) * Integer.valueOf(length) );
+
+        sql = "SELECT * from book_products WHERE book_name LIKE '%"+key+"%' and book_classifyMain like '%"+main+"%' and book_classifyTwo like '%"+two+"%' limit "+limit+","+length+"";
+        Map<String,Object> json = new HashMap<>();
+        json.put("code","1");
+        json.put("data",DButil.searchBook(sql));
+        json.put("msg","查询成功");
+        return JSON.toJSONString(json);
+    }
+
+    @RequestMapping(value = "/addcart",produces = "application/json;charset=utf-8")
+    public static String addCart(HttpServletRequest req, HttpServletResponse res){
+        String book_id = req.getParameter("book_id");
+        String num = req.getParameter("num");
+        Author author = DButil.getAuthor(req);
+        if( author.getLoginGroup().equals("guest")){
+            return JSON.toJSONString(otherUtil.errorMessage("-16"));
+        }
+        if(num == null || !otherUtil.isNumber(num)){
+            num = "1";
+        }
+        if(book_id == null){
+            return JSON.toJSONString(otherUtil.errorMessage("-59"));
+        }
+
+        Book book = DButil.findBook(book_id);
+        HttpSession session = req.getSession(true);
+        Map<Book,Integer> carts = new HashMap<>();
+        carts.put(book,Integer.valueOf(num));
+        session.setAttribute("cats",carts);
+
+        Map<String,Object> json = new HashMap<>();
+        json.put("code","1");
+        json.put("msg","添加购物车成功");
         return JSON.toJSONString(json);
     }
 

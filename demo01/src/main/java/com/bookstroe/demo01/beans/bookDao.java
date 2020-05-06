@@ -12,6 +12,6 @@ public interface bookDao {
 
         int delete(String bid);
 
-        Book  findBook(String username,String email);
+        Book  findBook(String id);
 
 }

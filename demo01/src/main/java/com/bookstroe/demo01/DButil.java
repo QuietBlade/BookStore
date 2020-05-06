@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -96,6 +97,10 @@ public class DButil {
         return bookDao.allBook(len);
     }
 
+    public static Map<String, Object> searchBook(String sql){
+        return bookDao.searchBook(sql);
+    }
+
     public static int passwordUser(Author author,String newpass){
         newpass = otherUtil.stringToMD5(newpass);
         String sql = "UPDATE book_user SET loginpass='"+ newpass +"' WHERE uid='"+author.getUid()+"'";
@@ -162,4 +167,8 @@ public class DButil {
 
     }
 
+    //查找图片
+    public static Book findBook(String book_id) {
+        return bookDao.findBook(book_id);
+    }
 }

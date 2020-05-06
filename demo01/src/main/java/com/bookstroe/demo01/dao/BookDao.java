@@ -59,14 +59,30 @@ public class BookDao implements bookDao {
         return 0;
     }
 
-    public Book findBook(String username,String email){
-        return null;
+    public Book findBook(String id){
+        Book book = new Book();
+        String sql = "SELECT * from book_products where book_id='"+id+"'";
+        CachedRowSetImpl crst = DButil.execQuery(sql);
+        int i  = 0;
+        try{
+            while(crst.next()){
+                book.setId(crst.getString("book_id"));
+                book.setName(crst.getString("book_name"));
+                book.setPrice(crst.getDouble("book_price"));
+                book.setNum(crst.getInt("book_num"));
+                book.setImgurl(crst.getString("book_imgurl"));
+                book.setDesc(crst.getString("book_desc"));
+                i = i + 1;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return book;
     }
 
     public Map<String,Object> allBook(String number){
         Map<String,Object> map = new HashMap<>();
         Map<String,String> list = new HashMap<>();
-        //List<String> list = new ArrayList<>();
         int i = 0;
         String sql = "select * from book_products order by book_num desc limit "+number;
         CachedRowSet crst = DButil.execQuery(sql);
@@ -88,4 +104,27 @@ public class BookDao implements bookDao {
 
         return map;
     }
+
+    public static Map<String, Object> searchBook(String sql){
+        Map<String, Object> map = new HashMap<>();
+        Map<String, String> data = new HashMap<>();;
+        CachedRowSetImpl crst = DButil.execQuery(sql);
+        int i  = 0;
+        try{
+            while(crst.next()){
+                data.put("book_id",crst.getString("book_id"));
+                data.put("book_name",crst.getString("book_name"));
+                data.put("book_price",crst.getString("book_price"));
+                data.put("book_num",crst.getString("book_num"));
+                data.put("book_imgurl",crst.getString("book_imgurl"));
+                map.put(String.valueOf(i),data);
+                data = new HashMap<>();
+                i = i + 1;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return map;
+    }
+
 }
