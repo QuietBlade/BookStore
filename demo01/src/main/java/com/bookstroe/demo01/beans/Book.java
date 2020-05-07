@@ -74,4 +74,32 @@ public class Book {
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "id:'" + id + '\'' +
+                ", name:'" + name + '\'' +
+                ", price:" + price +
+                ", classifyMain:" + classifyMain +
+                ", classifyTwo:" + classifyTwo +
+                ", num:" + num +
+                ", imgurl:'" + imgurl + '\'' +
+                ", desc:'" + desc + '\'' +
+                '}';
+    }
+
+    public Book toBook(String str) {
+//        return "{" +
+//                "id:'" + id + '\'' +
+//                ", name:'" + name + '\'' +
+//                ", price:" + price +
+//                ", classifyMain:" + classifyMain +
+//                ", classifyTwo:" + classifyTwo +
+//                ", num:" + num +
+//                ", imgurl:'" + imgurl + '\'' +
+//                ", desc:'" + desc + '\'' +
+//                '}';
+        return null;
+    }
+
 }

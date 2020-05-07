@@ -1,5 +1,6 @@
 package com.bookstroe.demo01.Controller;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.bookstroe.demo01.DButil;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.beans.Book;
@@ -228,17 +229,87 @@ public class BookController {
         }
 
         Book book = DButil.findBook(book_id);
+        if( book == null){
+            return JSON.toJSONString(otherUtil.errorMessage("-58"));
+        }
         HttpSession session = req.getSession(true);
-        Map<Book,Integer> carts = new HashMap<>();
-        carts.put(book,Integer.valueOf(num));
-        session.setAttribute("cats",carts);
+
+        Integer index = 0;
+        boolean decide = true; //控制是否更新图书
+        Map<String,Object> carts = (Map<String,Object>)session.getAttribute("carts");
+        Map<String,Object> data  = new HashMap<>();
+        if( carts == null){ //如果购物车为空
+            carts = new HashMap<>();
+        }else{
+            while(true){
+                if( carts.get(String.valueOf(index)) == null){
+                    break;
+                }
+                Map<String,Object> datatmp = (Map<String,Object>)carts.get(String.valueOf(index));
+                Book booktmp = (Book)datatmp.get("data");
+                if( booktmp.getId().equals(book.getId())){
+                    //图书相同,数量相加
+                    Integer snum = (Integer)datatmp.get("sum");
+                    datatmp.put("sum",snum + Integer.valueOf(num));
+                    data = datatmp;
+                    decide = false;
+                    break;
+                }
+                index += 1;
+            }
+        }
+
+        if( decide ){
+            data.put("data",book); //String.valueOf(index)
+            data.put("sum",Integer.valueOf(num));
+        }
+        carts.put(String.valueOf(index),data);
 
         Map<String,Object> json = new HashMap<>();
         json.put("code","1");
-        json.put("msg","添加购物车成功");
+        json.put("msg","添加到购物车成功");
+        session.setAttribute("carts",carts);
+        //return JSON.toJSONString(carts);
         return JSON.toJSONString(json);
+        //return JSON.toJSONString(carts, SerializerFeature.DisableCircularReferenceDetect);
     }
 
+    @RequestMapping(value = "/carts",produces = "application/json;charset=utf-8")
+    public static String carts(HttpServletRequest req, HttpServletResponse res){
 
+        Author author = DButil.getAuthor(req);
+        if( author.getLoginGroup().equals("guest")){
+            return JSON.toJSONString(otherUtil.errorMessage("-16"));
+        }
+
+        HttpSession session = req.getSession(false);
+//        {
+//          code : 1,
+//          carts : {
+//                "0" : {
+//                    id:'e8bcbc930a94434b9f67a060e021d865', name:'小小', price:23.0, classifyMain:0, classifyTwo:0, num:23, imgurl:'/img/2020/04/30/1261ec42e01f447fa4e3a016560bf62f.png', desc:'23',buynum:'5'
+//                },
+//            },
+//          snum : {
+//              "e8bcbc930a94434b9f67a060e021d865" : 3,
+//          }
+//          msg:"test",
+//        }
+
+        if( session == null){
+            return JSON.toJSONString(otherUtil.errorMessage("-66"));
+        }
+
+        Map<String,Object> carts = (Map<String,Object>)session.getAttribute("carts");
+        if( carts == null)
+            return JSON.toJSONString(otherUtil.errorMessage("-66"));
+
+        Map<String,Object> json = new HashMap<>();
+        json.put("code","1");
+        json.put("carts",carts);
+        json.put("msg","查询成功");
+
+        return JSON.toJSONString(json);
+    }
 
 }

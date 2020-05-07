@@ -76,6 +76,7 @@ public class BookDao implements bookDao {
             }
         }catch (SQLException e){
             e.printStackTrace();
+            return null;
         }
         return book;
     }
