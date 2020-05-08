@@ -90,6 +90,8 @@ public class DButil {
 
     public static int addBook(Book book){
         book.setId(otherUtil.StringUUID());
+        if( book.getImgurl() ==null)
+            book.setImgurl("/img/default.jpg");
         return bookDao.add(book);
     }
 

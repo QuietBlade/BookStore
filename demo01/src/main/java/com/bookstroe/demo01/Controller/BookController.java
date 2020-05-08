@@ -227,15 +227,13 @@ public class BookController {
         if(book_id == null){
             return JSON.toJSONString(otherUtil.errorMessage("-59"));
         }
-
         Book book = DButil.findBook(book_id);
         if( book == null){
             return JSON.toJSONString(otherUtil.errorMessage("-58"));
         }
         HttpSession session = req.getSession(true);
-
         Integer index = 0;
-        boolean decide = true; //控制是否更新图书
+        boolean decide = true; //控制是否新增图书
         Map<String,Object> carts = (Map<String,Object>)session.getAttribute("carts");
         Map<String,Object> data  = new HashMap<>();
         if( carts == null){ //如果购物车为空
@@ -245,6 +243,7 @@ public class BookController {
                 if( carts.get(String.valueOf(index)) == null){
                     break;
                 }
+                //必须用临时变量,不然数据会叠加
                 Map<String,Object> datatmp = (Map<String,Object>)carts.get(String.valueOf(index));
                 Book booktmp = (Book)datatmp.get("data");
                 if( booktmp.getId().equals(book.getId())){
@@ -259,7 +258,7 @@ public class BookController {
             }
         }
 
-        if( decide ){
+        if( decide ){ //没有相同的图书,新增
             data.put("data",book); //String.valueOf(index)
             data.put("sum",Integer.valueOf(num));
         }
@@ -271,44 +270,118 @@ public class BookController {
         session.setAttribute("carts",carts);
         //return JSON.toJSONString(carts);
         return JSON.toJSONString(json);
-        //return JSON.toJSONString(carts, SerializerFeature.DisableCircularReferenceDetect);
     }
 
-    @RequestMapping(value = "/carts",produces = "application/json;charset=utf-8")
-    public static String carts(HttpServletRequest req, HttpServletResponse res){
-
+    @RequestMapping(value = "/cartos",produces = "application/json;charset=utf-8")
+    public static String osCart(HttpServletRequest req, HttpServletResponse res) {
         Author author = DButil.getAuthor(req);
         if( author.getLoginGroup().equals("guest")){
             return JSON.toJSONString(otherUtil.errorMessage("-16"));
         }
 
-        HttpSession session = req.getSession(false);
-//        {
-//          code : 1,
-//          carts : {
-//                "0" : {
-//                    id:'e8bcbc930a94434b9f67a060e021d865', name:'小小', price:23.0, classifyMain:0, classifyTwo:0, num:23, imgurl:'/img/2020/04/30/1261ec42e01f447fa4e3a016560bf62f.png', desc:'23',buynum:'5'
-//                },
-//            },
-//          snum : {
-//              "e8bcbc930a94434b9f67a060e021d865" : 3,
-//          }
-//          msg:"test",
-//        }
+        String book_id = req.getParameter("bid");
+        if( book_id == null)
+            return JSON.toJSONString(otherUtil.errorMessage("-59"));
 
+        Book book = DButil.findBook(book_id);
+        if( book == null){
+            return JSON.toJSONString(otherUtil.errorMessage("-58"));
+        }
+
+        String type = req.getParameter("type");
+        String num = req.getParameter("num");
+        if( num == null || type == null)
+            type = "delete";
+
+        HttpSession session = req.getSession(true);
+        Integer index = 0;
+        boolean decide = true; //控制是否新增图书
+        Map<String,Object> carts = (Map<String,Object>)session.getAttribute("carts");
+        Map<String,Object> data  = new HashMap<>();
+        if( carts == null){ //如果购物车为空
+            carts = new HashMap<>();
+            return JSON.toJSONString(otherUtil.errorMessage("-66"));
+        }else{
+            if( carts.get(String.valueOf(index)) == null){
+                return JSON.toJSONString(otherUtil.errorMessage("-66"));
+            }
+
+            //删除购物车操作
+            if( type.equals("delete") ) {
+                while(true){
+                    //必须用临时变量,不然数据会叠加
+                    Map<String,Object> datatmp = (Map<String,Object>)carts.get(String.valueOf(index));
+                    if( datatmp == null){
+                        break;
+                    }
+
+                    Book booktmp = (Book)datatmp.get("data");
+                    if( booktmp.getId().equals(book.getId())){
+                        //id相同,删除记录
+                        datatmp.remove(String.valueOf(index));
+
+                        //删除记录,更新记录
+                        boolean tmp = true;
+                        for( ; tmp ; index++ ){
+                            //if(  )
+
+                        }
+                        data = datatmp;
+                        decide = false;
+                        break;
+                    }
+                    index += 1;
+                }
+            }
+            //修改购物车操作
+            else if( type.equals("update")){
+                while(true){
+                    //必须用临时变量,不然数据会叠加
+                    Map<String,Object> datatmp = (Map<String,Object>)carts.get(String.valueOf(index));
+                    if( datatmp == null)
+                        break;
+                    Book booktmp = (Book)datatmp.get("data");
+                    if( booktmp.getId().equals(book.getId())){
+                        //图书相同,数量相加
+
+                        //datatmp.put("sum",snum + Integer.valueOf(num));
+                        data = datatmp;
+                        decide = false;
+                        break;
+                    }
+                    index += 1;
+                }
+            }
+
+
+
+
+        }
+
+        Map<String,Object> json = new HashMap<>();
+        json.put("code","1");
+        //json.put("carts",carts);
+        json.put("msg","删除成功");
+        return JSON.toJSONString(json);
+    }
+
+    @RequestMapping(value = "/carts",produces = "application/json;charset=utf-8")
+    public static String carts(HttpServletRequest req, HttpServletResponse res){
+        Author author = DButil.getAuthor(req);
+        if( author.getLoginGroup().equals("guest")){
+            return JSON.toJSONString(otherUtil.errorMessage("-16"));
+        }
+        HttpSession session = req.getSession(false);
         if( session == null){
             return JSON.toJSONString(otherUtil.errorMessage("-66"));
         }
-
         Map<String,Object> carts = (Map<String,Object>)session.getAttribute("carts");
         if( carts == null)
             return JSON.toJSONString(otherUtil.errorMessage("-66"));
-
         Map<String,Object> json = new HashMap<>();
         json.put("code","1");
         json.put("carts",carts);
         json.put("msg","查询成功");
-
         return JSON.toJSONString(json);
     }
 

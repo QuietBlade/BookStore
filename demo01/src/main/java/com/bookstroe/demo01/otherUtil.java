@@ -232,7 +232,7 @@ public class otherUtil {
             case "-55":map.put("msg","公告信息不能为空");break;
             case "-56":map.put("msg","");break;
             case "-57":map.put("msg","");break;
-            case "-58":map.put("msg","");break;
+            case "-58":map.put("msg","图书不存在");break;
             case "-59":map.put("msg","图书ID不能为空");break;
             case "-60":map.put("msg","书名不能为空");break;
             case "-61":map.put("msg","价格不能为空");break;
@@ -240,6 +240,8 @@ public class otherUtil {
             case "-63":map.put("msg","描述不能为空");break;
             case "-64":map.put("msg","价格或数量必须是数字");break;
             case "-65":map.put("msg","书名不能有特殊字符");break;
+            case "-66":map.put("msg","购物车空空如也");break;
+
         }
         return map;
     }
