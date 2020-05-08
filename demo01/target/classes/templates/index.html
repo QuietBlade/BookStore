@@ -5,11 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-    <p th:text="${author.uid}"></p>
-    <p th:text="${author.loginuser}"></p>
-    <p th:text="${author.email}"></p>
-    <p th:text="${author.loginGroup}"></p>
-    <button type="button" value="">注册</button>
+
+    <p th:text="${author.loginuser}">游客</p>
+    当前身份 : <p th:text="${author.loginGroup}"></p>
+    <a href="/regist">注册</a>
+    <a href="/login">登录</a>
+    <a href="/forget.html">忘记密码</a>
+    <a href="/api/logoff">注销</a>
+
 
 </body>
 </html>

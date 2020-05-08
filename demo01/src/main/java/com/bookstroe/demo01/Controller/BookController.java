@@ -108,6 +108,7 @@ public class BookController {
         return JSON.toJSONString(json);
     }
 
+    //添加图书
     @RequestMapping(value = "/book_add",produces = "application/json;charset=utf-8")
     public static String addBook(HttpServletRequest req, HttpServletResponse res){
         Book book = new Book();
@@ -163,6 +164,7 @@ public class BookController {
         return JSON.toJSONString(json);
     }
 
+    //图书推荐
     @RequestMapping(value = "/book_sear",produces = "application/json;charset=utf-8")
     public static String searchBook(HttpServletRequest req, HttpServletResponse res){
         String len = req.getParameter("len");
@@ -176,6 +178,7 @@ public class BookController {
         return JSON.toJSONString(json);
     }
 
+    //图书搜索
     @RequestMapping(value = "/search",produces = "application/json;charset=utf-8")
     public static String search(HttpServletRequest req, HttpServletResponse res){
         String main = req.getParameter("ClassifyMain");
@@ -213,6 +216,7 @@ public class BookController {
         return JSON.toJSONString(json);
     }
 
+    //添加到购物车
     @RequestMapping(value = "/addcart",produces = "application/json;charset=utf-8")
     public static String addCart(HttpServletRequest req, HttpServletResponse res){
         String book_id = req.getParameter("book_id");
@@ -272,6 +276,7 @@ public class BookController {
         return JSON.toJSONString(json);
     }
 
+    //购物车修改或删除
     @RequestMapping(value = "/cartos",produces = "application/json;charset=utf-8")
     public static String osCart(HttpServletRequest req, HttpServletResponse res) {
         Author author = DButil.getAuthor(req);
@@ -295,7 +300,7 @@ public class BookController {
 
         HttpSession session = req.getSession(true);
         Integer index = 0;
-        boolean decide = true; //控制是否新增图书
+        boolean decide = true; //控制是否删除/修改图书
         Map<String,Object> carts = (Map<String,Object>)session.getAttribute("carts");
         Map<String,Object> data  = new HashMap<>();
         if( carts == null){ //如果购物车为空
@@ -318,16 +323,16 @@ public class BookController {
                     Book booktmp = (Book)datatmp.get("data");
                     if( booktmp.getId().equals(book.getId())){
                         //id相同,删除记录
-                        datatmp.remove(String.valueOf(index));
-
-                        //删除记录,更新记录
-                        boolean tmp = true;
-                        for( ; tmp ; index++ ){
-                            //if(  )
-
-                        }
-                        data = datatmp;
+                        carts.remove(String.valueOf(index));
                         decide = false;
+                        //删除记录,更新记录
+                        for( ;  ; index++ ){
+                            Map<String,Object> datatmptmp = (Map<String,Object>)carts.get(String.valueOf(index+1));
+                            if( datatmptmp == null)
+                                break;
+                            carts.put(String.valueOf(index),datatmptmp);
+                        }
+                        carts.remove(String.valueOf(index));
                         break;
                     }
                     index += 1;
@@ -342,10 +347,9 @@ public class BookController {
                         break;
                     Book booktmp = (Book)datatmp.get("data");
                     if( booktmp.getId().equals(book.getId())){
-                        //图书相同,数量相加
-
-                        //datatmp.put("sum",snum + Integer.valueOf(num));
-                        data = datatmp;
+                        //修改数量
+                        datatmp.put("sum",Integer.valueOf(num));
+                        carts.put(String.valueOf(index),datatmp);
                         decide = false;
                         break;
                     }
@@ -353,18 +357,25 @@ public class BookController {
                 }
             }
 
-
-
+            //carts.put(String.valueOf(index),data);
 
         }
 
+
+
+        if( decide ){
+            return JSON.toJSONString(otherUtil.errorMessage("-59"));
+        }
+
+        //System.out.println("delete:carts 365:"+carts);
+        session.setAttribute("carts",carts);
         Map<String,Object> json = new HashMap<>();
         json.put("code","1");
-        //json.put("carts",carts);
         json.put("msg","删除成功");
         return JSON.toJSONString(json);
     }
 
+    //购物车列表
     @RequestMapping(value = "/carts",produces = "application/json;charset=utf-8")
     public static String carts(HttpServletRequest req, HttpServletResponse res){
         Author author = DButil.getAuthor(req);

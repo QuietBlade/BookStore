@@ -106,6 +106,18 @@
                 return false;
             }
 
+            $.ajax({
+                url: './api/user/forget',
+                async:false,
+                data :{
+                    "username":d.username,
+                    "password":d.password,
+                    "code":d.code,
+                },
+                success: function(data){
+                    layer.msg(data.msg);
+                }
+            });
             return false;
         });
 
