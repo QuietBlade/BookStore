@@ -192,7 +192,7 @@ public class otherUtil {
             case "-15":map.put("msg","用户名已存在");break;
             case "-16":map.put("msg","当前未登录");break;
             case "-17":map.put("msg","权限不足");break;
-            case "-18":map.put("msg","用户成功注册");break;
+            case "-18":map.put("msg","用户注册失败");break;
             case "-19":map.put("msg","");break;
             case "-20":map.put("msg","密码错误");break;
             case "-21":map.put("msg","密码不能有特殊字符");break;

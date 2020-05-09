@@ -12,10 +12,10 @@ import javax.servlet.MultipartConfigElement;
 @Configuration
 public class Configurer implements WebMvcConfigurer {
 
-    //映射本地图片
+//    //映射本地图片
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/img/**").addResourceLocations("file:D:/temp-rainy/");
+        registry.addResourceHandler("/img/**").addResourceLocations("file:C:/Users/world/Desktop/javaweb/demo01/src/main/resources/static/img/");
     }
 
     //修改上传文件大小

@@ -1,18 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>登录</title>
+    <link href="/style/login.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <body>
-    <form action="/api/user/loginverification" method="get">
-        <div th:utext="${csrf}"></div>
-        <div> 用户名：<input type="text" name="username" /></div>
-        <div> 密码：<input type="password" name="password" /></div>
-        <input type="text" name="captcha" placeholder="图形验证码" autocomplete="off" value="">
-        <div> <img src="/api/verificationcode" title="点击切换验证码"  onclick="this.src='/api/verificationcode?'+Math.random()"/> </div>
-        <input type="checkbox" name="remember" value="true" />记住我
-        <div> <input type="submit" name="submit" /></div>
-    </form>
+<div><iframe src="/head.html" style="width: 100%; height: 50px; border: none;"></iframe></div>
+<div id="login_right">
+    <div th:utext="${csrf}"></div>
+    <h1>欢迎登录XX在线书城</h1>
+    <h2>账号 </h2><input name="username" type="text" class="user"/><br />
+    <h2>密码 </h2><input name="password" type="password" class="pass"/><br />
+    <h2>验证码</h2><input name="captcha" type="text" class="yanzheng">
+
+    <img src="/api/verificationcode" title="点击切换验证码"  onclick="this.src='/api/verificationcode?'+Math.random()"/><br />
+    <input type="checkbox" name="remember" value="true" />记住我 <br />
+    <input type="button" id="btn_login" name="btn_login" value="submit" />
+    <div id="login_btn">
+        <a href="/forget.html" class="forget">忘记密码</a>
+        <a href="/regist" class="getnew">未注册账号,立即注册</a>
+    </div>
+
+</div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="/layui/layer/layer.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#btn_login").click(function() {
+            $("[name=remember]")[0].is,
+            $.ajax({
+                url: "/api/user/loginverification",
+                contentType: "application/json",
+                data: {
+                    "username": $("[name=username]")[0].value,
+                    "password": $("[name=password]")[0].value,
+                    "captcha": $("[name=captcha]")[0].value,
+                    "remember": $("[name=remember]").is(':checked'),
+                    "_token":$("[name=_token]")[0].value
+                },
+                success: function (data, status) {
+                    // 202
+                    var a = data;
+                    console.log(typeof (a));
+                    console.log(a);
+                    console.log("code:" + a.code);
+                    console.log("msg:" + a.msg)
+                    if (a.code != "1") {
+                        layer.msg(a.msg);
+                    }else{
+                        layer.msg(a.msg);
+                        window.setTimeout("window.location='/'",5000);
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

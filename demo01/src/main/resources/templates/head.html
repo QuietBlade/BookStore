@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+			    margin:0;
+			    padding: 0;
+			}
+			#head{
+			    width:100%;
+			    height:50px;
+			    line-height: 50px;
+			    background-color: #F4A7B9;
+			    text-align:right;
+			    margin:0px auto 0px auto;
+			}
+			#txt,#btn{
+			    height:30px;
+			    margin-top: 5px;
+			}
+			#txt{
+			    width:30%;
+			}
+			#btn{
+			    width:6%;
+			    margin-right: 3%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="head">
+			&nbsp&nbsp<a href="/static/index.html" style="float: left;" target="_parent"> 首页</a>
+			<input type="text" name="text" id="txt" value="" />
+			<input type="button" name="btn" id="btn" value="搜索" />
+
+			<label th:if="${author.loginGroup} eq 'guest'"> 游客&nbsp请<a href="/login" target="_parent" style="">登录</a> </label>
+			<label th:unless="${author.loginGroup} eq 'guest'"> 欢迎 <label th:text="${author.loginuser}"></label> &nbsp <a href="/api/logoff" target="_parent" style="">注销</a></label>
+
+			<a href="/regist" target="_parent">立即注册</a>&nbsp&nbsp
+		</div>
+		<script type="text/javascript">
+			let oTxt = document.getElementById("txt");
+			let oBtn = document.getElementById("btn");
+			oBtn.onclick = function(){
+				window.top.location="/search?key="+oTxt.value;
+			}
+		</script>
+	</body>
+</html>

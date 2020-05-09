@@ -1,0 +1,55 @@
+body {
+    background: deepskyblue;
+}
+body .main {
+    width: 450.8px;
+    margin: 140px auto;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 42px;
+}
+body .main #MyDiv {
+    color: red;
+    position: absolute;
+    left: 135px;
+    top: 40px;
+    width: 80px;
+}
+body .main h1 {
+    text-align: center;
+}
+body .main .line {
+    margin-top: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+body .main .line label {
+    width: 126px;
+    line-height: 36.4px;
+    font-size: 25.2px;
+    font-family: "microsoft yahei";
+    display: inline-block;
+    letter-spacing: 2.8px;
+    font-weight: 400;
+}
+body .main .line input {
+    width: 224px;
+    height: 33.6px;
+    text-indent: 5.6px;
+    border: 1px solid #D7D7D7;
+}
+body .main .line .register {
+    width: 126px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    color: #D1E7FF;
+    background: #3056D3;
+    cursor: pointer;
+    border-radius: 7px;
+    box-shadow: 1.4px 1.4px 5.6px #ccc;
+}
+
+/*# sourceMappingURL=index.css.map */

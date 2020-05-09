@@ -31,19 +31,23 @@ public class BookController {
 
     //图片上传接口
     @RequestMapping("/upload")
-    public static String fileupload(@RequestParam(value = "file") MultipartFile file, ModelMap map){
+    public static String fileupload(@RequestParam(value = "file") MultipartFile file, ModelMap map) throws IOException {
         Map<String,String> json = new HashMap<>();
         if(file.isEmpty()){
             map.addAttribute("filepath", " ");
-            json.put("src","none");
+            json.put("src","/img/default.jpg");
             return JSON.toJSONString(json);
         }
+        File directory = new File("../../resources/static/img/");
+//        System.out.println(directory.getCanonicalPath());
 
         String fileName = file.getOriginalFilename();  // 文件名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
         Date dt=new Date();
         DateFormat time = new SimpleDateFormat("yyyy/MM/dd/");
-        String filePath = "D:/temp-rainy/" + time.format(dt); // 上传后的路径
+        //String filePath = "D:/temp-rainy/" + time.format(dt); // 上传后的路径
+        String filePath = directory.getCanonicalPath() + '/' + time.format(dt); // 上传后的路径
+        System.out.println(filePath);
         // System.out.println(filePath);
         // 输出的路径 : D:/temp-rainy/2020/04/28/
         fileName = otherUtil.StringUUID() + suffixName; // 新文件名
@@ -165,8 +169,8 @@ public class BookController {
     }
 
     //图书推荐
-    @RequestMapping(value = "/book_sear",produces = "application/json;charset=utf-8")
-    public static String searchBook(HttpServletRequest req, HttpServletResponse res){
+    @RequestMapping(value = "/recommend",produces = "application/json;charset=utf-8")
+    public static String recommendBook(HttpServletRequest req, HttpServletResponse res){
         String len = req.getParameter("len");
         if( len == null || !otherUtil.isNumber(len) ){
             len = "10";
@@ -302,9 +306,7 @@ public class BookController {
         Integer index = 0;
         boolean decide = true; //控制是否删除/修改图书
         Map<String,Object> carts = (Map<String,Object>)session.getAttribute("carts");
-        Map<String,Object> data  = new HashMap<>();
         if( carts == null){ //如果购物车为空
-            carts = new HashMap<>();
             return JSON.toJSONString(otherUtil.errorMessage("-66"));
         }else{
             if( carts.get(String.valueOf(index)) == null){
@@ -356,9 +358,6 @@ public class BookController {
                     index += 1;
                 }
             }
-
-            //carts.put(String.valueOf(index),data);
-
         }
 
 

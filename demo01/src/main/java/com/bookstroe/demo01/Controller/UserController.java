@@ -107,7 +107,7 @@ public class UserController {
             return JSON.toJSONString(otherUtil.errorMessage("-27"));
 
         if (username.length() < 6 || password.length() < 8)
-            return JSON.toJSONString(otherUtil.errorMessage("-18"));
+            return JSON.toJSONString(otherUtil.errorMessage("-28"));
 
         if (otherUtil.isConSpeCharacters(username) || otherUtil.isConSpeCharacters(password))
             return JSON.toJSONString(otherUtil.errorMessage("-26"));
@@ -283,11 +283,13 @@ public class UserController {
             session.setAttribute("author", DButil.setGuest());
         }
 
+
         author = DButil.setGuest();
         res.sendRedirect(req.getContextPath() + "/");
         return null;
     }
 
+    //添加地址
     @RequestMapping("/user/address")
     public String add_address(){
         return "0";
@@ -296,6 +298,7 @@ public class UserController {
     //用户是否登录
     @RequestMapping("/islogin")
     public boolean islogin(HttpServletRequest req, HttpServletResponse res){
+        Author author = DButil.getAuthor(req);
         if(author.getLoginGroup().equals("guest"))
             return false;
         else

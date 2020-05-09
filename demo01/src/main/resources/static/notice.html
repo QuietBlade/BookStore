@@ -2,26 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>公告查询</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link href="../style/notice.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    <table id='notice'>
-        <thead>
+<form>
+    <div><iframe src="/head.html" style="width: 100%; height: 50px; border: none;"></iframe></div>
+    <div id="main">
+        <div class="book_notice"><h1>图书公告</h1></div>
+        <table id='notice' class="layui-table">
+            <colgroup>
+                <col width="200">
+                <col width="150">
+                <col>
+            </colgroup>
+            <thead>
             <tr>
                 <th>标题</th>
-                <th>内容</th>
                 <th>时间</th>
+                <th>内容</th>
             </tr>
-        </thead>
-        <tbody >
-        </tbody>
-    </table>
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-
+            </thead>
+            <tbody >
+            </tbody>
+        </table>
+        <div class="infowin"><button id="msss" class="layui-icon layui-icon-addition" data-method="notice_add" style="font-size: 30px; color: black"></button></div>
+    </div>
+    <div id="foot">
+        <a href="" class="layui-icon layui-icon-home" class="navigation" style="font-size: 30px; margin-left: 5%; color: white; "></a>
+        <a href="" class="layui-icon layui-icon-spread-left" class="navigation"  style="font-size: 30px; margin-left: 15%; color: white;"></a>
+        <a href="" class="layui-icon layui-icon-cart-simple" class="navigation"  style="font-size: 30px; margin-left: 15%; color: white;"></a>
+        <a href="" class="layui-icon layui-icon-username" class="navigation"  style="font-size: 30px; margin-left: 15%; color: white;"></a>
+    </div>
+</form>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
         $.ajax({
-            url:"/api/notice/notice_sel",
+            url:"/api/notice_sel",
             success: function(data){
                 notice = data;
                 $.each( notice , function(index) {
@@ -29,14 +48,52 @@
                     commonTime = unixTimestamp.toLocaleString()
                     $("#notice tbody").append('<tr>'+
                         '<td>'+ notice[index].noti_title +'</td>' +
-                        '<td>'+ notice[index].noti_text +'</td>' +
                         '<td>'+ commonTime +'</td>' +
+                        '<td>'+  notice[index].noti_text+'</td>' +
                         '</tr>');
                 });
+                //$("#notice")[0].append(text);
+                // console.log(data);
+                // console.log(typeof(data));
             }
         })
 
     });
+</script>
+<script src="../layui/layui.all.js"></script>
+<script>
+    layui.use('layer', function(){ //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        //触发事件
+        var active = {
+            notice_add: function() {
+                //示范一个公告层
+                layer.open({
+                    type: 2//0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层)
+                    ,title: false //不显示标题栏
+                    ,closeBtn: false
+                    ,area: ['550px','535px']//定义宽高
+                    ,shade: 0.8//遮幕
+                    ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                    ,btn: ['主界面', '取消']
+                    ,btnAlign: 'c'//按钮排列：居中对齐
+                    ,moveType: 1 //拖拽模式，0或者1
+                    ,content: '${path}/toAddAd'//跳转到想要的界面，这里是我自己项目的跳转界面
+                    ,
+                    success: function (layero) {
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.find('.layui-layer-btn0').attr({
+                            href: '${path}'
+                            , target: '_blank'
+                        });
+                    }
+                })
+            }}
+        $('.infowin .layui-btn').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });})
 </script>
 </body>
 </html>

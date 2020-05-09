@@ -2,13 +2,96 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb5c9701-ea6c-4703-acac-963c9e3874e7" name="默认更改列表" comment="userbean">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/db/login.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/login.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Configurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Configurer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/forget.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/forget.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/RouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/RouteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/forget.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.mobile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/code.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/code.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/laydate/default/laydate.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/layer/default/layer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/font/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/font/iconfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/code.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/colorpicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/colorpicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/element.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/element.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/flow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laydate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laydate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/layedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/layedit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/layer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laypage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laytpl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/mobile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/rate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/rate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/transfer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/transfer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/tree.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/layui.all.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/layui/layui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/notice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/notice_del.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book_tmp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/regist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/upload.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Configurer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Configurer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/forget.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/forget.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/RouteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/RouteController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/forget.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/layui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/layui.mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/layui.mobile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/modules/code.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/modules/code.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/modules/laydate/default/laydate.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/css/modules/layer/default/layer.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/font/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/font/iconfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/code.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/colorpicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/colorpicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/element.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/element.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/flow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laydate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laydate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/layedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/layedit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/layer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laypage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laytpl.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/mobile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/rate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/rate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/transfer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/transfer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/tree.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/lay/modules/util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/layui.all.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/layui/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/layui/layui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/notice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/notice_del.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book_tmp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/regist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/upload.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,14 +167,15 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\world\Desktop\javaweb\demo01\src\main\resources\static" />
-      <recent name="C:\Users\world\Desktop\java web\demo01\src\main\java\com\bookstroe\demo01" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\world\Desktop\javaweb\demo01\src\main\resources\templates" />
       <recent name="C:\Users\world\Desktop\javaweb\demo01\src\main\resources\static" />
       <recent name="C:\Users\world\Desktop\java web\demo01\src\main\db" />
       <recent name="C:\Users\world\Desktop\java web\demo01\src\main\resources\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\world\Desktop\javaweb\demo01\src\main\resources\static" />
+      <recent name="C:\Users\world\Desktop\java web\demo01\src\main\java\com\bookstroe\demo01" />
     </key>
   </component>
   <component name="RunManager">
@@ -273,7 +357,8 @@
       <workItem from="1588493452447" duration="3870000" />
       <workItem from="1588571300182" duration="6938000" />
       <workItem from="1588735703935" duration="5850000" />
-      <workItem from="1588759771101" duration="37184000" />
+      <workItem from="1588759771101" duration="38444000" />
+      <workItem from="1588994444524" duration="15857000" />
     </task>
     <task id="LOCAL-00001" summary="userbean">
       <created>1587459757772</created>
@@ -325,54 +410,54 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="289" y="128" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588763220675" />
-    <state width="1323" height="34" key="GridCell.Tab.0.bottom" timestamp="1588936586425">
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1589034675965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588936586425" />
-    <state width="1323" height="34" key="GridCell.Tab.0.center" timestamp="1588936586425">
+    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589034675965" />
+    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1589034675965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588936586425" />
-    <state width="1323" height="34" key="GridCell.Tab.0.left" timestamp="1588936586425">
+    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589034675965" />
+    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1589034675965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588936586425" />
-    <state width="1323" height="34" key="GridCell.Tab.0.right" timestamp="1588936586425">
+    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589034675965" />
+    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1589034675965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588936586425" />
-    <state width="1323" height="34" key="GridCell.Tab.1.bottom" timestamp="1588936586426">
+    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589034675965" />
+    <state width="1323" height="192" key="GridCell.Tab.1.bottom" timestamp="1589034675966">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588936586426" />
-    <state width="1323" height="34" key="GridCell.Tab.1.center" timestamp="1588936586426">
+    <state width="1323" height="192" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589034675966" />
+    <state width="1323" height="192" key="GridCell.Tab.1.center" timestamp="1589034675965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1588936586426" />
-    <state width="1323" height="34" key="GridCell.Tab.1.left" timestamp="1588936586426">
+    <state width="1323" height="192" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1589034675965" />
+    <state width="1323" height="192" key="GridCell.Tab.1.left" timestamp="1589034675965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1588936586426" />
-    <state width="1323" height="34" key="GridCell.Tab.1.right" timestamp="1588936586426">
+    <state width="1323" height="192" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1589034675965" />
+    <state width="1323" height="192" key="GridCell.Tab.1.right" timestamp="1589034675965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="34" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1588936586426" />
-    <state width="1323" height="224" key="GridCell.Tab.2.bottom" timestamp="1588860036759">
+    <state width="1323" height="192" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1589034675965" />
+    <state width="1323" height="224" key="GridCell.Tab.2.bottom" timestamp="1589025421230">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="224" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588860036759" />
-    <state width="1323" height="224" key="GridCell.Tab.2.center" timestamp="1588860036758">
+    <state width="1323" height="224" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589025421230" />
+    <state width="1323" height="224" key="GridCell.Tab.2.center" timestamp="1589025421229">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="224" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1588860036758" />
-    <state width="1323" height="224" key="GridCell.Tab.2.left" timestamp="1588860036758">
+    <state width="1323" height="224" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1589025421229" />
+    <state width="1323" height="224" key="GridCell.Tab.2.left" timestamp="1589025421229">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="224" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1588860036758" />
-    <state width="1323" height="224" key="GridCell.Tab.2.right" timestamp="1588860036758">
+    <state width="1323" height="224" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1589025421229" />
+    <state width="1323" height="224" key="GridCell.Tab.2.right" timestamp="1589025421229">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="224" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1588860036758" />
+    <state width="1323" height="224" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1589025421229" />
     <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1588176289630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -389,6 +474,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="398" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587651284049" />
+    <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588936900847">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1588936900847" />
     <state x="475" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587459765524">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -397,6 +486,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="143" y="100" width="1080" height="596" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1588859980683" />
+    <state x="367" y="0" width="632" height="728" key="find.popup" timestamp="1589029606535">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="367" y="0" width="632" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1589029606535" />
     <state width="600" height="424" key="javadoc.popup" timestamp="1587809651863">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -409,9 +502,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="384" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1588173397184" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1588762390718">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1589027629142">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1588762390718" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1589027629142" />
   </component>
 </project>
