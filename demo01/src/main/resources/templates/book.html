@@ -42,7 +42,7 @@
 					<span>剩余数量: <label th:text="${book.num}"></label><br /></span>
 					<div id="btn">
 						<button>立即购买</button>
-						<button>加入购物车</button>
+						<button id="btn_addcarts">加入购物车</button>
 					</div>
 					<input type="hidden" name="book_id" th:value="${book.id}"></div>
 				</div>
@@ -52,5 +52,27 @@
 				<div th:text="${book.desc}">无</div>
 			</div>
 		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="/layui/layer/layer.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#btn_addcarts").click(function(){
+					var id = $("[name=book_id]")[0].value;
+					$.ajax({
+						url: "/api/book/addcart",
+						contentType: "application/json",
+						data:{
+							"book_id" : id,
+						},
+						async:false,
+						success: function (data, status) {
+							console.log(data);
+							layer.msg(data.msg);
+						}
+					});
+				});
+			});
+		</script>
 	</body>
+
 </html>

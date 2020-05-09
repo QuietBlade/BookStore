@@ -38,7 +38,7 @@
 
 			<label th:if="${author.loginGroup} eq 'guest'"> 游客&nbsp请<a href="/login" target="_parent" style="">登录</a> </label>
 			<label th:unless="${author.loginGroup} eq 'guest'"> 欢迎 <label th:text="${author.loginuser}"></label> &nbsp <a href="/api/logoff" target="_parent" style="">注销</a></label>
-			&nbsp&nbsp<a href="">购物车</a>
+			&nbsp&nbsp<a href="/carts.html" target="_parent">购物车</a>
 			<a href="/regist" target="_parent">立即注册</a>&nbsp&nbsp
 		</div>
 		<script type="text/javascript">

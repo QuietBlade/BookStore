@@ -56,6 +56,7 @@ public class RouteController {
             return "404";
         }
         map.addAttribute("book",book);
+        map.addAttribute("book_id",book_id);
         return "book";
     }
 
