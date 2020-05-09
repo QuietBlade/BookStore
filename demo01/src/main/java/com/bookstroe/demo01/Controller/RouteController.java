@@ -65,7 +65,7 @@ public class RouteController {
         map.addAttribute("classifyTwo",req.getParameter("classifyTwo"));
         map.addAttribute("page",req.getParameter("page"));
         map.addAttribute("length",req.getParameter("length"));
-        map.addAttribute("key",req.getParameter("book"));
+        map.addAttribute("key",req.getParameter("key"));
         return "search";
     }
 

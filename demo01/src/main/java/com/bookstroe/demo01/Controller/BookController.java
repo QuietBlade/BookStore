@@ -152,6 +152,10 @@ public class BookController {
             return JSON.toJSONString(json);
         }
 
+        if( bookimg == null){
+            bookimg = "/img/default.gif";
+        }
+
         book.setName(bookname);
         book.setNum(Integer.valueOf(booknumber));
         book.setPrice(Double.valueOf(bookmoney));
@@ -189,7 +193,7 @@ public class BookController {
         String two = req.getParameter("classifyTwo");
         String page = req.getParameter("page");
         String length = req.getParameter("length");
-        String key = req.getParameter("book");
+        String key = req.getParameter("key");
         String sql = null;
         //如果没有key, 检查是否有二级分类,是否有主类
         //有key,按照key来搜索
