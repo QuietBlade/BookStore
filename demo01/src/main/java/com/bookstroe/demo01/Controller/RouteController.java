@@ -59,4 +59,14 @@ public class RouteController {
         return "book";
     }
 
+    @RequestMapping(value = "/search",produces = "application/json;charset=utf-8")
+    public static String search(HttpServletRequest req, HttpServletResponse res, ModelMap map){
+        map.addAttribute("classifyMain",req.getParameter("classifyMain"));
+        map.addAttribute("classifyTwo",req.getParameter("classifyTwo"));
+        map.addAttribute("page",req.getParameter("page"));
+        map.addAttribute("length",req.getParameter("length"));
+        map.addAttribute("key",req.getParameter("book"));
+        return "search";
+    }
+
 }

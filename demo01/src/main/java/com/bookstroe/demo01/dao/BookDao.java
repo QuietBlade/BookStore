@@ -94,6 +94,7 @@ public class BookDao implements bookDao {
                 list.put("book_price",crst.getString("book_price"));
                 list.put("book_num",crst.getString("book_num"));
                 list.put("book_imgurl",crst.getString("book_imgurl"));
+                list.put("book_desc",crst.getString("book_desc"));
                 map.put(String.valueOf(i),list);
                 list = new HashMap<>();
                 i = i + 1;

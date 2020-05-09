@@ -185,8 +185,8 @@ public class BookController {
     //图书搜索
     @RequestMapping(value = "/search",produces = "application/json;charset=utf-8")
     public static String search(HttpServletRequest req, HttpServletResponse res){
-        String main = req.getParameter("ClassifyMain");
-        String two = req.getParameter("ClassifyTwo");
+        String main = req.getParameter("classifyMain");
+        String two = req.getParameter("classifyTwo");
         String page = req.getParameter("page");
         String length = req.getParameter("length");
         String key = req.getParameter("book");
@@ -194,10 +194,10 @@ public class BookController {
         //如果没有key, 检查是否有二级分类,是否有主类
         //有key,按照key来搜索
         //page第几页
-        if(!otherUtil.isNumber(main)){
+        if( main == null || !otherUtil.isNumber(main)){
             main = "%";
         }
-        if(!otherUtil.isNumber(two)){
+        if( two == null || !otherUtil.isNumber(two)){
             two = "%";
         }
         if( page == null || !otherUtil.isNumber(page)){
@@ -213,6 +213,7 @@ public class BookController {
         String limit = String.valueOf((Integer.valueOf(page) - 1) * Integer.valueOf(length) );
 
         sql = "SELECT * from book_products WHERE book_name LIKE '%"+key+"%' and book_classifyMain like '%"+main+"%' and book_classifyTwo like '%"+two+"%' limit "+limit+","+length+"";
+        System.out.println(sql);
         Map<String,Object> json = new HashMap<>();
         json.put("code","1");
         json.put("data",DButil.searchBook(sql));

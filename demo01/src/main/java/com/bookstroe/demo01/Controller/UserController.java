@@ -282,8 +282,10 @@ public class UserController {
             //session.removeAttribute("author");
             session.setAttribute("author", DButil.setGuest());
         }
-
-
+        Cookie cookies = new Cookie("uuid",null);
+        cookies.setMaxAge(0);
+        cookies.setPath("/"); //删除cookie
+        res.addCookie(cookies);
         author = DButil.setGuest();
         res.sendRedirect(req.getContextPath() + "/");
         return null;
