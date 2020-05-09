@@ -56,13 +56,19 @@
             async:false,
             success: function (data, status) {
                 console.log(data);
-                var carts = data.carts;
-                $.each(carts,function(k){
-                    var b = carts[k];
-                    var d = b.data;
-                    var num = b.sum;
-                    $("#notice tbody").append( book(d.id,d.name,d.price,num));
-                })
+                if( data.code!= "1"){
+                    layer.msg(data.msg);
+                }else{
+                    var carts = data.carts;
+                    $.each(carts,function(k){
+                        console.log(k);
+                        var b = carts[k];
+                        console.log(b);
+                        var d = b.data;
+                        var num = b.sum;
+                        $("#notice tbody").append( book(d.id,d.name,d.price,num));
+                    });
+                }
             }
         });
 
