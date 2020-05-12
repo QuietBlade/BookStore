@@ -4,49 +4,55 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<style type="text/css">
-			*{
-			    margin:0;
-			    padding: 0;
-			}
-			#head{
-			    width:100%;
-			    height:50px;
-			    line-height: 50px;
-			    background-color: #F4A7B9;
-			    text-align:right;
-			    margin:0px auto 0px auto;
-			}
-			#txt,#btn{
-			    height:30px;
-			    margin-top: 5px;
-			}
-			#txt{
-			    width:30%;
-			}
-			#btn{
-			    width:6%;
-			    margin-right: 3%;
-			}
-		</style>
+		<link rel="Shortcut Icon" href="/img/ico.jpg" type="image/x-icon" />
+		<link rel="stylesheet" href="/layui/css/layui.css">
 	</head>
 	<body>
-		<div id="head">
-			&nbsp&nbsp<a href="/index.html" style="float: left;" target="_parent"> 首页</a>
-			<input type="text" name="text" id="txt" value="" />
-			<input type="button" name="btn" id="btn" value="搜索" />
 
-			<label th:if="${author.loginGroup} eq 'guest'"> 游客&nbsp请<a href="/login" target="_parent" style="">登录</a> </label>
-			<label th:unless="${author.loginGroup} eq 'guest'"> 欢迎 <label th:text="${author.loginuser}"></label> &nbsp <a href="/api/logoff" target="_parent" style="">注销</a></label>
-			&nbsp&nbsp<a href="/carts.html" target="_parent">购物车</a>
-			<a href="/regist" target="_parent">立即注册</a>&nbsp&nbsp
+		<div class="layui-header">
+			<ul class="layui-nav" style="background-color:#D0104C">
+				<li class="layui-nav-item">
+					<img src="/img/logo.png" class="layui-nav-img">
+				</li>
+				<li class="layui-nav-item">
+					<a href="/index.html" target="_parent">首页</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="" target="_parent">个人中心</a>
+				</li>
+				<li class="layui-nav-item">
+					<div class="layui-input-inline">
+						<input type="text" name="search" class="layui-input" placeholder="搜索图书" />
+					</div>
+				</li>
+				<li class="layui-nav-item">
+					<button type="button" class="layui-btn layui-btn-primary"><i class="layui-icon layui-icon-search"></i></button>
+				</li>
+				<li class="layui-nav-item" style="float:right" th:if="${author.loginGroup} eq 'guest'">
+					<a href="/regist" target="_parent">注册</a>
+				</li>
+				<li class="layui-nav-item" style="float:right" th:if="${author.loginGroup} eq 'guest'">
+					<a href="/login" target="_parent">登录</a>
+				</li>
+				<li class="layui-nav-item" style="float:right" th:unless="${author.loginGroup} eq 'guest'">
+					<a href=""><img src="/img/user.png" class="layui-nav-img">我</a>
+				</li>
+				<li class="layui-nav-item" style="float:right" th:unless="${author.loginGroup} eq 'guest'">
+					<dd><a href="/carts.html" target="_parent">购物车<span class="layui-badge-dot"></span></a>
+				</li>
+				<li class="layui-nav-item" style="float:right" th:unless="${author.loginGroup} eq 'guest'">
+					<dd><a href="/api/logoff" target="_parent">注销</a>
+				</li>
+<!--				<span class="layui-nav-bar" style="display: none;"></span>-->
+			</ul>
 		</div>
-		<script type="text/javascript">
-			let oTxt = document.getElementById("txt");
-			let oBtn = document.getElementById("btn");
-			oBtn.onclick = function(){
-				window.top.location="/search?key="+oTxt.value;
-			}
+		<script src="/layui/layui.js"></script>
+		<script>
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use('element', function(){
+				var element = layui.element;
+
+			});
 		</script>
 	</body>
 </html>

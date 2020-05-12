@@ -5,7 +5,8 @@ import com.bookstroe.demo01.DButil;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.beans.Book;
 import com.bookstroe.demo01.otherUtil;
-import com.sun.rowset.CachedRowSetImpl;
+//import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -81,7 +82,7 @@ public class BookController {
 
         String sql = "select * from book_classifyTwo where classifyMainID="+mainid;
         try {
-            CachedRowSetImpl rs = DButil.execQuery(sql);
+            CachedRowSet rs = DButil.execQuery(sql);
             if( rs == null){
                 return JSON.toJSONString(otherUtil.errorMessage("-1"));
             }

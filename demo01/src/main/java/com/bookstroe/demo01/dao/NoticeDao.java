@@ -1,14 +1,10 @@
 package com.bookstroe.demo01.dao;
 
-import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.DButil;
 import com.bookstroe.demo01.otherUtil;
-import com.sun.rowset.CachedRowSetImpl;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
+//import com.sun.rowset.CachedRowSetImpl; java8不可用
+import javax.sql.rowset.CachedRowSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +16,7 @@ public class NoticeDao {
     public static Map<String,Object> SelectNotice(int length, int page) throws SQLException {
         String sql = "select * from book_notice order by noti_id desc" + " limit " + String.valueOf((page - 1) * length) + "," + String.valueOf(length) + "";
         //System.out.println(sql);
-        CachedRowSetImpl res = DButil.execQuery(sql);
+        CachedRowSet res = DButil.execQuery(sql);
         if (res == null) {
             return null;
         }

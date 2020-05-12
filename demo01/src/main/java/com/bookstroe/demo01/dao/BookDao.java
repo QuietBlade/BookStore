@@ -3,7 +3,8 @@ import com.bookstroe.demo01.DButil;
 import com.bookstroe.demo01.beans.Book;
 import com.bookstroe.demo01.beans.bookDao;
 import com.bookstroe.demo01.otherUtil;
-import com.sun.rowset.CachedRowSetImpl;
+//import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
 
@@ -62,7 +63,7 @@ public class BookDao implements bookDao {
     public Book findBook(String id){
         Book book = new Book();
         String sql = "SELECT * from book_products where book_id='"+id+"'";
-        CachedRowSetImpl crst = DButil.execQuery(sql);
+        CachedRowSet crst = DButil.execQuery(sql);
         int i  = 0;
         try{
             while(crst.next()){
@@ -110,7 +111,7 @@ public class BookDao implements bookDao {
     public static Map<String, Object> searchBook(String sql){
         Map<String, Object> map = new HashMap<>();
         Map<String, String> data = new HashMap<>();;
-        CachedRowSetImpl crst = DButil.execQuery(sql);
+        CachedRowSet crst = DButil.execQuery(sql);
         int i  = 0;
         try{
             while(crst.next()){

@@ -4,7 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.bookstroe.demo01.DButil;
 import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.beans.userDao;
-import com.sun.rowset.CachedRowSetImpl;
+//import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 import org.springframework.stereotype.Repository;
 
 import javax.management.remote.JMXConnectionNotification;
@@ -113,7 +114,7 @@ public class AuthorDao implements userDao{
     public Author findAuthor(String uuid){
         Author author = new Author();
         String sql = "select * from book_user where uid='"+uuid+"'";
-        CachedRowSetImpl res = DButil.execQuery(sql);
+        CachedRowSet res = DButil.execQuery(sql);
         if( res == null){
             return DButil.setGuest();
         }
@@ -135,4 +136,6 @@ public class AuthorDao implements userDao{
 
         return author;
     }
+
+
 }

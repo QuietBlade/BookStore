@@ -1,16 +1,26 @@
 package com.bookstroe.demo01;
-
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.DigestUtils;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.tencentcloudapi.common.Credential;
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
+
+// 导入 SMS 模块的 client
+import com.tencentcloudapi.sms.v20190711.SmsClient;
+
+// 导入要请求接口对应的 request response 类
+import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
+import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 
 public class otherUtil {
 
@@ -65,7 +75,40 @@ public class otherUtil {
         return m.matches();
     }
 
-    public static int sendMail(String email,String title,String text) throws Exception {
+    public static int sendsms(String phone,String code){
+        try {
+            Credential cred = new Credential("AKID0kFAoChGxPbW8XHV4RZR2LQEnFanxRr1", "5wX2MSWS8Xl90av30jLlkUyDCxQilSt5");
+            SmsClient client = new SmsClient(cred, "");
+            SendSmsRequest req = new SendSmsRequest();
+            req.setSmsSdkAppid("1400294213");
+            req.setSign("yuanzhangzcc");
+
+            /* 用户的 session 内容: 可以携带用户侧 ID 等上下文信息，server 会原样返回 */
+//            String session = "xxx";
+//            req.setSessionContext(session);
+
+            req.setTemplateID("572893");
+
+            String[] phoneNumbers = {"+86"+phone};
+            req.setPhoneNumberSet(phoneNumbers);
+
+            String[] templateParams = {code,"1"};
+            req.setTemplateParamSet(templateParams);
+
+            SendSmsResponse res = client.SendSms(req);
+
+            // 输出 JSON 格式的字符串
+            //System.out.println(SendSmsResponse.toJsonString(res));
+            // 可以取出单个值，您可以通过官网接口文档或跳转到 response 对象的定义处查看返回字段的定义
+            //System.out.println(res.getRequestId());
+        } catch (TencentCloudSDKException e) {
+            e.printStackTrace();
+            return -1;
+        }
+        return 1;
+    }
+
+    public static int sendMail(String email,String title,String text){
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();//直接生产一个实例
         //String email[] = {"xxxxx@qq.com","xxxxx@126.com"}; //可以同时发送多个邮箱
         mailSender.setHost("smtp.163.com");//动态添加配置
@@ -74,14 +117,15 @@ public class otherUtil {
         mailSender.setProtocol("smtp");
         mailSender.setPort(25);
         MimeMessage msg = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(msg, true,"UTF-8");
-        helper.setFrom(mailSender.getUsername());
-        helper.setTo(email);
-        helper.setSubject(title);
-        helper.setText(text,true);
+        MimeMessageHelper helper = null;
         try{
+            helper = new MimeMessageHelper(msg, true,"UTF-8");
+            helper.setFrom(mailSender.getUsername());
+            helper.setTo(email);
+            helper.setSubject(title);
+            helper.setText(text,true);
             mailSender.send(msg);
-        }catch (Exception e){
+        }catch (MessagingException e){
             e.printStackTrace();
             return -1;
         }
@@ -157,6 +201,18 @@ public class otherUtil {
         return true;
     }
 
+    public static boolean isPhone(final String str) {
+        if( str == null)
+            return false;
+        Pattern p = null;
+        Matcher m = null;
+        boolean b = false;
+        p = Pattern.compile("^[1][3,4,5,7,8][0-9]{9}$"); // 验证手机号
+        m = p.matcher(str);
+        b = m.matches();
+        return b;
+    }
+
     public static Map<String,String> errorMessage(String code){
         Map<String,String> map = new HashMap<>();
         map.put("code",code);
@@ -193,7 +249,7 @@ public class otherUtil {
             case "-16":map.put("msg","当前未登录");break;
             case "-17":map.put("msg","权限不足");break;
             case "-18":map.put("msg","用户注册失败");break;
-            case "-19":map.put("msg","");break;
+            case "-19":map.put("msg","发送验证码失败");break;
             case "-20":map.put("msg","密码错误");break;
             case "-21":map.put("msg","密码不能有特殊字符");break;
             case "-22":map.put("msg","密码长度不足");break;
@@ -205,7 +261,7 @@ public class otherUtil {
             case "-28":map.put("msg","用户名或密码长度不足");break;
             case "-29":map.put("msg","两次密码不正确");break;
             case "-30":map.put("msg","邮箱错误");break;
-            case "-31":map.put("msg","邮箱格式不正确");break;
+            case "-31":map.put("msg","邮箱或电话号码格式不正确");break;
             case "-32":map.put("msg","邮箱不能有特殊字符");break;
             case "-33":map.put("msg","邮箱不能为空");break;
             case "-34":map.put("msg","邮箱已存在");break;
@@ -213,7 +269,7 @@ public class otherUtil {
             case "-36":map.put("msg","");break;
             case "-37":map.put("msg","");break;
             case "-38":map.put("msg","");break;
-            case "-39":map.put("msg","");break;
+            case "-39":map.put("msg","请先发送验证码");break;
             case "-40":map.put("msg","验证码错误");break;
             case "-41":map.put("msg","验证码不能为空");break;
             case "-42":map.put("msg","验证码不能有特殊字符");break;

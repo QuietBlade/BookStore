@@ -5,10 +5,12 @@ import com.bookstroe.demo01.beans.Author;
 import com.bookstroe.demo01.beans.Book;
 import com.bookstroe.demo01.dao.AuthorDao;
 import com.bookstroe.demo01.dao.BookDao;
-import com.sun.rowset.CachedRowSetImpl;
+//import com.sun.rowset.CachedRowSetImpl;
+import javax.sql.rowset.CachedRowSet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.rowset.RowSetProvider;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
@@ -45,10 +47,25 @@ public class DButil {
         return connection;
     }
 
-    public static CachedRowSetImpl execQuery(String sql)  {
-        CachedRowSetImpl rowset = null;
+    public static int execQueryCountEmail(String email){
+        int count = 0;
+        String sql = "select count(*) from book_user where email='" +email+ "'";
+        CachedRowSet rowset = DButil.execQuery(sql);
         try{
-            rowset =new CachedRowSetImpl();
+            if( rowset.next()){
+                count = rowset.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return count;
+    }
+
+    public static CachedRowSet execQuery(String sql)  {
+        CachedRowSet rowset = null;
+        try{
+            rowset = RowSetProvider.newFactory().createCachedRowSet();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -82,7 +99,6 @@ public class DButil {
     public static int addUser(Author author) {
         author.setUid(otherUtil.StringUUID());
         author.setActivarionCode(otherUtil.stringToMD5(otherUtil.StringUUID()));
-        author.setStatus(0);
         author.setLoginpass(otherUtil.stringToMD5(author.getLoginpass()));
         author.setRegistTime(otherUtil.timestamp());
         return dao.add(author);

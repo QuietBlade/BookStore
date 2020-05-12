@@ -24,6 +24,7 @@ import java.util.*;
 public class UserController {
 
     Author author = DButil.setGuest();
+    boolean vercodemsg = false; // 验证码有效性
 
     @ResponseBody
     //用户登录验证
@@ -96,12 +97,25 @@ public class UserController {
         String password = req.getParameter("password");
         String surepassword = req.getParameter("surepassword");
         String email = req.getParameter("email");
+        String code = req.getParameter("vercode");
+
         HttpSession session = req.getSession();
         String _token1 = req.getParameter("_token");
         String _token2 = (String) session.getAttribute("_token");
-
+        String vercode = (String) session.getAttribute("vercode");
+        String veremail = (String) session.getAttribute("veremail");
+        System.out.println( vercode + veremail);
         if (!_token1.equals(_token2))
             return JSON.toJSONString(otherUtil.errorMessage("-1"));
+
+        if( code == null)
+            return JSON.toJSONString(otherUtil.errorMessage("-41"));
+
+        if( vercode == null)
+            return JSON.toJSONString(otherUtil.errorMessage("-39"));
+
+        if( !code.equals(vercode) )
+            return JSON.toJSONString(otherUtil.errorMessage("-40"));
 
         if (username == null || password == null)
             return JSON.toJSONString(otherUtil.errorMessage("-27"));
@@ -112,7 +126,7 @@ public class UserController {
         if (otherUtil.isConSpeCharacters(username) || otherUtil.isConSpeCharacters(password))
             return JSON.toJSONString(otherUtil.errorMessage("-26"));
 
-        if (!otherUtil.isEmail(email))
+        if (!otherUtil.isEmail(email) || !otherUtil.isPhone(email) || !email.equals(veremail))
             return JSON.toJSONString(otherUtil.errorMessage("-31"));
 
         if (!password.equals(surepassword))
@@ -121,28 +135,20 @@ public class UserController {
         //查询是否有相同用户名
         //查询是否有相同邮箱
 
+        if( DButil.execQueryCountEmail(email) >= 1 )
+            return JSON.toJSONString(otherUtil.errorMessage("-29"));
+        
         author.setLoginuser(username);
         author.setLoginpass(password);
         author.setEmail(email);
+        author.setStatus(0);
         author.setLoginGroup("users");
         if (DButil.addUser(author) == -1)
             return JSON.toJSONString(otherUtil.errorMessage("-15"));
 
-        email = author.getEmail();
-        String title = "在线书城 用户激活邮件";
-        String text = "<html><body>" +
-                "<h1>欢迎注册在线书城系统</h1>" +
-                "<h2>点击下面链接进行激活</h2> <p><a href=\"http://localhost:8080/api/user/activeCode?code=" + author.getActivarionCode() +
-                "\">http://localhost:8080/api/user/activeCode?code=" + author.getActivarionCode() +
-                "</a></p></body></html>";
-        //发送邮箱
-        if (otherUtil.sendMail(email, title, text) == -1)
-            return JSON.toJSONString(otherUtil.errorMessage("-18").toString() + otherUtil.errorMessage("-3").toString());
-
         json.put("code", "1");
         json.put("status", "success");
-        json.put("msg", "注册成功,等待邮箱验证");
-        json.put("activeCode", author.getActivarionCode());
+        json.put("msg", "注册成功");
         return JSON.toJSONString(json);
     }
 
@@ -199,7 +205,7 @@ public class UserController {
             String title = "忘记密码";
             String text = "<html><body><h2>" + "忘记密码" + "</h2>" +
                     "<p> 这是您的验证码 " + randomcode + "</p>";
-            if (otherUtil.isEmail(username)) {
+            if (otherUtil.isEmail(username) || otherUtil.isPhone(username)) {
                 session.setAttribute("code", randomcode);
                 otherUtil.sendMail(username, title, text);
             } else {
@@ -230,28 +236,6 @@ public class UserController {
         } else {
             return JSON.toJSONString(otherUtil.errorMessage("-44"));
         }
-        return JSON.toJSONString(json);
-    }
-
-    //激活用户
-    @RequestMapping(value = "/user/activeCode", produces = "application/json;charset=utf-8")
-    public String activeCode(HttpServletRequest req, HttpServletResponse res) throws Exception {
-        Map<String, String> json = new HashMap<>();
-        String code = req.getParameter("code");
-        if (code == null || otherUtil.isConSpeCharacters(code) || code.length() != 32) {
-            res.sendRedirect("http://localhost:8080/index");
-        } else {
-            String sql = "UPDATE book_user SET status=1 WHERE activationCode='" + code + "'";
-            try {
-                if (DButil.execUpdate(sql) <= 0)
-                    return JSON.toJSONString(otherUtil.errorMessage("-7"));
-            } catch (Exception e) {
-                e.printStackTrace();
-                return JSON.toJSONString(otherUtil.errorMessage("-7"));
-            }
-        }
-        json.put("code","1");
-        json.put("msg","用户已激活");
         return JSON.toJSONString(json);
     }
 
@@ -297,6 +281,60 @@ public class UserController {
         return "0";
     }
 
+    //发送验证码
+    @RequestMapping(value = "/sendvercode", produces = "application/json;charset=utf-8")
+    public String sendvercode(HttpServletRequest req, HttpServletResponse res){
+        System.out.println(vercodemsg);
+        Map<String, String> json = new HashMap<>();
+        HttpSession session = req.getSession();
+        if( vercodemsg == false){
+            vercodemsg = true;
+            String email = req.getParameter("email");
+            String code = otherUtil.Random();
+
+            json.put("code","1");
+            if( otherUtil.isPhone(email)){
+                if( otherUtil.sendsms(email,code) == -1 )
+                    return JSON.toJSONString(otherUtil.errorMessage("-19"));
+                json.put("msg","验证码已发送到您的手机,请注意查收");
+            }else if( otherUtil.isEmail(email)){
+                String title = "在线书城 用户激活邮件";
+                String text = "<html><body>" +
+                        "<h1>欢迎注册在线书城系统</h1>" +
+                        "<h2>这是你的验证码,1分钟内有效</h2>"+code+
+                        "</body></html>";
+                //发送邮箱
+                if (otherUtil.sendMail(email, title, text) == -1)
+                    return JSON.toJSONString(otherUtil.errorMessage("-19"));
+                json.put("msg","验证码已发送到您的邮箱,请注意查收");
+            }else
+                json.put("msg","格式有误");
+            //定时器
+//            try {
+//                final Timer timer=new Timer();
+//                timer.schedule(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        session.removeAttribute("veremail");
+//                        session.removeAttribute("vercode");
+//                        vercodemsg = false;
+//                        timer.cancel();
+//                    }
+//                },60*1000);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+            System.out.println( "发送验证码" + code + email);
+            session.setAttribute("veremail",email);
+            session.setAttribute("vercode",code);
+            return JSON.toJSONString(json);
+        }
+
+        json.put("code","-100");
+        json.put("msg","1分钟之后再试");
+        return JSON.toJSONString(json);
+    }
+
     //用户是否登录
     @RequestMapping("/islogin")
     public boolean islogin(HttpServletRequest req, HttpServletResponse res){
@@ -306,6 +344,13 @@ public class UserController {
         else
             return true;
     }
+
+    //    测试发送短信
+//    @RequestMapping("/sms")
+//    public String find(HttpServletRequest req, HttpServletResponse res) throws SQLException {
+//        int a = otherUtil.sendsms("15500000000","1234");
+//        return String.valueOf(a);
+//    }
 
     //    测试用户查找
 //    @RequestMapping("/user/find")

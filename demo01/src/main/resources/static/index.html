@@ -1,301 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
-    <link rel="stylesheet" href="layui/css/layui.css">
-    <style type="text/css">
-        *{
-            margin:0;
-            padding: 0;
-        }
-        #head{
-            width:100%;
-            height:50px;
-            line-height: 50px;
-            background-color: black;
-            text-align:right;
-            margin:0px auto 0px auto;
-        }
-        .find,.btn{
-            height:30px;
-            margin-top: 5px;
-        }
-        .find{
-            width:30%;
-        }
-        .btn{
-            width:6%;
-            margin-right: 3%;
-        }
-        #zhongjian{
-            width: 81%;
-            height: 270px;
-            margin-top: 1%;
-            margin-left: 10%;
-        }
-        #classfy{
-            float: left;
-        }
-        .div_banner {
-            width:76%;
-            margin-left: 1%;
-            height: 265px;
-            padding: 0;
-            display: -webkit-flex;
-            display: flex;
-            align-items: center;
-            float: left;
-        }
-
-        .btn_shift {
-            width: 40px;
-            height: 80px;
-            margin: 0;
-            padding: 0;
-            border: none;
-            display: inline-block;
-            text-align: center;
-            align-items: center;
-            text-decoration: none;
-            font-size: 35px;
-            visibility: hidden;
-            background-color: #111;
-            opacity: 0.7;
-            -webkit-transition-duration: 0.5s;
-            transition-duration: 0.5s;
-            cursor: pointer;
-            z-index: 8999;
-        }
-
-        .btn_shift:hover {
-            background-color: #efefef;
-            opacity: 0.7;
-        }
-
-        .img_banner {
-            width: 100%;
-            height: 100%;
-            max-height: 265px;
-            flex: 1;
-            margin-left: -40px;
-            margin-right: -40px;
-            cursor: pointer;
-            margin-top: 1%;
-            margin-bottom: 2%;
-        }
-        #main{
-            height:310px;
-        }
-        #main_left{
-            width:60%;
-            margin-left:10%;
-            margin-right: 1%;
-            float: left;
-            border: 1px solid #8B8989;
-        }
-        #text{
-            background-color:#CDC9C9;
-            border: 1px solid #8B8989;
-        }
-        .book_01,.book_02,.book_03,.book_04,.book_05,.book_06{
-            width:33%;
-            height:140px;
-        }
-        #book_imgurl{
-            width:40%;
-            height: 130px;
-            float: left;
-            overflow:hidden;
-        }
-        #img_msg{
-            width:55%;
-            float: left;
-            margin-left: 4px;
-            height:140px
-
-        }
-        #book_title{
-            height:20px;
-			font-weight: bold;
-        }
-        #book_desc
-        {
-            height:80px;
-			overflow: hidden;
-        }
-		#book_price{
-			color: red;
-			font-weight: bold;
-		}
-        .book_01,.book_02,.book_03{
-            float: left;
-			border: 1px solid black;
-        }
-        .book_04,.book_05,.book_06{
-            float: left;
-			border: 1px solid black;
-        }
-        #up,#down{
-            height: 140px;
-        }
-        #main_right{
-            width: 20%;
-            background: #eee;
-            float:left;
-            border: 1px solid #8B8989;
-        }
-        #right_msg{
-            height:280px;
-            overflow: auto;
-        }
-        .top_01,.top_02,.top_03{
-            margin-bottom: 5%;
-            border: 1px solid #8B8989;
-        }
-        #foot{
-            width:100%;
-            height:50px;
-            line-height: 50px;
-            background-color: black;
-            text-align:center;
-        }
-                              #sidebar-menu {
-                                  /*目前要求宽度是238px,高度是332px，左边框+width正好238，以后需要可以修改*/
-                                  border-left : 1px solid #F93;
-                                  width : 237px;
-                                  /*height : 332px;*/
-                                  margin : 0;
-                                  padding : 0;
-                                  background : #009688;
-                              }
-        #sidebar-menu > ul {
-            list-style : none;
-            padding : 0;
-            margin : 0;
-        }
-        #sidebar-menu > ul > li {
-            list-style : none;
-            padding : 0;
-            margin : 0;
-            border-bottom : 1px solid #FDEADB;
-            position : relative;
-        }
-        #sidebar-menu > ul > li.selected {
-            background : #FFF;
-            border-top : 1px solid #F93;
-            border-bottom : 1px solid #F93;
-        }
-        #sidebar-menu > ul > li.first {
-            border-top : 1px solid #F93;
-        }
-        #sidebar-menu > ul > li.last {
-            border-bottom : 1px solid #F93;
-        }
-
-        #sidebar-menu .menu-item {
-            background : #009688 no-repeat left center;
-            height : 32px; /**控制菜单中每行的宽度，下面还有两处需要修改**/
-            border-right : 1px solid #F93;
-            z-index : 10000;
-            position : relative;
-        }
-
-
-        #sidebar-menu > ul > li.selected .menu-item {
-            border-right : 1px solid #FFF;
-            background : #FFF no-repeat left center;
-        }
-        #sidebar-menu .menu-item span {
-            font-size : 13px;
-            font-weight : bold;
-            height : 32px;
-            line-height : 32px;
-            padding-left : 35px;
-            padding-top : 2px;
-            display : inline-block;
-        }
-
-        #sidebar-menu .menu-panel {
-            padding : 10px 20px;
-            display : none;
-            border : 1px solid #F93;
-            width : 560px;
-            position : absolute;
-            left : 236px;
-            top : -1px;
-            z-index : 5000;
-            min-height : 50px;
-            box-shadow: 1px 1px 4px #888888;
-        }
-
-        #sidebar-menu div.menu-panel.selected {
-            display : block;
-        }
-
-        /*Panel 里面的链接列表*/
-        #sidebar-menu div.menu-panel ul {
-            list-style : none;
-            padding : 0;
-            margin : 0;
-        }
-        #sidebar-menu div.menu-panel ul li {
-            list-style : none;
-            padding : 5px 0px;
-            margin : 0;
-        }
-
-        #sidebar-menu div.menu-panel>ul>li>h2 {
-            margin : 0;
-            padding : 0;
-            padding-top : 2px;
-            font-size : 13px;
-            color : red;
-            float : left;
-            width : 60px;
-        }
-        #sidebar-menu div.menu-panel>ul>li>div.link-list {
-            float : left;
-            padding-left : 10px;
-            width : 450px;
-        }
-        #sidebar-menu div.menu-panel div.link-wrapper {
-            display : inline-block;
-            padding : 3px 0px;
-        }
-        #sidebar-menu div.menu-panel div.link-wrapper span {
-            font-size : 13px;
-            color : #888;
-            padding-right : 4px;
-        }
-        #sidebar-menu div.menu-panel div.link-list a {
-            font-size : 13px;
-            color : #888;
-            text-decoration : none;
-        }
-        #sidebar-menu div.menu-panel div.link-list a:hover {
-            text-decoration : underline;
-        }
-        #sidebar-menu div.clear {
-            clear : both;
-            height : 0;
-            line-height : 0;
-        }
-    </style>
+    <link rel="Shortcut Icon" href="/img/ico.jpg" type="image/x-icon"/>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" href="/style/index.css">
 
 </head>
 <body>
-<form action="/api/book/book_sear" method="get">
-	<div>
-		<iframe src="/head.html" style="height: 50px;width:100%;" frameborder="0"></iframe>
-	</div>
+<div>
+    <div>
+        <iframe src="/head.html" style="width:100%;height:60px;" frameborder="0"></iframe>
+    </div>
     <div id="main_body">
         <div id="zhongjian">
             <div id="classfy">
                 <div id="sidebar-menu">
                     <ul>
                         <li class="first">
-                            <div class="menu-item" style="background-image : url(images/tubiao.jpg);">
+                            <div class="menu-item">
                                 <span vlaue="1">童书</span>
                             </div>
                             <div class="menu-panel">
@@ -303,22 +27,38 @@
                                     <li>
                                         <h2>童书</h2>
                                         <div class="link-list">
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=10">0-2岁</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=11">3-6岁</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=12">7-10岁</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=13">11-14岁</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=14">绘本</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=15">中国儿童文学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=16">外国儿童文学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=17">科普/百科</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=18">婴儿读物</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=19">幼儿启蒙</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=20">益智游戏</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=21">玩具书</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=22">动漫/卡通</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=23">少儿英语</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=24">进口儿童书</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=1&classifyTwo=25">少儿期刊</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=10">0-2岁</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=11">3-6岁</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=12">7-10岁</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=13">11-14岁</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=14">绘本</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=15">中国儿童文学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=16">外国儿童文学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=17">科普/百科</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=18">婴儿读物</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=19">幼儿启蒙</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=20">益智游戏</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=21">玩具书</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=22">动漫/卡通</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=23">少儿英语</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=24">进口儿童书</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=1&classifyTwo=25">少儿期刊</a></div>
                                         </div>
                                         <div class="clear"></div>
                                     </li>
@@ -326,7 +66,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="menu-item" style="background-image : url(images/tubiao.jpg);">
+                            <div class="menu-item">
                                 <span vlaue="2">教育</span>
                             </div>
                             <div class="menu-panel">
@@ -334,18 +74,30 @@
                                     <li>
                                         <h2>教育类</h2>
                                         <div class="link-list">
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=59">中小学教辅</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=60">考试</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=61">大中专教材</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=62">外语工具书</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=63">教师用书</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=64">新概念</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=65">中小学阅读</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=66">英语四级</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=67">英语六级</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=68">考研</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=69">公务员</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=2&classifyTwo=70">教师资格考试</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=59">中小学教辅</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=60">考试</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=61">大中专教材</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=62">外语工具书</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=63">教师用书</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=64">新概念</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=65">中小学阅读</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=66">英语四级</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=67">英语六级</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=68">考研</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=69">公务员</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=2&classifyTwo=70">教师资格考试</a></div>
                                         </div>
                                         <div class="clear"></div>
                                     </li>
@@ -353,7 +105,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="menu-item" style="background-image : url(images/tubiao.jpg);">
+                            <div class="menu-item">
                                 <span vlaue="3">文艺</span>
                             </div>
                             <div class="menu-panel">
@@ -361,15 +113,24 @@
                                     <li>
                                         <h2>文艺类</h2>
                                         <div class="link-list">
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=39">中小学教辅</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=51">小说</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=52">文学传记</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=53">青春文学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=54">动漫/幽默</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=55">艺术</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=56">摄影</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=57">偶像明星</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=3&classifyTwo=58">涂色/填色</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=39">中小学教辅</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=51">小说</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=52">文学传记</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=53">青春文学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=54">动漫/幽默</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=55">艺术</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=56">摄影</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=57">偶像明星</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=3&classifyTwo=58">涂色/填色</a></div>
                                         </div>
                                         <div class="clear"></div>
                                     </li>
@@ -377,7 +138,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="menu-item" style="background-image : url(images/tubiao.jpg);">
+                            <div class="menu-item">
                                 <span vlaue="4">人文社科</span>
                             </div>
                             <div class="menu-panel">
@@ -385,15 +146,24 @@
                                     <li>
                                         <h2>人文社科</h2>
                                         <div class="link-list">
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=71">哲学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=72">宗教</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=73">历史</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=74">政治</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=75">军事文化</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=76">社会科学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=77">心理学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=78">古籍</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=4&classifyTwo=79">法律</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=71">哲学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=72">宗教</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=73">历史</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=74">政治</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=75">军事文化</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=76">社会科学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=77">心理学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=78">古籍</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=4&classifyTwo=79">法律</a></div>
 
                                         </div>
                                         <div class="clear"></div>
@@ -402,7 +172,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="menu-item" style="background-image : url(images/tubiao.jpg);">
+                            <div class="menu-item">
                                 <span vlaue="5">励志</span>
                             </div>
                             <div class="menu-panel">
@@ -410,15 +180,24 @@
                                     <li>
                                         <h2>励志</h2>
                                         <div class="link-list">
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=71">哲学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=72">宗教</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=73">历史</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=74">政治</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=75">军事文化</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=76">社会科学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=77">心理学</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=78">古籍</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=5&classifyTwo=79">法律</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=71">哲学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=72">宗教</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=73">历史</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=74">政治</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=75">军事文化</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=76">社会科学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=77">心理学</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=78">古籍</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=5&classifyTwo=79">法律</a></div>
                                         </div>
                                         <div class="clear"></div>
                                     </li>
@@ -426,7 +205,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="menu-item" style="background-image : url(images/tubiao.jpg);">
+                            <div class="menu-item">
                                 <span vlaue="6">生活</span>
                             </div>
                             <div class="menu-panel">
@@ -434,19 +213,32 @@
                                     <li>
                                         <h2>生活</h2>
                                         <div class="link-list">
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=106">两性</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=107">孕期</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=108">育儿</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=109">亲子家教</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=110">保健</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=111">运动</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=112">休闲</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=113">旅游</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=114">美食</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=115">美妆</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=116">手工</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=117">DIY</a></div>
-                                           <div class="link-wrapper"><span>|</span><a href="search?classifyMain=6&classifyTwo=118">家庭家居</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=106">两性</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=107">孕期</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=108">育儿</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=109">亲子家教</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=110">保健</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=111">运动</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=112">休闲</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=113">旅游</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=114">美食</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=115">美妆</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=116">手工</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=117">DIY</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=6&classifyTwo=118">家庭家居</a></div>
                                         </div>
                                         <div class="clear"></div>
                                     </li>
@@ -454,7 +246,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="menu-item" style="background-image : url(images/tubiao.jpg);">
+                            <div class="menu-item">
                                 <span vlaue="7">经管</span>
                             </div>
                             <div class="menu-panel">
@@ -462,14 +254,22 @@
                                     <li>
                                         <h2>经管</h2>
                                         <div class="link-list">
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=7&classifyTwo=120">经济</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=7&classifyTwo=121">管理</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=7&classifyTwo=122">投资理财</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=7&classifyTwo=123">股票</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=7&classifyTwo=124">金融</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=7&classifyTwo=125">市场/销售</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=7&classifyTwo=126">会计</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=7&classifyTwo=127">互联网</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=7&classifyTwo=120">经济</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=7&classifyTwo=121">管理</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=7&classifyTwo=122">投资理财</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=7&classifyTwo=123">股票</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=7&classifyTwo=124">金融</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=7&classifyTwo=125">市场/销售</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=7&classifyTwo=126">会计</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=7&classifyTwo=127">互联网</a></div>
                                         </div>
                                         <div class="clear"></div>
                                     </li>
@@ -477,7 +277,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="menu-item" style="background-image : url(img/tubiao.jpg);">
+                            <div class="menu-item">
                                 <span vlaue="8">科技</span>
                             </div>
                             <div class="menu-panel">
@@ -485,14 +285,22 @@
                                     <li>
                                         <h2>科技</h2>
                                         <div class="link-list">
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=8&classifyTwo=120">经济</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=8&classifyTwo=121">管理</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=8&classifyTwo=122">投资理财</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=8&classifyTwo=123">股票</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=8&classifyTwo=124">金融</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=8&classifyTwo=125">市场/销售</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=8&classifyTwo=126">会计</a></div>
-                                            <div class="link-wrapper"><span>|</span><a href="search?classifyMain=8&classifyTwo=127">互联网</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=8&classifyTwo=120">经济</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=8&classifyTwo=121">管理</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=8&classifyTwo=122">投资理财</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=8&classifyTwo=123">股票</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=8&classifyTwo=124">金融</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=8&classifyTwo=125">市场/销售</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=8&classifyTwo=126">会计</a></div>
+                                            <div class="link-wrapper"><span>|</span><a
+                                                    href="search?classifyMain=8&classifyTwo=127">互联网</a></div>
                                         </div>
                                         <div class="clear"></div>
                                     </li>
@@ -502,100 +310,160 @@
                     </ul>
                 </div>
             </div>
-            <div class="div_banner" onmouseover="bannerOver()" onmouseout="bannerOut()"> 
-                <button class="btn_shift" name="btn_shift" onclick="clickPrev()">&lt;</button> 
-                    <img class="img_banner" id="banner" src="img/banner1.png" width="100%" height="100%" /> 
-                <button class="btn_shift" name="btn_shift" onclick="clickNext()">&gt;</button> 
+            <div class="div_banner">
+                <div class="layui-carousel" id="banner">
+                    <div carousel-item>
+                        <div><img src="/img/banner1.png"></div>
+                        <div><img src="/img/banner2.png"></div>
+                        <div><img src="/img/banner3.png"></div>
+                        <div><img src="/img/banner4.png"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="main">
             <div id="main_left">
-                <div id="text">推荐</div>
-                <div id="up">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend style="padding-bottom: 15px;">推荐商品</legend>
+                        <div class="layui-row layui-col-space30" id="book">
+                        </div>
 
-                </div>
+                </fieldset>
             </div>
             <div id="main_right">
-                <div id="text">销售排行榜</div>
-                <div id="right_msg">
-                    <div class="top_01" name="top">
-                        <div id="book_imgurl" class="img"><img src="img/douluodalu.png" style="width: 100%; height: 100%;"></div> <br />
-                        <div id="book_title" class="price">斗罗大陆</div> <br />
-                        <div id="book_desc" class="title"><a href="">唐门外门弟子唐三，因偷学内门绝学为唐门所不容，跳崖明志时却发现没有死，反而以另外一个身份来到了另一个世界，一个属于武魂的世界，名叫斗罗大陆。这里没有魔法，没有斗气，没有武术，却有神奇的武...</a></div>
-						<div id="book_price">￥29.9</div>
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend style="padding-bottom: 15px;">热销排行榜</legend>
+                    <div class="layui-field-box">
+                        <div id="right_msg">
+                            <div class="top">
+                                <a href="/book/{id}">
+                                    <div class="img"><img src="img/douluodalu.png"></div>
+                                    <div class="text">
+                                        <div class="cmdlist-text">斗罗大陆</div>
+                                        <div class="cmdlist-text" id="book_price">￥29.9</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <br />
+                            <div class="top">
+                                <div class="img"><img src="img/2.jpg"></div>
+                                <div class="cmdlist-text">时光背影</div>
+                                <div class="cmdlist-text">￥29.9</div>
+                            </div>
+                            <div class="top" name="top">
+                                <div class="img"><img src="img/6.jpg"></div>
+                                <div class="cmdlist-text">希姆博尔斯卡信礼</div>
+                                <div class="cmdlist-text">￥29.9</div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="top_02" name="top">
-                        <div id="book_imgurl" class="img"><img src="img/6.jpg" style="width: 100%; height: 100%;"></div> <br />
-                        <div id="book_title" class="price">希姆博尔斯卡信礼</div> <br />
-                        <div id="book_desc" class="title"><a href="">这些信札都是充满智慧的随笔小品，丝毫没有老生常谈，文字不拘一格。作者回答文学爱好者、投稿者的来信，简洁而巧妙，任性而有趣，饱含了一位文学。。。</a></div>
-						<div id="book_price">￥29.9</div>
-					</div>
-                    <div class="top_03" name="top">
-                        <div id="book_imgurl" class="img"><img src="img/2.jpg" style="width: 100%; height: 100%;"></div> <br />
-                        <div id="book_title" class="price">时光背影</div> <br />
-                        <div id="book_desc" class="title"><a href="">诗人吉狄马加作序推荐！一本沉淀青春、时光、爱情、亲情和友情的诗作，内配数十幅精美插图，用沉甸甸的诗歌情怀带你重温青葱岁月！</a></div>
-						<div id="book_price">￥29.9</div>
-					</div>
-                </div>
+                </fieldset>
             </div>
         </div>
-        <div id="foot">
-            <a href="index.html" class="layui-icon layui-icon-home" style="font-size: 30px; margin-left: 5%; color: white; "></a>
-            <a href="SE_book.html" class="layui-icon layui-icon-spread-left" style="font-size: 30px; margin-left: 15%; color: white;"></a>
-            <a href="" class="layui-icon layui-icon-cart-simple" style="font-size: 30px; margin-left: 15%; color: white;"></a>
-            <a href="" class="layui-icon layui-icon-username" style="font-size: 30px; margin-left: 15%; color: white;"></a>
-        </div>
     </div>
-</form>
+</div>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="/layui/layui.js"></script>
 <script>
-    function book(k, name , id , img , desc , price){
-        var kk = new Number(k);
-        kk += 1;
-        var str = '<div class="book_0'+kk+'" name="book_msg">\n' +
-            '                        <div id="book_imgurl" class="img"><a href="/book/'+id+'"><img src="'+img+'" style="width: 100%; height: 100%;"></a></div>\n' +
-            '                        <div id="img_msg">\n' +
-            '                            <div id="book_title" class="price"><a href="/book/'+id+'">'+name+'</a></div>\n' +
-            '                            <div id="book_desc" class="title"><a href="/book/'+id+'">'+desc+'</a></div> <br>\n' +
-            '\t\t\t\t\t\t\t<div id="book_price">￥'+price+'</div>\n' +
-            '\t\t\t\t\t\t</div>\n' +
-            '                    </div>';
+    function topp(id,name,price,img){
+        var str = '                            <div class="top">\n' +
+            '                                <a href="/book/'+id+'">\n' +
+            '                                <div class="img"><img src="'+img+'"></div>\n' +
+            '                                <div class="text">\n' +
+            '                                    <div class="cmdlist-text">'+name+'</div>\n' +
+            '                                    <div class="cmdlist-text" id="book_price">￥'+img+'</div>\n' +
+            '                                </div>\n' +
+            '                                </a>\n' +
+            '                            </div>';
         return str;
     }
-    $(document).ready(function(){
-        console.log("测试ready函数");
-        $da = $.ajax({
-            url: "/api/book/recommend?len=6",//json文件位置
+
+    function book(name, id, img, desc, price) {
+        var str = '<div class="layui-col-md3 layui-col-sm4">\n' +
+            '                                <div class="cmdlist-container">\n' +
+            '                                    <a href="/book/'+id+'">\n' +
+            '                                        <img src="'+img+'">\n' +
+            '                                    </a>\n' +
+            '                                    <a href="/book/'+id+'">\n' +
+            '                                        <div class="cmdlist-text">\n' +
+            '                                            <p class="info">'+name+'</p>\n' +
+            '                                            <div class="price">\n' +
+            '                                                <b>￥'+price+'</b>\n' +
+            '                                            </div>\n' +
+            '                                        </div>\n' +
+            '                                    </a>\n' +
+            '                                </div>\n' +
+            '                            </div>';
+        return str;
+    }
+
+    //推荐图书
+    $(document).ready(function () {
+        //console.log("测试ready函数");
+        $recommecd = $.ajax({
+            url: "/api/book/recommend?len=8",//json文件位置
             type: "GET",//请求方式为get
             dataType: "json", //返回数据格式为json
-            success: function(data) {//请求成功完成后要执行的方法
+            success: function (data) {//请求成功完成后要执行的方法
                 console.log(data);
                 var d = data.data;
-                $.each(d , function(k){
+                $.each(d, function (k) {
                     var b = d[k];
-                    console.log(typeof(k));
-                    var text = book(k,b.book_name,b.book_id,b.book_imgurl,b.book_desc,b.book_price);
-                    $("#up").append(text);
-                    console.log(text);
+                    var text = book(b.book_name, b.book_id, b.book_imgurl, b.book_desc, b.book_price);
+                    $("#book").append(text);
+                    //console.log(text);
                 });
-                // $("#book_desc")[0].innerHTML = "<a href=\""+ data.url + "\"/>" + data.desc + "</a>";
-                // $("#book_price")[0].innerHTML = data.book_price;
-                // $("#book_imgurl")[0].innerHTML = "<img src=\""+data.book_imgurl+"\" />";
             }
         })
+
+        //热销排行榜
+        $hot = $.ajax({
+            url: "/api/book/hot?len=5",//json文件位置
+            type: "GET",//请求方式为get
+            dataType: "json", //返回数据格式为json
+            success: function (data) {//请求成功完成后要执行的方法
+                console.log(data);
+                var d = data.data;
+                $.each(d, function (k) {
+                    var b = d[k];
+                    var text = topp(b.id, b.name, b.book_price,b.book_imgurl);
+                    $("#right_msg").append(text);
+                    //console.log(text);
+                });
+            }
+        })
+
     });
 </script>
 
+<script>
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#banner'
+            , arrow: 'always' //始终显示箭头
+        });
+
+        //监听轮播切换事件
+        carousel.on('change(banner)', function (obj) { //test1来源于对应HTML容器的 lay-filter="test1" 属性值
+            console.log(obj.index); //当前条目的索引
+            console.log(obj.prevIndex); //上一个条目的索引
+            console.log(obj.item); //当前条目的元素对象
+        });
+    });
+</script>
 
 <script type="text/javascript">
-    $(function() {
-        $("#sidebar-menu > ul > li").hover(function() {
+    $(function () {
+        $("#sidebar-menu > ul > li").hover(function () {
             $(this).addClass("selected");
             $(".menu-panel", this).addClass("selected");
             var bgImg = $(".menu-item", this).css("background-image");
             bgImg = bgImg.replace(".", "-hover.");
             $(".menu-item", this).css("background-image", bgImg);
-        }, function() {
+        }, function () {
             $(this).removeClass("selected");
             $(".menu-panel", this).removeClass("selected");
             var bgImg = $(".menu-item", this).css("background-image");
@@ -604,97 +472,6 @@
         });
     });
 </script>
-<script>
-    /********** 常量 **********/
-    
-    /**
-     * banner切换时间间隔
-     */
-    var timeout = 5000;
-    
-    /**
-     * banner下标
-     */
-    var bannerIndex = 1000;
-    
-    /**
-     * banner定时器
-     */
-    var bannerInterval;
-    
-    /**
-     * banner内容json
-     */
-    var bannerJson = [{
-        "imgUrl": "img/banner1.png"
-    },
-    {
-        "imgUrl": "img/banner1.png"
-    }
-    ];
-    
-    /********** 函数 **********/
-    
-    /**
-     * banner单次执行内容
-     */
-    function interval() {
-        if(bannerIndex > 1000) bannerIndex -= 1000;
-        if(bannerIndex < 0) bannerIndex += 1000;
-        var banner = document.getElementById("banner");
-        banner.src = bannerJson[bannerIndex % bannerJson.length].imgUrl;
-        banner.setAttribute("desUrl", bannerJson[bannerIndex % bannerJson.length].desUrl)
-        banner.onclick = function(){
-            window.open(this.getAttribute("desUrl"));
-        }
-    
-        bannerIndex++;
-    }
-    
-    /**
-     * banner启动
-     */
-    function startBanner() {
-        interval();
-        bannerInterval = setInterval('interval()', timeout);
-    }
-    
-    /**
-     * 鼠标悬停banner
-     */
-    function bannerOver() {
-        var btn = document.getElementsByName('btn_shift');
-        for (var i = 0; i < btn.length; i++) {
-            btn[i].style = 'visibility:visible;';
-        }
-    }
-    
-    /**
-     * 鼠标移出banner
-     */
-    function bannerOut() {
-        var btn = document.getElementsByName('btn_shift');
-        for (var i = 0; i < btn.length; i++) {
-            btn[i].style = 'visibility:hidden;';
-        }
-    }
-    
-    /**
-     * 点击上一项
-     */
-    function clickPrev() {
-        clearInterval(bannerInterval);
-        bannerIndex-=2;
-        startBanner();
-    }
-    
-    /**
-     * 点击下一项
-     */
-    function clickNext() {
-        clearInterval(bannerInterval);
-        startBanner();
-    }
-</script>
+
 </body>
 </html>
