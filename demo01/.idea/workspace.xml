@@ -2,62 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb5c9701-ea6c-4703-acac-963c9e3874e7" name="默认更改列表" comment="userbean">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp_okhttp_2_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_tencentcloudapi_tencentcloud_sdk_java_3_1_49.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/layui/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/style/global.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/style/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo01.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo01.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/db/login.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/db/login.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/RouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/RouteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/DButil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/AuthorDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/BookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/NoticeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/dao/NoticeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/otherUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/active.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/active.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/addbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/addbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/carts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/carts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/notice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/forget.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/forget.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/regist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/BookController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/Controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/DButil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/AuthorDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/BookDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/BookDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/dao/NoticeDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bookstroe/demo01/otherUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/active.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/active.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/addbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/addbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/carts.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/carts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/notice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/forget.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/regist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Configurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bookstroe/demo01/Configurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,6 +283,9 @@
       <workItem from="1589118570409" duration="689000" />
       <workItem from="1589162346267" duration="11738000" />
       <workItem from="1589249532814" duration="13768000" />
+      <workItem from="1589350428854" duration="3213000" />
+      <workItem from="1589525825023" duration="2448000" />
+      <workItem from="1589696128456" duration="1076000" />
     </task>
     <task id="LOCAL-00001" summary="userbean">
       <created>1587459757772</created>
@@ -389,54 +341,66 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="289" y="128" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588763220675" />
-    <state width="1323" height="207" key="GridCell.Tab.0.bottom" timestamp="1589274823360">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.0.bottom" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="207" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589274823360" />
-    <state width="1323" height="207" key="GridCell.Tab.0.center" timestamp="1589274823359">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.0.center" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="207" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589274823359" />
-    <state width="1323" height="207" key="GridCell.Tab.0.left" timestamp="1589274823359">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.0.left" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="207" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589274823359" />
-    <state width="1323" height="207" key="GridCell.Tab.0.right" timestamp="1589274823359">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.0.right" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="207" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589274823359" />
-    <state width="1323" height="207" key="GridCell.Tab.1.bottom" timestamp="1589274823360">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.1.bottom" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="207" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589274823360" />
-    <state width="1323" height="207" key="GridCell.Tab.1.center" timestamp="1589274823360">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.1.center" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="207" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1589274823360" />
-    <state width="1323" height="207" key="GridCell.Tab.1.left" timestamp="1589274823360">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.1.left" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="207" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1589274823360" />
-    <state width="1323" height="207" key="GridCell.Tab.1.right" timestamp="1589274823360">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.1.right" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="207" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1589274823360" />
-    <state width="1323" height="224" key="GridCell.Tab.2.bottom" timestamp="1589043905687">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.2.bottom" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="224" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589043905687" />
-    <state width="1323" height="224" key="GridCell.Tab.2.center" timestamp="1589043905687">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.2.center" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="224" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1589043905687" />
-    <state width="1323" height="224" key="GridCell.Tab.2.left" timestamp="1589043905687">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.2.left" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="224" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1589043905687" />
-    <state width="1323" height="224" key="GridCell.Tab.2.right" timestamp="1589043905687">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="262" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
+    <state width="1493" height="262" key="GridCell.Tab.2.right" timestamp="1589528296087">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="224" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1589043905687" />
+    <state width="1493" height="262" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1589528296087" />
     <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1588176289630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -485,5 +449,12 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1589274255899" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="((Exception)((Exception)e.cause).cause).detailMessage" custom="java.lang.Exception" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
